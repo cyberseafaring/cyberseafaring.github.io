@@ -14,19 +14,19 @@ Currently, I'm exploring the academic waters as a visiting scholar at John Moore
 
 ## Research interests
   
-- Ship navigation safety；
+  - Ship navigation safety；
   - Ship collision avoidance；
   - Autonomous ship navigation；
 
 ## Education
 
-- Ph.D. in Maritime science, Kobe University, 2017-2020;
+  - Ph.D. in Maritime science, Kobe University, 2017-2020;
   - M.S. in Maritime science, Kobe University, 2014-2017;
   - B.S. in Navigation technology, Dalian Maritime University, 2010-2014.
 
 ## Work experience
 
-- 2017.10-2020.09, Research assistant, Kobe University, Kobe, Japan;
+  - 2017.10-2020.09, Research assistant, Kobe University, Kobe, Japan;
   - 2020.10-Foreseeable Future, Lecturer, Dalian Maritime University, Dalian, China;
   - 2023.9-2024.8, Visiting scholar, John Moores University, Liverpool, UK.
 
