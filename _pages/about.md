@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Academic research and knowledge information push related to intelligent shipping."
+title: "Academic research and knowledge information push park for intelligent ship & shipping."
 excerpt: "About me"
 author_profile: true
 redirect_from: 
@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-[Personal homepage.](https://nvc.dlmu.edu.cn/info/1063/2428.htm)
+[Official page (Chinese)](https://nvc.dlmu.edu.cn/info/1063/2428.htm)
 
 Greetings! I'm Zhang Ruolan, a teacher from Dalian Maritime University. I earned my Ph.D. in Engineering from Kobe University in September 2020, specializing in Maritime Science with a focus on ship navigation safety. 
 
