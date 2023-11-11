@@ -8,7 +8,9 @@ redirect_from:
   - /about.html
 ---
 
-Greetings! I'm Zhang Ruolan, a teacher from Dalian Maritime University. I earned my Ph.D. in Engineering from Kobe University in September 2020, specializing in Maritime Science with a focus on ship navigation safety. [personal homepage](https://nvc.dlmu.edu.cn/info/1063/2428.htm)
+[Personal homepage.](https://nvc.dlmu.edu.cn/info/1063/2428.htm)
+
+Greetings! I'm Zhang Ruolan, a teacher from Dalian Maritime University. I earned my Ph.D. in Engineering from Kobe University in September 2020, specializing in Maritime Science with a focus on ship navigation safety. 
 
 Currently, I'm exploring the academic waters as a visiting scholar at John Moores University in Liverpool. Join me on this journey as I share insights from the world of maritime science and academia. Connect with me for a quiet exchange of thoughts in this corner of the digital sea.
 
