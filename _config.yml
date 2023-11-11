@@ -86,12 +86,12 @@ analytics:
 # Site Author
 author:
   name             : "Ruolan Zhang"
-  avatar           : "profile.png"
-  bio              : "Hello Ms.Yang"
+  avatar           : "profile.jpg"
+  bio              : "Research is difficult, but important."
   location         : "Liverpool, UK"
-  employer         :
-  pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
-  googlescholar    : "http://yourfullgooglescholarurl.com"
+  employer         : "DLMU"
+  pubmed           : 
+  googlescholar    : "https://scholar.google.com/citations?user=hwzcOsEAAAAJ&hl=zh-CN"
   email            :
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
@@ -101,7 +101,7 @@ author:
   flickr           :
   facebook         :
   foursquare       :
-  github           : "academicpages"
+  github           : "cyberseafaring/cyberseafaring.github.io"
   google_plus      :
   keybase          :
   instagram        :
