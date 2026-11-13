@@ -64,5 +64,79 @@
       "url": "https://aga21.aast.edu/en/Attachment/download/260",
       "citation": "Zhang, R., Xu, W., & Li, L. (2021). IAMU 21st Annual General Assembly."
     }
+  },
+  "low-visibility": {
+    "papers": [
+      "10.1007/s11804-026-00926-2",
+      "10.1186/s41072-026-00243-5"
+    ],
+    "student_topics": [
+      {
+        "id": "maritime-vision",
+        "zh": "低能见度下的船舶视觉感知",
+        "en": "Ship vision in low visibility"
+      },
+      {
+        "id": "smart-buoys",
+        "zh": "智能航标与船岸协同感知",
+        "en": "Smart aids and ship–shore perception"
+      }
+    ],
+    "resources": [
+      {
+        "zh": "低能见度通航项目 · 学院主页",
+        "en": "Low-visibility navigation project · University profile",
+        "url": "https://nvc.dlmu.edu.cn/info/1063/2428.htm"
+      }
+    ]
+  },
+  "smart-aids": {
+    "papers": [
+      "10.3390/jmse13020220",
+      "10.3389/fmars.2026.1949441"
+    ],
+    "student_topics": [
+      {
+        "id": "smart-buoys",
+        "zh": "智能航标与船岸协同感知",
+        "en": "Smart aids and ship–shore perception"
+      }
+    ]
+  },
+  "remotebridge": {
+    "papers": [
+      "10.1186/s41072-026-00243-5"
+    ],
+    "student_topics": [
+      {
+        "id": "smart-buoys",
+        "zh": "智能航标与船岸协同感知",
+        "en": "Smart aids and ship–shore perception"
+      },
+      {
+        "id": "maritime-training",
+        "zh": "航海模拟训练与能力评价",
+        "en": "Simulator training and competency assessment"
+      }
+    ]
+  },
+  "s100": {
+    "papers": [
+      "10.1016/j.joes.2026.07.011"
+    ],
+    "student_topics": [
+      {
+        "id": "electronic-charts",
+        "zh": "电子海图与航线安全检查",
+        "en": "Electronic charts and route safety checks"
+      }
+    ],
+    "resources": [
+      {
+        "zh": "IHO S-100 产品规范",
+        "en": "IHO S-100 product specifications",
+        "url": "https://iho.int/en/iho-s-101-to-s-199"
+      }
+    ]
   }
 }

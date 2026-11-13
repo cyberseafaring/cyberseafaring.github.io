@@ -1,0 +1,24 @@
+<svg class="research-home__illustration" viewBox="0 0 400 214" aria-hidden="true" fill="none">
+  <path d="M0 183q48-12 100 0t100 0t100 0t100 0M0 196q48-12 100 0t100 0t100 0t100 0" class="water"/>
+  {% case stage.id %}
+    {% when 'onboard' %}
+      <g class="structure">
+        <path d="M44 152h165l-29 27H74zM83 152v-30h45v30m0-16h47v16M107 122v-17m-11 0h24"/>
+        <path d="M249 73l38-10 12-24h12l-4 21 57 1 13 12-70 5-2 18-12-1-3-16-37 4z"/>
+      </g>
+      <path class="signal" d="M112 99q45-56 114-57M138 117q35-38 83-36M304 112l-63 54m77-54 37 54"/>
+    {% when 'channel' %}
+      <g class="structure">
+        <path d="M83 171l20-42h43l20 42m-53-42v-30h25v30m-13-30V81m-11-1h22"/>
+        <path d="M211 143h112l-21 24h-71zM244 143v-22h34v22"/>
+      </g>
+      <path class="signal" d="M105 65q20-18 40 0M93 51q32-30 64 0M138 101q59-51 142-29m-111 45q50-26 103-22"/>
+    {% when 'shore' %}
+      <g class="structure">
+        <path d="M54 51h163v104H54zM109 173h55m-27-18v18M252 153h91v21h-91zm22 0V98h46v55m-22-55V75"/>
+        <path d="M80 128l31-31 22 17 51-35m-70 19 1-11m19 28v12"/>
+        <circle cx="82" cy="128" r="4"/><circle cx="184" cy="79" r="4"/>
+      </g>
+      <path class="signal" d="M278 69q20-17 40 0m-51-13q31-27 62 0M217 122h53"/>
+  {% endcase %}
+</svg>

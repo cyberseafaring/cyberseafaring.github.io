@@ -1,0 +1,44 @@
+---
+layout: default
+---
+{% assign language = 'zh' %}
+{% assign root = '/research/' %}
+{% if page.lang == 'en' %}
+  {% assign language = 'en' %}
+  {% assign root = '/en/research/' %}
+{% endif %}
+{% assign copy = site.data.navigation_research[language] %}
+<link rel="stylesheet" href="{{ '/assets/css/research-home.css' | relative_url }}">
+<main id="main" class="research-home">
+  <header class="research-home__hero">
+    <p class="research-home__affiliation">{{ copy.affiliation | escape }}</p>
+    <h1>{{ page.title | escape }}</h1>
+    <p class="research-home__problem">{{ copy.problem | escape }}</p>
+  </header>
+
+  {% include port-impact-map.html %}
+
+  <section id="research" class="research-home__approach" aria-labelledby="research-approach-title">
+    <h2 id="research-approach-title">{{ copy.approach | escape }}</h2>
+    {% for stage in copy.stages %}
+      <article class="research-home__stage">
+        {% include navigation-layer.svg.html %}
+        <div class="research-home__stage-copy">
+          <span>{{ stage.label | escape }}</span>
+          <h3>{{ stage.title | escape }}</h3>
+          <p>{{ stage.text | escape }}</p>
+          <ul>
+            {% for link in stage.links %}
+              <li><a href="{{ root | append: link[0] | append: '/' | relative_url }}">{{ link[1] | escape }} <span aria-hidden="true">↗</span></a></li>
+            {% endfor %}
+          </ul>
+        </div>
+      </article>
+    {% endfor %}
+    <p class="research-home__extensions">{{ copy.related | escape }} ·
+      {% for link in copy.extensions %}
+        <a href="{{ root | append: link[0] | append: '/' | relative_url }}">{{ link[1] | escape }}</a>{% unless forloop.last %} · {% endunless %}
+      {% endfor %}
+    </p>
+  </section>
+</main>

@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "RemoteBridge ship–shore prototype",
+    "locale": "en",
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "viewBox": [
+      720,
+      400
+    ],
+    "legend": {
+      "mode": "hidden"
+    },
+    "views": [
+      {
+        "id": "workflow",
+        "label": "Local replay prototype",
+        "focus": [
+          "replay",
+          "snapshot",
+          "fusion",
+          "display"
+        ],
+        "note": "Voyage replay aligns video, AIS and own-ship state and presents consistent identities, tracks and risk cues on ship and shore views."
+      },
+      {
+        "id": "validation",
+        "label": "Planned link trials",
+        "focus": [
+          "link",
+          "quality",
+          "recovery",
+          "review"
+        ],
+        "note": "Controlled delay and outages will test stale-data cues, state recovery and operator review."
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "workflow",
+      "label": "Local replay prototype"
+    },
+    {
+      "id": "validation",
+      "label": "Planned link trials"
+    }
+  ],
+  "mainPath": [
+    "replay",
+    "snapshot",
+    "fusion",
+    "display"
+  ],
+  "nodes": [
+    {
+      "id": "replay",
+      "lane": "workflow",
+      "col": 0,
+      "type": "database",
+      "label": "Voyage replay",
+      "sublabel": "Video, AIS, own ship",
+      "width": 96
+    },
+    {
+      "id": "snapshot",
+      "lane": "workflow",
+      "col": 1,
+      "type": "backend",
+      "label": "State snapshot",
+      "sublabel": "Use one replay clock",
+      "width": 112
+    },
+    {
+      "id": "fusion",
+      "lane": "workflow",
+      "col": 3,
+      "type": "backend",
+      "label": "Track fusion",
+      "sublabel": "Match identity and risk",
+      "width": 128
+    },
+    {
+      "id": "display",
+      "lane": "workflow",
+      "col": 5,
+      "type": "frontend",
+      "label": "Shared display",
+      "sublabel": "Chart and local 3D",
+      "width": 104
+    },
+    {
+      "id": "link",
+      "lane": "validation",
+      "col": 0,
+      "type": "database",
+      "label": "Link trial",
+      "sublabel": "Inject delay and outages",
+      "width": 96
+    },
+    {
+      "id": "quality",
+      "lane": "validation",
+      "col": 1,
+      "type": "backend",
+      "label": "Data quality",
+      "sublabel": "Flag stale or missing data",
+      "width": 112
+    },
+    {
+      "id": "recovery",
+      "lane": "validation",
+      "col": 3,
+      "type": "backend",
+      "label": "State recovery",
+      "sublabel": "Compare after reconnection",
+      "width": 128
+    },
+    {
+      "id": "review",
+      "lane": "validation",
+      "col": 5,
+      "type": "frontend",
+      "label": "Human review",
+      "sublabel": "Assess fitness for use",
+      "width": 104
+    }
+  ],
+  "edges": [
+    {
+      "id": "replay-snapshot",
+      "from": "replay",
+      "to": "snapshot",
+      "variant": "emphasis"
+    },
+    {
+      "id": "snapshot-fusion",
+      "from": "snapshot",
+      "to": "fusion",
+      "variant": "emphasis"
+    },
+    {
+      "id": "fusion-display",
+      "from": "fusion",
+      "to": "display",
+      "variant": "emphasis"
+    },
+    {
+      "id": "link-quality",
+      "from": "link",
+      "to": "quality",
+      "variant": "emphasis"
+    },
+    {
+      "id": "quality-recovery",
+      "from": "quality",
+      "to": "recovery",
+      "variant": "emphasis"
+    },
+    {
+      "id": "recovery-review",
+      "from": "recovery",
+      "to": "review",
+      "variant": "emphasis"
+    }
+  ]
+}

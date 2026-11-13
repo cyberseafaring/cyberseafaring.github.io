@@ -1,0 +1,171 @@
+.port-impact {
+  --port-ink: #173646;
+  --port-teal: #126b67;
+  --port-muted: #3b5965;
+  --port-rule: #cadad9;
+  margin-block: 2rem;
+  color: var(--port-ink);
+}
+
+.port-impact .port-impact__intro h2 {
+  margin: 0 0 .45rem;
+}
+
+.port-impact .port-impact__intro p {
+  max-width: 64ch;
+  margin: 0 0 1rem;
+  color: var(--port-muted);
+}
+
+.port-impact__grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  overflow: hidden;
+  border: 1px solid var(--port-rule);
+  border-radius: .65rem;
+  background: #f1f6f3;
+}
+
+.port-impact .port-impact__figure {
+  display: block;
+  margin: 0;
+  background: #fff;
+}
+
+.port-impact__map {
+  position: relative;
+}
+
+.port-impact__map img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 0;
+}
+
+.port-impact__leaders {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  fill: #163f55;
+  stroke: #163f55;
+  stroke-width: 1.25px;
+}
+
+.port-impact__leaders circle {
+  stroke: none;
+}
+
+.port-impact .port-impact__marker {
+  position: absolute;
+  top: var(--y);
+  left: var(--x);
+  transform: translate(-50%, -50%);
+  display: grid;
+  place-items: center;
+  width: clamp(1.4rem, 2.7vw, 1.75rem);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: #163f55;
+  color: #fff;
+  font: 700 .66rem/1 sans-serif;
+  text-decoration: none;
+  box-shadow: 0 0 0 1px #163f55;
+}
+
+.port-impact .port-impact__marker:hover,
+.port-impact .port-impact__marker[aria-current] {
+  z-index: 1;
+  background: #9b421d;
+  box-shadow: 0 0 0 1px #9b421d;
+  color: #fff;
+}
+
+.port-impact .port-impact__figure figcaption {
+  padding: .4rem .8rem .75rem;
+  margin: 0;
+  color: var(--port-muted);
+  font-size: .73rem;
+}
+
+.port-impact__detail {
+  min-width: 0;
+  padding: clamp(.9rem, 2.4vw, 1.4rem);
+  border-left: 1px solid var(--port-rule);
+}
+
+.port-impact__choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .35rem;
+}
+
+.port-impact .port-impact__choices a {
+  padding: .22rem .52rem;
+  border: 1px solid #b0c6c3;
+  border-radius: .22rem;
+  color: var(--port-teal);
+  font-size: .76rem;
+  line-height: 1.45;
+  text-decoration: none;
+}
+
+.port-impact .port-impact__choices a:hover {
+  background: #e3edeb;
+}
+
+.port-impact .port-impact__choices [aria-current] {
+  background: var(--port-teal);
+  border-color: var(--port-teal);
+  color: #fff;
+}
+
+.port-impact a:focus-visible {
+  outline: 2px solid #126b67;
+  outline-offset: 3px;
+}
+
+.port-impact__record {
+  margin-top: 1.1rem;
+}
+
+.port-impact__record[hidden] {
+  display: none !important;
+}
+
+.port-impact .port-impact__record h3,
+.port-impact .port-impact__record p {
+  margin: 0 0 .55rem;
+}
+
+.port-impact .port-impact__period,
+.port-impact .port-impact__availability,
+.port-impact .port-impact__source,
+.port-impact .port-impact__note {
+  font-size: .77rem;
+  color: var(--port-muted);
+}
+
+.port-impact .port-impact__value {
+  color: var(--port-teal);
+  font-size: clamp(1.4rem, 3.5vw, 2.15rem);
+  line-height: 1.12;
+}
+
+.port-impact .port-impact__metric {
+  font-weight: 700;
+}
+
+.port-impact .port-impact__note {
+  margin: .9rem 0 0;
+  padding-top: .7rem;
+  border-top: 1px solid var(--port-rule);
+}
+
+@media (max-width: 880px) {
+  .port-impact__grid { grid-template-columns: 1fr; }
+  .port-impact__detail { border: 0; border-top: 1px solid var(--port-rule); }
+}

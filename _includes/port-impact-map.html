@@ -1,0 +1,50 @@
+{% assign map_lang = 'zh' %}
+{% if page.lang == 'en' %}{% assign map_lang = 'en' %}{% endif %}
+<link rel="stylesheet" href="{{ '/assets/css/port-impact-map.css' | relative_url }}">
+<section class="port-impact" id="port-impacts" data-port-impact aria-labelledby="port-impact-heading">
+  <div class="port-impact__intro">
+    <h2 id="port-impact-heading">{% if map_lang == 'en' %}What does fog cost a port?{% else %}大雾让港口付出什么代价？{% endif %}</h2>
+    <p>{% if map_lang == 'en' %}Explore selected Chinese ports and waterways. The figures show reported downtime, restrictions or study estimates, with the period and source for each case.{% else %}点击港口或航线，查看公开记录中的停工、禁限航和损失估计。每项数据均标明统计时段和来源。{% endif %}</p>
+  </div>
+  <div class="port-impact__grid">
+    <figure class="port-impact__figure">
+      <div class="port-impact__map">
+        <img src="{{ '/assets/images/china-standard-map-gs2016-1600.jpg' | relative_url }}" width="1648" height="1292" decoding="async" alt="{% if map_lang == 'en' %}Standard map of China with selected coastal ports and the Qiongzhou Strait ferry route{% else %}中国标准地图，标出部分沿海港口和琼州海峡客滚航线{% endif %}">
+        <svg class="port-impact__leaders" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+          {% for port in site.data.port_impact %}
+            <line x1="{{ port.x }}" y1="{{ port.y }}" x2="{{ port.pin_x }}" y2="{{ port.pin_y }}" vector-effect="non-scaling-stroke"/>
+            <circle cx="{{ port.x }}" cy="{{ port.y }}" r=".55"/>
+          {% endfor %}
+        </svg>
+        {% for port in site.data.port_impact %}
+          {% assign label = port[map_lang].name %}
+          <a class="port-impact__marker" style="--x:{{ port.pin_x }}%;--y:{{ port.pin_y }}%" href="#port-{{ port.id }}" data-port="{{ port.id }}" aria-label="{{ label | escape }}">{{ forloop.index }}</a>
+        {% endfor %}
+      </div>
+      <figcaption><a href="https://hunan.tianditu.gov.cn/subApp/tjxz/">{% if map_lang == 'en' %}Standard map via Hunan Tianditu{% else %}底图来自湖南天地图标准地图服务{% endif %}</a> · GS(2016)1600</figcaption>
+    </figure>
+    <div class="port-impact__detail">
+      <nav class="port-impact__choices" aria-label="{% if map_lang == 'en' %}Choose a port{% else %}选择港口{% endif %}">
+        {% for port in site.data.port_impact %}
+          <a href="#port-{{ port.id }}" data-port="{{ port.id }}">{{ forloop.index }}. {{ port[map_lang].name | escape }}</a>
+        {% endfor %}
+      </nav>
+      <div class="port-impact__readout" aria-live="polite">
+        {% for port in site.data.port_impact %}
+          {% assign item = port[map_lang] %}
+          <article class="port-impact__record" id="port-{{ port.id }}" data-port-record="{{ port.id }}">
+            <h3>{{ item.name | escape }}</h3>
+            <p class="port-impact__period">{{ item.period | escape }}</p>
+            <p class="port-impact__value"><strong>{{ item.value | escape }}</strong></p>
+            <p class="port-impact__metric">{{ item.metric | escape }}</p>
+            <p>{{ item.detail | escape }}</p>
+            <p class="port-impact__availability">{% if map_lang == 'en' %}Annual economic loss from fog restrictions · No verified public figure{% else %}雾致禁限航年度经济损失 · 暂无可核实的公开金额{% endif %}</p>
+            <p class="port-impact__source"><a href="{{ port.url | escape }}">{{ item.record | escape }}</a>{% if item.source_url %} · <a href="{{ item.source_url | escape }}">{{ item.source | escape }}</a>{% endif %}</p>
+          </article>
+        {% endfor %}
+      </div>
+      <p class="port-impact__note">{% if map_lang == 'en' %}A gain in operating revenue, a monthly modelled loss and reported closure hours measure different effects.{% else %}营收增量、月度仿真损失和禁限航时长各有统计口径。{% endif %}</p>
+    </div>
+  </div>
+</section>
+<script src="{{ '/assets/js/port-impact-map.js' | relative_url }}" defer></script>

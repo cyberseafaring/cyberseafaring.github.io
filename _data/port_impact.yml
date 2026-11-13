@@ -1,0 +1,128 @@
+- id: ningbo-zhoushan
+  x: 72.2
+  y: 62.3
+  pin_x: 80.0
+  pin_y: 64.0
+  zh:
+    name: 宁波舟山港
+    period: 2023 年研究回顾此前五年
+    value: 约 300 小时／年
+    metric: 海雾导致的年均停工时长
+    detail: 港航气象服务联合评估估计，港区每年可增加约 150 小时作业时间，港口和船公司营业收入可年增约 5.6 亿元。
+    source: 港航气象服务联合评估
+    source_url: https://m.thepaper.cn/newsDetail_forward_17126707
+    record: 停工统计原文
+  en:
+    name: Ningbo–Zhoushan
+    period: Five years reviewed in a 2023 study
+    value: About 300 hours/year
+    metric: Average annual downtime due to sea fog
+    detail: A joint assessment estimated that port weather services could recover about 150 operating hours a year and increase combined annual port and shipping-company revenue by about CNY 560 million.
+    source: Joint weather service assessment
+    source_url: https://m.thepaper.cn/newsDetail_forward_17126707
+    record: Downtime study
+  url: https://doi.org/10.3390/atmos14101513
+- id: qingdao
+  x: 69.4
+  y: 47.8
+  pin_x: 76.5
+  pin_y: 45.0
+  zh:
+    name: 青岛港
+    period: 2015 年 3–8 月雾季
+    value: 463 小时
+    metric: 因雾实施禁航和限航的累计时长
+    detail: 青岛 VTS 年度报告另记载，6 月 7–11 日连续大雾期间，约 1,500 艘次船舶的作业计划受到影响。
+    record: 青岛海事局 VTS 年度报告
+  en:
+    name: Qingdao
+    period: March–August 2015 fog season
+    value: 463 hours
+    metric: Cumulative fog-related closures and restrictions
+    detail: Qingdao VTS reported that persistent fog on 7–11 June disrupted the operating plans of about 1,500 vessel movements.
+    record: Qingdao MSA VTS annual report
+  url: https://www.sd.msa.gov.cn/module/download/downfile.jsp?classid=0&filename=e5c7a281be694d268efb88b17d59ed67.pdf
+- id: shanghai
+  x: 71.8
+  y: 57.9
+  pin_x: 79.5
+  pin_y: 54.0
+  zh:
+    name: 上海港
+    period: 2015 年报道回顾上一年
+    value: 超过 50 天
+    metric: 大型船舶因能见度不良停航或滞航
+    detail: 统计对象为大型船舶，覆盖能见度不良导致的停航或滞航。
+    record: 上海口岸办公室转引上海海事局
+  en:
+    name: Shanghai
+    period: Prior year covered in a 2015 report
+    value: More than 50 days
+    metric: Suspension or delays for large vessels due to poor visibility
+    detail: The figures cover large vessels that were suspended or delayed under poor visibility.
+    record: Shanghai Port Office quoting Shanghai MSA
+  url: https://kab.sww.sh.gov.cn/xwzx/001005/001005003/001005003001/20150210/b44fd98c-b2ed-454c-a099-535ccafc445c.html
+- id: shenzhen
+  x: 62.4
+  y: 79.0
+  pin_x: 66.5
+  pin_y: 76.0
+  zh:
+    name: 深圳港
+    period: 3 月月均损失 · 2019 年发表
+    value: 约 3,000 万美元
+    metric: 集装箱码头仿真估计的 3 月月均损失
+    detail: 研究以深圳港为案例，用历史气象和码头作业记录进行仿真，估计海雾使 3 月停工和经济损失最为严重。
+    record: Cao 与 Lam 的码头损失模型
+  en:
+    name: Shenzhen
+    period: Modelled March monthly average · Published 2019
+    value: About US$30 million
+    metric: Modelled average loss in March for the terminal case
+    detail: The Shenzhen case study used historical weather and terminal operating records. Fog made March the month with the longest estimated downtime and highest losses.
+    record: Cao and Lam’s terminal loss model
+  url: https://doi.org/10.1080/03088839.2018.1516049
+- id: qiongzhou
+  x: 54.8
+  y: 83.8
+  pin_x: 51.0
+  pin_y: 79.0
+  zh:
+    name: 琼州海峡客滚航线
+    period: 2024 年两次大雾停航
+    value: 8 小时、4 小时
+    metric: 1 月 31 日和 2 月 16 日的单次停航时长
+    detail: 两次停航造成数千辆车滞留。全年因大雾、台风及南海开渔等因素共停航 169.6 小时。
+    source: 珠江航务管理局年度统计
+    source_url: https://zjhy.mot.gov.cn/zzhxxgk/jigou/jsdw/202501/t20250103_4162023.html
+    record: 交通运输部春运报道
+  en:
+    name: Qiongzhou Strait ferries
+    period: Two fog closures in 2024
+    value: 8 and 4 hours
+    metric: Closures on 31 January and 16 February
+    detail: The two closures stranded thousands of vehicles. Total 2024 closures reached 169.6 hours across several causes, including fog, typhoons and the reopening of the fishing season.
+    source: Pearl River navigation authority annual figures
+    source_url: https://zjhy.mot.gov.cn/zzhxxgk/jigou/jsdw/202501/t20250103_4162023.html
+    record: Ministry of Transport reporting
+  url: https://www.mot.gov.cn/zhuanti/2025chunyun/chunyunbaodao/202501/t20250113_4162473.html
+- id: rizhao
+  x: 67.6
+  y: 51.3
+  pin_x: 60.0
+  pin_y: 47.5
+  zh:
+    name: 日照港
+    period: 2012 年全年
+    value: 45 次
+    metric: 日照辖区因大雾实施禁航的次数
+    detail: 当年最长一次大雾禁航持续 36 小时。
+    record: 日照海事局 VTS 统计简报
+  en:
+    name: Rizhao
+    period: Calendar year 2012
+    value: 45 closures
+    metric: Fog-related closures in Rizhao’s waters
+    detail: The longest fog-related closure that year lasted 36 hours.
+    record: Rizhao MSA VTS statistics
+  url: https://www.sd.msa.gov.cn/sdmsa/pic/20132221609390.pdf

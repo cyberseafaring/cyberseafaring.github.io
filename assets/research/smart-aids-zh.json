@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "智慧航标与局部航道感知",
+    "locale": "zh-CN",
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "viewBox": [
+      720,
+      400
+    ],
+    "legend": {
+      "mode": "hidden"
+    },
+    "views": [
+      {
+        "id": "workflow",
+        "label": "视频与 AIS 融合",
+        "focus": [
+          "observation",
+          "alignment",
+          "association",
+          "shore"
+        ],
+        "note": "芜湖航段研究以航标摄像机与 AIS 观测为基础，在边缘侧按时空关联目标，为岸端复核提供局部航迹。"
+      },
+      {
+        "id": "validation",
+        "label": "航标状态评估研究",
+        "focus": [
+          "position",
+          "response",
+          "drift",
+          "inspection"
+        ],
+        "note": "利用位置序列分析漂移与系泊响应，记录判定依据，为巡检和维护提供参考。"
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "workflow",
+      "label": "视频与 AIS 融合"
+    },
+    {
+      "id": "validation",
+      "label": "航标状态评估研究"
+    }
+  ],
+  "mainPath": [
+    "observation",
+    "alignment",
+    "association",
+    "shore"
+  ],
+  "nodes": [
+    {
+      "id": "observation",
+      "lane": "workflow",
+      "col": 0,
+      "type": "database",
+      "label": "航标观测",
+      "sublabel": "视频与 AIS",
+      "width": 96
+    },
+    {
+      "id": "alignment",
+      "lane": "workflow",
+      "col": 1,
+      "type": "backend",
+      "label": "边缘对齐",
+      "sublabel": "统一时间与坐标",
+      "width": 112
+    },
+    {
+      "id": "association",
+      "lane": "workflow",
+      "col": 3,
+      "type": "backend",
+      "label": "目标关联",
+      "sublabel": "形成局部航迹",
+      "width": 128
+    },
+    {
+      "id": "shore",
+      "lane": "workflow",
+      "col": 5,
+      "type": "frontend",
+      "label": "岸端复核",
+      "sublabel": "航迹与异常提示",
+      "width": 104
+    },
+    {
+      "id": "position",
+      "lane": "validation",
+      "col": 0,
+      "type": "database",
+      "label": "位置观测",
+      "sublabel": "航标位置序列",
+      "width": 96
+    },
+    {
+      "id": "response",
+      "lane": "validation",
+      "col": 1,
+      "type": "backend",
+      "label": "响应分析",
+      "sublabel": "轨迹与系泊变化",
+      "width": 112
+    },
+    {
+      "id": "drift",
+      "lane": "validation",
+      "col": 3,
+      "type": "backend",
+      "label": "漂移识别",
+      "sublabel": "结合观测条件",
+      "width": 128
+    },
+    {
+      "id": "inspection",
+      "lane": "validation",
+      "col": 5,
+      "type": "frontend",
+      "label": "巡检参考",
+      "sublabel": "复核位置与状态",
+      "width": 104
+    }
+  ],
+  "edges": [
+    {
+      "id": "observation-alignment",
+      "from": "observation",
+      "to": "alignment",
+      "variant": "emphasis"
+    },
+    {
+      "id": "alignment-association",
+      "from": "alignment",
+      "to": "association",
+      "variant": "emphasis"
+    },
+    {
+      "id": "association-shore",
+      "from": "association",
+      "to": "shore",
+      "variant": "emphasis"
+    },
+    {
+      "id": "position-response",
+      "from": "position",
+      "to": "response",
+      "variant": "emphasis"
+    },
+    {
+      "id": "response-drift",
+      "from": "response",
+      "to": "drift",
+      "variant": "emphasis"
+    },
+    {
+      "id": "drift-inspection",
+      "from": "drift",
+      "to": "inspection",
+      "variant": "emphasis"
+    }
+  ]
+}

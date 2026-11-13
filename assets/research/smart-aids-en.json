@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Smart aids to navigation and local sensing",
+    "locale": "en",
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "viewBox": [
+      720,
+      400
+    ],
+    "legend": {
+      "mode": "hidden"
+    },
+    "views": [
+      {
+        "id": "workflow",
+        "label": "Video and AIS fusion",
+        "focus": [
+          "observation",
+          "alignment",
+          "association",
+          "shore"
+        ],
+        "note": "The Wuhu study associates camera observations with AIS reports at the edge and provides local tracks for review ashore."
+      },
+      {
+        "id": "validation",
+        "label": "AtoN condition research",
+        "focus": [
+          "position",
+          "response",
+          "drift",
+          "inspection"
+        ],
+        "note": "Position records support research on drift and mooring response, with evidence retained for inspection and maintenance."
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "workflow",
+      "label": "Video and AIS fusion"
+    },
+    {
+      "id": "validation",
+      "label": "AtoN condition research"
+    }
+  ],
+  "mainPath": [
+    "observation",
+    "alignment",
+    "association",
+    "shore"
+  ],
+  "nodes": [
+    {
+      "id": "observation",
+      "lane": "workflow",
+      "col": 0,
+      "type": "database",
+      "label": "Buoy sensors",
+      "sublabel": "Video and AIS",
+      "width": 96
+    },
+    {
+      "id": "alignment",
+      "lane": "workflow",
+      "col": 1,
+      "type": "backend",
+      "label": "Edge alignment",
+      "sublabel": "Match time and position",
+      "width": 112
+    },
+    {
+      "id": "association",
+      "lane": "workflow",
+      "col": 3,
+      "type": "backend",
+      "label": "Track association",
+      "sublabel": "Build local vessel tracks",
+      "width": 128
+    },
+    {
+      "id": "shore",
+      "lane": "workflow",
+      "col": 5,
+      "type": "frontend",
+      "label": "Shore review",
+      "sublabel": "Tracks and anomaly cues",
+      "width": 104
+    },
+    {
+      "id": "position",
+      "lane": "validation",
+      "col": 0,
+      "type": "database",
+      "label": "Position fixes",
+      "sublabel": "AtoN position series",
+      "width": 96
+    },
+    {
+      "id": "response",
+      "lane": "validation",
+      "col": 1,
+      "type": "backend",
+      "label": "Mooring response",
+      "sublabel": "Analyse position changes",
+      "width": 112
+    },
+    {
+      "id": "drift",
+      "lane": "validation",
+      "col": 3,
+      "type": "backend",
+      "label": "Drift assessment",
+      "sublabel": "Consider conditions",
+      "width": 128
+    },
+    {
+      "id": "inspection",
+      "lane": "validation",
+      "col": 5,
+      "type": "frontend",
+      "label": "Inspection",
+      "sublabel": "Review position and state",
+      "width": 104
+    }
+  ],
+  "edges": [
+    {
+      "id": "observation-alignment",
+      "from": "observation",
+      "to": "alignment",
+      "variant": "emphasis"
+    },
+    {
+      "id": "alignment-association",
+      "from": "alignment",
+      "to": "association",
+      "variant": "emphasis"
+    },
+    {
+      "id": "association-shore",
+      "from": "association",
+      "to": "shore",
+      "variant": "emphasis"
+    },
+    {
+      "id": "position-response",
+      "from": "position",
+      "to": "response",
+      "variant": "emphasis"
+    },
+    {
+      "id": "response-drift",
+      "from": "response",
+      "to": "drift",
+      "variant": "emphasis"
+    },
+    {
+      "id": "drift-inspection",
+      "from": "drift",
+      "to": "inspection",
+      "variant": "emphasis"
+    }
+  ]
+}

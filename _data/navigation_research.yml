@@ -1,0 +1,60 @@
+zh:
+  affiliation: "张若澜 · 大连海事大学航海学院"
+  problem: "雾会缩短驾驶台的有效观测距离。港口可能限制或暂停通航，船舶等待、泊位计划和引航安排随之受到影响。我们研究如何让船舶和岸端更早掌握航道态势，为限航、引航和恢复通航提供依据。"
+  approach: "从船端观察，到岸基组织通航"
+  stages:
+    - id: onboard
+      label: "船端"
+      title: "在驾驶台视野之外补充观测"
+      text: "把船载雷达、视频与 AIS 对齐，持续跟踪来船和障碍物。研究在满足起降、气象和链路条件时，使用固定翼无人机搭载合成孔径雷达（SAR），补充前方航段的广域观测。按观测时间、位置和置信度，把空中观测与船载轨迹关联并提示数据时效。"
+      links:
+        - [perception, "多模态感知"]
+        - [autonomy, "自主航行与避碰"]
+    - id: channel
+      label: "航道"
+      title: "让智慧航标补足关键航段的观测"
+      text: "在弯道、交汇区等重点位置布设观测点。航标就地对齐视频、AIS 和能见度等观测，向岸端上报局部航迹、能见度变化与设备状态。研究如何在供电和通信受限时维持连续观测。"
+      links:
+        - [smart-aids, "智慧航标与航道基础设施"]
+    - id: shore
+      label: "岸基"
+      title: "让 VTS 掌握整体态势并提供信息服务"
+      text: "船舶交通服务（VTS）汇集船端、航标与岸基观测，复核目标、识别会遇与拥堵，向船舶和引航员提供风险提示及交通信息。研究用 RemoteBridge 共享航行态势，并以 S-100 海图及环境数据为航线复核和船岸协同提供统一参照。"
+      links:
+        - [low-visibility, "低能见度航道监管"]
+        - [remotebridge, "RemoteBridge 船岸协同"]
+        - [s100, "S-100 船岸协同管理"]
+  related: "延伸研究"
+  extensions:
+    - [waterways, "航运交通韧性"]
+    - [education, "海事教育与船员训练"]
+en:
+  affiliation: "Ruolan Zhang · Navigation College, Dalian Maritime University"
+  problem: "Fog shortens the distance a bridge team can see. Ports may restrict or suspend vessel movements, leaving ships waiting and disrupting berth and pilotage schedules. We study how ships and shore teams can see traffic conditions earlier and make better-informed decisions about restrictions, pilotage and reopening."
+  approach: "From onboard observations to shore-based traffic management"
+  stages:
+    - id: onboard
+      label: "On board"
+      title: "Extend observations beyond the bridge's field of view"
+      text: "Align shipborne radar, video and AIS to track approaching vessels and obstacles. Where launch, recovery, weather and communications allow, study fixed-wing UAVs carrying synthetic aperture radar (SAR) for wider coverage ahead. Associate aerial observations with onboard tracks using time, position and confidence, and show how fresh each observation is."
+      links:
+        - [perception, "Multimodal perception"]
+        - [autonomy, "Autonomous navigation and collision avoidance"]
+    - id: channel
+      label: "In the waterway"
+      title: "Use smart aids to cover critical reaches"
+      text: "Place observation stations at bends, junctions and other critical points. Align video, AIS and visibility observations at the aid, then report local tracks, changes in visibility and equipment status to shore. Study how to maintain coverage with limited power and communications."
+      links:
+        - [smart-aids, "Smart aids and waterway infrastructure"]
+    - id: shore
+      label: "Ashore"
+      title: "Give VTS a waterway-wide view and support its information services"
+      text: "Vessel Traffic Services (VTS) bring together ship, aid and shore observations to confirm targets, detect encounters and congestion, and provide traffic information and risk alerts to ships and pilots. We study RemoteBridge for sharing the traffic picture and S-100 chart and environmental data as a common reference for route review and ship–shore coordination."
+      links:
+        - [low-visibility, "Low-visibility waterway monitoring"]
+        - [remotebridge, "RemoteBridge ship–shore coordination"]
+        - [s100, "S-100 for ship–shore management"]
+  related: "Related research"
+  extensions:
+    - [waterways, "Shipping traffic resilience"]
+    - [education, "Maritime education and seafarer training"]

@@ -1,0 +1,56 @@
+#main.research-home {
+  max-width: 72rem;
+  padding: 0 clamp(1rem, 4vw, 2.5rem) 3rem;
+  color: #14303e;
+}
+.research-home__hero {
+  margin: 1.25rem 0 1.5rem;
+  padding: clamp(1.25rem, 4vw, 3.25rem);
+  background: #102f3c;
+  border-bottom: .25rem solid #55aa9a;
+  color: #f4fbfa;
+}
+.research-home__affiliation {
+  color: #9ce1d3;
+  font-size: .9rem;
+  margin: 0 0 1rem;
+}
+.research-home__hero h1 {
+  max-width: 24ch;
+  margin: 0 0 .85rem;
+  font-size: clamp(1.75rem, 5.5vw, 3.35rem);
+  line-height: 1.14;
+  letter-spacing: -.025em;
+  text-wrap: balance;
+}
+.research-home__problem {
+  max-width: 66ch;
+  margin: 0;
+  font-size: clamp(.95rem, 2vw, 1.1rem);
+  color: #e2efef;
+  line-height: 1.65;
+}
+.research-home__approach { margin-top: 2.5rem; scroll-margin-top: 5rem; }
+.research-home__approach > h2 { margin: 0 0 1.25rem; font-size: clamp(1.4rem, 4vw, 2.25rem); }
+.research-home__stage {
+  display: grid;
+  grid-template-columns: minmax(0, .85fr) minmax(0, 1.45fr);
+  gap: clamp(1rem, 4vw, 2.5rem);
+  align-items: center;
+  padding: 1.3rem 0;
+  border-top: 1px solid #b9cdd0;
+}
+.research-home__illustration { width: 100%; background: #e9f3f2; }
+.research-home__illustration .structure { stroke: #0c605e; stroke-width: 3; stroke-linejoin: round; }
+.research-home__illustration .signal { stroke: #ad631e; stroke-width: 2; stroke-dasharray: 6 5; }
+.research-home__illustration .water { stroke: #7fb5b7; stroke-width: 2; }
+.research-home__stage-copy > span { color: #086b64; font-size: .85rem; font-weight: 700; }
+.research-home__stage h3 { margin: .3rem 0 .6rem; line-height: 1.22; }
+.research-home__stage p { margin: 0 0 .7rem; font-size: .95rem; line-height: 1.65; }
+.research-home__stage ul { display: flex; flex-wrap: wrap; gap: .4rem 1rem; list-style: none; padding: 0; margin: 0; font-size: .88rem; }
+.research-home__stage a, .research-home__extensions a { color: #075f68; text-underline-offset: .2em; }
+.research-home__extensions { border-top: 1px solid #b9cdd0; padding-top: 1rem; font-size: .86rem; }
+@media (max-width: 650px) {
+  .research-home__stage { grid-template-columns: 1fr; }
+  .research-home__illustration { max-height: 11rem; }
+}

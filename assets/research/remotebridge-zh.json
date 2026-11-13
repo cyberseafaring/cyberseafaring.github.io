@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "RemoteBridge 船岸协同原型",
+    "locale": "zh-CN",
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "viewBox": [
+      720,
+      400
+    ],
+    "legend": {
+      "mode": "hidden"
+    },
+    "views": [
+      {
+        "id": "workflow",
+        "label": "本地回放原型",
+        "focus": [
+          "replay",
+          "snapshot",
+          "fusion",
+          "display"
+        ],
+        "note": "真实航次回放将视频、AIS 和本船状态对齐，在船端与岸端呈现一致的目标身份、航迹与风险提示。"
+      },
+      {
+        "id": "validation",
+        "label": "通信受限试验方案",
+        "focus": [
+          "link",
+          "quality",
+          "recovery",
+          "review"
+        ],
+        "note": "后续研究在受控条件下模拟时延和断连，检验陈旧信息提示、数据恢复和人员复核。"
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "workflow",
+      "label": "本地回放原型"
+    },
+    {
+      "id": "validation",
+      "label": "通信受限试验方案"
+    }
+  ],
+  "mainPath": [
+    "replay",
+    "snapshot",
+    "fusion",
+    "display"
+  ],
+  "nodes": [
+    {
+      "id": "replay",
+      "lane": "workflow",
+      "col": 0,
+      "type": "database",
+      "label": "航次回放",
+      "sublabel": "视频、AIS、本船状态",
+      "width": 96
+    },
+    {
+      "id": "snapshot",
+      "lane": "workflow",
+      "col": 1,
+      "type": "backend",
+      "label": "态势快照",
+      "sublabel": "统一回放时间",
+      "width": 112
+    },
+    {
+      "id": "fusion",
+      "lane": "workflow",
+      "col": 3,
+      "type": "backend",
+      "label": "目标融合",
+      "sublabel": "关联身份、航迹与风险",
+      "width": 128
+    },
+    {
+      "id": "display",
+      "lane": "workflow",
+      "col": 5,
+      "type": "frontend",
+      "label": "船岸显示",
+      "sublabel": "海图与局部三维",
+      "width": 104
+    },
+    {
+      "id": "link",
+      "lane": "validation",
+      "col": 0,
+      "type": "database",
+      "label": "链路试验",
+      "sublabel": "设定时延与断连",
+      "width": 96
+    },
+    {
+      "id": "quality",
+      "lane": "validation",
+      "col": 1,
+      "type": "backend",
+      "label": "信息质量",
+      "sublabel": "识别陈旧或缺测数据",
+      "width": 112
+    },
+    {
+      "id": "recovery",
+      "lane": "validation",
+      "col": 3,
+      "type": "backend",
+      "label": "状态恢复",
+      "sublabel": "比较重连后的状态",
+      "width": 128
+    },
+    {
+      "id": "review",
+      "lane": "validation",
+      "col": 5,
+      "type": "frontend",
+      "label": "人工复核",
+      "sublabel": "判断信息能否使用",
+      "width": 104
+    }
+  ],
+  "edges": [
+    {
+      "id": "replay-snapshot",
+      "from": "replay",
+      "to": "snapshot",
+      "variant": "emphasis"
+    },
+    {
+      "id": "snapshot-fusion",
+      "from": "snapshot",
+      "to": "fusion",
+      "variant": "emphasis"
+    },
+    {
+      "id": "fusion-display",
+      "from": "fusion",
+      "to": "display",
+      "variant": "emphasis"
+    },
+    {
+      "id": "link-quality",
+      "from": "link",
+      "to": "quality",
+      "variant": "emphasis"
+    },
+    {
+      "id": "quality-recovery",
+      "from": "quality",
+      "to": "recovery",
+      "variant": "emphasis"
+    },
+    {
+      "id": "recovery-review",
+      "from": "recovery",
+      "to": "review",
+      "variant": "emphasis"
+    }
+  ]
+}

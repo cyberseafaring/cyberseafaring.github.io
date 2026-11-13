@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "S-100 船岸信息共享与航线复核",
+    "locale": "zh-CN",
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "viewBox": [
+      720,
+      400
+    ],
+    "legend": {
+      "mode": "hidden"
+    },
+    "views": [
+      {
+        "id": "workflow",
+        "label": "多产品接入与版本记录",
+        "focus": [
+          "products",
+          "parsing",
+          "version",
+          "query"
+        ],
+        "note": "研究原型处理电子海图、水深、水位、流场与航警，并记录输入版本与覆盖范围。"
+      },
+      {
+        "id": "validation",
+        "label": "航线复核研究",
+        "focus": [
+          "route",
+          "datum",
+          "screening",
+          "review"
+        ],
+        "note": "沿航线组织数据查询，研究水深与水位基准的相容性、航警覆盖和缺测记录，为船岸复核提供依据。"
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "workflow",
+      "label": "多产品接入与版本记录"
+    },
+    {
+      "id": "validation",
+      "label": "航线复核研究"
+    }
+  ],
+  "mainPath": [
+    "products",
+    "parsing",
+    "version",
+    "query"
+  ],
+  "nodes": [
+    {
+      "id": "products",
+      "lane": "workflow",
+      "col": 0,
+      "type": "database",
+      "label": "海事数据",
+      "sublabel": "海图、水深、水位等",
+      "width": 96
+    },
+    {
+      "id": "parsing",
+      "lane": "workflow",
+      "col": 1,
+      "type": "backend",
+      "label": "产品解析",
+      "sublabel": "统一对象与元数据",
+      "width": 112
+    },
+    {
+      "id": "version",
+      "lane": "workflow",
+      "col": 3,
+      "type": "backend",
+      "label": "版本记录",
+      "sublabel": "来源、时间、覆盖范围",
+      "width": 128
+    },
+    {
+      "id": "query",
+      "lane": "workflow",
+      "col": 5,
+      "type": "frontend",
+      "label": "船岸查询",
+      "sublabel": "查阅同版数据",
+      "width": 104
+    },
+    {
+      "id": "route",
+      "lane": "validation",
+      "col": 0,
+      "type": "database",
+      "label": "航线输入",
+      "sublabel": "航段与计划时间",
+      "width": 96
+    },
+    {
+      "id": "datum",
+      "lane": "validation",
+      "col": 1,
+      "type": "backend",
+      "label": "基准检查",
+      "sublabel": "评估水深与水位基准",
+      "width": 112
+    },
+    {
+      "id": "screening",
+      "lane": "validation",
+      "col": 3,
+      "type": "backend",
+      "label": "风险筛查",
+      "sublabel": "识别航警与缺测",
+      "width": 128
+    },
+    {
+      "id": "review",
+      "lane": "validation",
+      "col": 5,
+      "type": "frontend",
+      "label": "船岸复核",
+      "sublabel": "查看来源与限制",
+      "width": 104
+    }
+  ],
+  "edges": [
+    {
+      "id": "products-parsing",
+      "from": "products",
+      "to": "parsing",
+      "variant": "emphasis"
+    },
+    {
+      "id": "parsing-version",
+      "from": "parsing",
+      "to": "version",
+      "variant": "emphasis"
+    },
+    {
+      "id": "version-query",
+      "from": "version",
+      "to": "query",
+      "variant": "emphasis"
+    },
+    {
+      "id": "route-datum",
+      "from": "route",
+      "to": "datum",
+      "variant": "emphasis"
+    },
+    {
+      "id": "datum-screening",
+      "from": "datum",
+      "to": "screening",
+      "variant": "emphasis"
+    },
+    {
+      "id": "screening-review",
+      "from": "screening",
+      "to": "review",
+      "variant": "emphasis"
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "低能见度通航保障流程",
+    "locale": "zh-CN",
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "viewBox": [
+      720,
+      400
+    ],
+    "legend": {
+      "mode": "hidden"
+    },
+    "views": [
+      {
+        "id": "workflow",
+        "label": "感知与研判",
+        "focus": [
+          "observations",
+          "quality",
+          "risk",
+          "advice"
+        ],
+        "note": "在低能见度条件下，将能见度观测与船舶动态结合，识别可疑航迹和重点会遇，为 VTS 研判提供证据。"
+      },
+      {
+        "id": "validation",
+        "label": "通航组织方案评估",
+        "focus": [
+          "traffic",
+          "plans",
+          "comparison",
+          "review"
+        ],
+        "note": "根据当地规则设置限速、单向通航或暂停通航等候选方案，比较其安全约束和等待成本。"
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "workflow",
+      "label": "感知与研判"
+    },
+    {
+      "id": "validation",
+      "label": "通航组织方案评估"
+    }
+  ],
+  "mainPath": [
+    "observations",
+    "quality",
+    "risk",
+    "advice"
+  ],
+  "nodes": [
+    {
+      "id": "observations",
+      "lane": "workflow",
+      "col": 0,
+      "type": "database",
+      "label": "航道观测",
+      "sublabel": "能见度、雷达与 AIS",
+      "width": 96
+    },
+    {
+      "id": "quality",
+      "lane": "workflow",
+      "col": 1,
+      "type": "backend",
+      "label": "关联与质检",
+      "sublabel": "对齐目标与时间",
+      "width": 112
+    },
+    {
+      "id": "risk",
+      "lane": "workflow",
+      "col": 3,
+      "type": "backend",
+      "label": "风险研判",
+      "sublabel": "识别重点航段与会遇",
+      "width": 128
+    },
+    {
+      "id": "advice",
+      "lane": "workflow",
+      "col": 5,
+      "type": "frontend",
+      "label": "通航建议",
+      "sublabel": "供 VTS 人员复核",
+      "width": 104
+    },
+    {
+      "id": "traffic",
+      "lane": "validation",
+      "col": 0,
+      "type": "database",
+      "label": "运行输入",
+      "sublabel": "预报、队列与规则",
+      "width": 96
+    },
+    {
+      "id": "plans",
+      "lane": "validation",
+      "col": 1,
+      "type": "backend",
+      "label": "候选方案",
+      "sublabel": "限速、单向或暂停",
+      "width": 112
+    },
+    {
+      "id": "comparison",
+      "lane": "validation",
+      "col": 3,
+      "type": "backend",
+      "label": "影响比较",
+      "sublabel": "安全约束与等待时间",
+      "width": 128
+    },
+    {
+      "id": "review",
+      "lane": "validation",
+      "col": 5,
+      "type": "frontend",
+      "label": "管理复核",
+      "sublabel": "结合现场动态更新",
+      "width": 104
+    }
+  ],
+  "edges": [
+    {
+      "id": "observations-quality",
+      "from": "observations",
+      "to": "quality",
+      "variant": "emphasis"
+    },
+    {
+      "id": "quality-risk",
+      "from": "quality",
+      "to": "risk",
+      "variant": "emphasis"
+    },
+    {
+      "id": "risk-advice",
+      "from": "risk",
+      "to": "advice",
+      "variant": "emphasis"
+    },
+    {
+      "id": "traffic-plans",
+      "from": "traffic",
+      "to": "plans",
+      "variant": "emphasis"
+    },
+    {
+      "id": "plans-comparison",
+      "from": "plans",
+      "to": "comparison",
+      "variant": "emphasis"
+    },
+    {
+      "id": "comparison-review",
+      "from": "comparison",
+      "to": "review",
+      "variant": "emphasis"
+    }
+  ]
+}

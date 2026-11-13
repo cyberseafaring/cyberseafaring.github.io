@@ -1,0 +1,169 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "S-100 for shared data and route review",
+    "locale": "en",
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "viewBox": [
+      720,
+      400
+    ],
+    "legend": {
+      "mode": "hidden"
+    },
+    "views": [
+      {
+        "id": "workflow",
+        "label": "Product ingestion and versioning",
+        "focus": [
+          "products",
+          "parsing",
+          "version",
+          "query"
+        ],
+        "note": "The research prototype handles chart, depth, water level, current and warning data and retains the inputs’ versions and coverage."
+      },
+      {
+        "id": "validation",
+        "label": "Route review research",
+        "focus": [
+          "route",
+          "datum",
+          "screening",
+          "review"
+        ],
+        "note": "Queries along a route support research on datum compatibility, warning coverage and data gaps before joint review."
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "workflow",
+      "label": "Product ingestion and versioning"
+    },
+    {
+      "id": "validation",
+      "label": "Route review research"
+    }
+  ],
+  "mainPath": [
+    "products",
+    "parsing",
+    "version",
+    "query"
+  ],
+  "nodes": [
+    {
+      "id": "products",
+      "lane": "workflow",
+      "col": 0,
+      "type": "database",
+      "label": "Marine data",
+      "sublabel": "Charts, depths, levels",
+      "width": 96
+    },
+    {
+      "id": "parsing",
+      "lane": "workflow",
+      "col": 1,
+      "type": "backend",
+      "label": "Product parsing",
+      "sublabel": "Objects and metadata",
+      "width": 112
+    },
+    {
+      "id": "version",
+      "lane": "workflow",
+      "col": 3,
+      "type": "backend",
+      "label": "Version records",
+      "sublabel": "Source, time and coverage",
+      "width": 128
+    },
+    {
+      "id": "query",
+      "lane": "workflow",
+      "col": 5,
+      "type": "frontend",
+      "label": "Shared queries",
+      "sublabel": "Inspect matching versions",
+      "width": 104
+    },
+    {
+      "id": "route",
+      "lane": "validation",
+      "col": 0,
+      "type": "database",
+      "label": "Route input",
+      "sublabel": "Segments and timing",
+      "width": 96
+    },
+    {
+      "id": "datum",
+      "lane": "validation",
+      "col": 1,
+      "type": "backend",
+      "label": "Datum checks",
+      "sublabel": "Depth and level references",
+      "width": 112
+    },
+    {
+      "id": "screening",
+      "lane": "validation",
+      "col": 3,
+      "type": "backend",
+      "label": "Risk screening",
+      "sublabel": "Warnings and data gaps",
+      "width": 128
+    },
+    {
+      "id": "review",
+      "lane": "validation",
+      "col": 5,
+      "type": "frontend",
+      "label": "Joint review",
+      "sublabel": "Sources and limitations",
+      "width": 104
+    }
+  ],
+  "edges": [
+    {
+      "id": "products-parsing",
+      "from": "products",
+      "to": "parsing",
+      "variant": "emphasis"
+    },
+    {
+      "id": "parsing-version",
+      "from": "parsing",
+      "to": "version",
+      "variant": "emphasis"
+    },
+    {
+      "id": "version-query",
+      "from": "version",
+      "to": "query",
+      "variant": "emphasis"
+    },
+    {
+      "id": "route-datum",
+      "from": "route",
+      "to": "datum",
+      "variant": "emphasis"
+    },
+    {
+      "id": "datum-screening",
+      "from": "datum",
+      "to": "screening",
+      "variant": "emphasis"
+    },
+    {
+      "id": "screening-review",
+      "from": "screening",
+      "to": "review",
+      "variant": "emphasis"
+    }
+  ]
+}
