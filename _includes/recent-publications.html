@@ -1,0 +1,8 @@
+<ul class="recent-publications">
+  {% for paper in site.data.recent_publications %}
+    <li>
+      <a href="https://doi.org/{{ paper.doi }}" lang="en">{{ paper.title | escape }}</a><br>
+      <span lang="en">{{ paper.authors | escape }}. <em>{{ paper.venue | escape }}</em>, {{ paper.year }}{% if paper.details %}, {{ paper.details | escape }}{% endif %}.</span>
+    </li>
+  {% endfor %}
+</ul>

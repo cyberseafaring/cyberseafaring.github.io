@@ -5,12 +5,8 @@ permalink: /publications/
 author_profile: true
 ---
 
-{% if author.googlescholar %}
-  You can also find my articles on <u><a href="{{author.googlescholar}}">my Google Scholar profile</a>.</u>
-{% endif %}
+[Google Scholar · 完整论文列表]({{ site.author.googlescholar | escape }})
 
-{% include base_path %}
+## Recent publications · 近期论文
 
-{% for post in site.publications reversed %}
-  {% include archive-single.html %}
-{% endfor %}
+{% include recent-publications.html %}

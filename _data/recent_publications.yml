@@ -1,0 +1,110 @@
+# Selected recent maritime journal articles, newest first by bibliographic year.
+- title: "Environmentally conditioned paired difference learning with field residual preservation for recovering controlled mooring response parameters from nonstationary buoy observations"
+  authors: "Zhang, R., Yang, C., Hu, J., & Pan, M."
+  venue: "Frontiers in Marine Science"
+  year: 2026
+  details: "13, 1949441"
+  doi: "10.3389/fmars.2026.1949441"
+
+- title: "Real-Time Transformer for Robust Ship Detection under Adverse Weather"
+  authors: "Ji, X., Koue, J., Zhang, R., & Hirayama, K."
+  venue: "Journal of Marine Science and Application"
+  year: 2026
+  doi: "10.1007/s11804-026-00926-2"
+
+- title: "Robust situational awareness for ships and offshore traffic: integrated detection and tracking via buoy-mounted cameras"
+  authors: "Ji, X., Koue, J., Zhang, R., Bi, J., & Hirayama, K."
+  venue: "Ships and Offshore Structures"
+  year: 2026
+  details: "1–18"
+  doi: "10.1080/17445302.2026.2717423"
+
+- title: "An AIS–MRV Consistency-Enhanced Dynamic Network Framework for Shipping Traffic Resilience Assessment and Disruption Recovery Characterization"
+  authors: "Zhang, R., Shen, W., Wei, D., Yang, C., & Pan, M."
+  venue: "Sustainability"
+  year: 2026
+  details: "18(15), 7917"
+  doi: "10.3390/su18157917"
+
+- title: "Physics-constrained probabilistic inversion of sinker position for navigation buoy maintenance"
+  authors: "Zhu, Y., Zhang, R., Koue, J., & Hirayama, K."
+  venue: "Ships and Offshore Structures"
+  year: 2026
+  details: "1–14"
+  doi: "10.1080/17445302.2026.2709713"
+
+- title: "Pi-STAR: Physics-informed spatio-temporal reasoning for scene-level vessel trajectory prediction with ENC-aware topology and COLREGs-informed interaction modeling"
+  authors: "Zhang, D., Pan, M., Li, S., Liu, Z., Zhang, R., & Li, C."
+  venue: "Journal of Ocean Engineering and Science"
+  year: 2026
+  doi: "10.1016/j.joes.2026.07.011"
+
+- title: "Shipwake-YOLO: Ship Wake Detection and Instance Segmentation for Visual Navigational-State Cue Extraction"
+  authors: "Li, S., Ji, X., Yang, C., & Zhang, R."
+  venue: "Journal of Marine Science and Engineering"
+  year: 2026
+  details: "14(13), 1216"
+  doi: "10.3390/jmse14131216"
+
+- title: "Monitoring and service for ships from the perspective of the remote operations center"
+  authors: "Ji, X., Koue, J., Zhang, R., & Hirayama, K."
+  venue: "Journal of Shipping and Trade"
+  year: 2026
+  details: "11, 20"
+  doi: "10.1186/s41072-026-00243-5"
+
+- title: "A temporal and safety-critical multimodal approach for maritime situational understanding"
+  authors: "Ji, X., Koue, J., Zhang, R., & Hirayama, K."
+  venue: "Ocean Engineering"
+  year: 2026
+  details: "356 (Part 2), 125265"
+  doi: "10.1016/j.oceaneng.2026.125265"
+
+- title: "RSAND: A Fine-Grained Dataset and Benchmark for AtoN Detection in River–Sea Intermodal and Complex Estuarine Environments"
+  authors: "Chen, Q., Pan, M., Liu, Z., Zhang, R., Yan, F., Pan, X., Zhang, Y., & Li, C."
+  venue: "Journal of Marine Science and Engineering"
+  year: 2026
+  details: "14(5), 422"
+  doi: "10.3390/jmse14050422"
+
+- title: "Fine-grained maritime traffic perception via low-rank adaptive transformer and regional matching fusion"
+  authors: "Zhang, R., Liu, J., Li, S., Shi, X., & Wu, P."
+  venue: "Journal of Marine Engineering & Technology"
+  year: 2026
+  details: "25(3), 343–362"
+  doi: "10.1080/20464177.2025.2578910"
+
+- title: "A Comparative Analysis of Deep Learning Approaches for Visual Perception Benchmarks in Ship Navigation"
+  authors: "Zhang, R., Ji, X., Koue, J., & Hirayama, K."
+  venue: "Journal of Marine Science and Application"
+  year: 2026
+  details: "25, 600–616"
+  doi: "10.1007/s11804-025-00703-7"
+
+- title: "Visual perception for long-distance and small target detection in autonomous maritime navigation"
+  authors: "Zhang, R., Ji, X., Loughney, S., Wang, J., & Yang, Z."
+  venue: "Ocean Engineering"
+  year: 2025
+  details: "332, 121447"
+  doi: "10.1016/j.oceaneng.2025.121447"
+
+- title: "Adaptive Temporal Reinforcement Learning for Mapping Complex Maritime Environmental State Spaces in Autonomous Ship Navigation"
+  authors: "Zhang, R., Qin, X., Pan, M., Li, S., & Shen, H."
+  venue: "Journal of Marine Science and Engineering"
+  year: 2025
+  details: "13(3), 514"
+  doi: "10.3390/jmse13030514"
+
+- title: "Application of Augmented Reality in Waterway Traffic Management Using Sparse Spatiotemporal Data"
+  authors: "Zhang, R., Ai, Y., Li, S., Hu, J., Hao, J., & Pan, M."
+  venue: "Applied Sciences"
+  year: 2025
+  details: "15(4), 1710"
+  doi: "10.3390/app15041710"
+
+- title: "Edge-Based Dynamic Spatiotemporal Data Fusion on Smart Buoys for Intelligent Surveillance of Inland Waterways"
+  authors: "Zhang, R., Zhao, C., Liang, Y., Hu, J., & Pan, M."
+  venue: "Journal of Marine Science and Engineering"
+  year: 2025
+  details: "13(2), 220"
+  doi: "10.3390/jmse13020220"

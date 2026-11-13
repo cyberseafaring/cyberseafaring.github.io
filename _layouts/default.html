@@ -5,10 +5,13 @@ layout: compress
 {% include base_path %}
 
 <!doctype html>
-<html lang="{{ site.locale | slice: 0,2 }}" class="no-js">
+<html lang="{{ page.lang | default: site.locale }}" class="no-js">
   <head>
     {% include head.html %}
     {% include head/custom.html %}
+    {% if page.alternate %}
+      <link rel="alternate" hreflang="{% if page.lang == 'en' %}zh-CN{% else %}en{% endif %}" href="{{ page.alternate | absolute_url }}">
+    {% endif %}
   </head>
 
   <body>

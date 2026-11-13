@@ -1,5 +1,9 @@
 # main links links
 main:
+  - title: "学生选题 / Topics"
+    url: /student-topics/
+    url_en: /en/student-topics/
+
   - title: "Publications"
     url: /publications/
 

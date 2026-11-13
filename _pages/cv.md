@@ -38,10 +38,8 @@ Skills
 
 Publications
 ======
-  <ul>{% for post in site.publications %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
+[Selected publications]({{ '/publications/' | relative_url }})
+
 Talks
 ======
   <ul>{% for post in site.talks %}
