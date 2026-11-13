@@ -10,7 +10,7 @@ redirect_from:
   - /about.html
 ---
 
-[English]({{ '/en/' | relative_url }}) · [学院主页](https://nvc.dlmu.edu.cn/info/1063/2428.htm) · [Google Scholar]({{ site.author.googlescholar | escape }}) · [邮件联系](mailto:zhangruolan@dlmu.edu.cn)
+[学院主页](https://nvc.dlmu.edu.cn/info/1063/2428.htm) · [Google Scholar]({{ site.author.googlescholar | escape }}) · [邮件联系](mailto:zhangruolan@dlmu.edu.cn)
 
 **大连海事大学航海学院讲师、硕士生导师｜交通信息工程及控制**
 

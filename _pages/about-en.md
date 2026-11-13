@@ -7,7 +7,7 @@ alternate: /
 author_profile: true
 ---
 
-[简体中文]({{ '/' | relative_url }}) · [University profile](https://nvc.dlmu.edu.cn/info/1063/2428.htm) · [Google Scholar]({{ site.author.googlescholar | escape }}) · [Email](mailto:zhangruolan@dlmu.edu.cn)
+[University profile](https://nvc.dlmu.edu.cn/info/1063/2428.htm) · [Google Scholar]({{ site.author.googlescholar | escape }}) · [Email](mailto:zhangruolan@dlmu.edu.cn)
 
 **Lecturer and master's supervisor, Navigation College, Dalian Maritime University**
 

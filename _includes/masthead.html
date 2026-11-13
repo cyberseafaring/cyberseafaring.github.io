@@ -1,8 +1,15 @@
 {% include base_path %}
 
+{% assign show_home_language = false %}
+{% if page.alternate %}
+  {% if page.url == '/' or page.url == '/en/' %}
+    {% assign show_home_language = true %}
+  {% endif %}
+{% endif %}
+
 <div class="masthead">
   <div class="masthead__inner-wrap">
-    <div class="masthead__menu">
+    <div class="masthead__menu{% if show_home_language %} masthead__menu--with-language{% endif %}">
       <nav id="site-nav" class="greedy-nav">
         <button><div class="navicon"></div></button>
         <ul class="visible-links">
@@ -22,6 +29,13 @@
         </ul>
         <ul class="hidden-links hidden"></ul>
       </nav>
+      {% if show_home_language %}
+        {% if page.lang == 'en' %}
+          <a class="masthead__language" href="{{ page.alternate | relative_url }}" lang="zh-CN" hreflang="zh-CN" aria-label="切换至中文主页">简体中文</a>
+        {% else %}
+          <a class="masthead__language" href="{{ page.alternate | relative_url }}" lang="en" hreflang="en" aria-label="Switch to the English homepage">English</a>
+        {% endif %}
+      {% endif %}
     </div>
   </div>
 </div>
