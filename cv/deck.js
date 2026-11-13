@@ -42,7 +42,10 @@ function updateControls() {
 }
 
 function renderSlides(index) {
+  const selectedPort = slides.querySelector('[data-port-record]:not([hidden])')?.dataset.portRecord;
   slides.innerHTML = content[locale];
+  const portMap = slides.querySelector('[data-port-impact]');
+  if (portMap) window.activatePortImpactMap(portMap, { port: selectedPort });
   for (const image of slides.querySelectorAll('[data-image]')) {
     const src = content.images[image.dataset.image];
     if (image.tagName === 'IMG') image.src = src;
