@@ -1,104 +1,312 @@
 {
   "schema_version": 1,
-  "diagram_type": "workflow",
+  "diagram_type": "architecture",
   "meta": {
-    "title": "Maritime vision and multimodal perception",
+    "title": "From onboard detection to safety-critical understanding",
     "locale": "en",
     "animation": "trace",
     "quality_profile": "showcase",
     "viewBox": [
-      720,
-      300
+      1180,
+      490
     ],
     "legend": {
       "mode": "hidden"
     },
     "views": [
       {
-        "id": "inputs-methods",
-        "label": "Inputs and methods",
+        "id": "small-targets",
+        "label": "Distant small-target detection · Published",
         "focus": [
-          "input",
-          "method"
-        ]
+          "frames",
+          "attention",
+          "regression",
+          "detections"
+        ],
+        "note": "Zhang et al. (2025) combined CBAM, compact spatial pyramid pooling and S-IoU for ship-bridge detection with lower model cost."
       },
       {
-        "id": "analysis-evaluation",
-        "label": "Analysis and evaluation",
+        "id": "safety-understanding",
+        "label": "Safety-critical understanding · Published",
         "focus": [
-          "analysis",
-          "evaluation"
-        ]
+          "vessel-state",
+          "temporal-prompt",
+          "safety-tuning",
+          "intent"
+        ],
+        "note": "Ji et al. (2026) encoded GNSS, IMU and AIS time series as prompts and used critical-case oversampling and token weighting."
+      },
+      {
+        "id": "uav-validation",
+        "label": "Supplementary aerial sensing · Proposed",
+        "focus": [
+          "blind-spots",
+          "aerial",
+          "registration",
+          "ablation"
+        ],
+        "note": "Use an uncrewed aircraft as a supplementary view, match its tracks to ship observations and test in degraded visibility and link conditions."
       }
     ]
   },
-  "lanes": [
+  "components": [
     {
-      "id": "research",
-      "label": "Research workflow"
-    }
-  ],
-  "mainPath": [
-    "input",
-    "method",
-    "analysis",
-    "evaluation"
-  ],
-  "nodes": [
-    {
-      "id": "input",
-      "lane": "research",
-      "col": 0,
+      "id": "frames",
       "type": "database",
-      "label": "Video and AIS",
-      "sublabel": "Low visibility",
-      "width": 88
+      "label": "Bridge images",
+      "sublabel": "Distant vessels and aids",
+      "pos": [
+        46,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "method",
-      "lane": "research",
-      "col": 1,
+      "id": "attention",
       "type": "backend",
-      "label": "Detect and track",
-      "sublabel": "Small targets and aids",
-      "width": 112
+      "label": "Feature encoding",
+      "sublabel": "CBAM and compact SPP",
+      "pos": [
+        346,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "analysis",
-      "lane": "research",
-      "col": 3,
+      "id": "regression",
       "type": "backend",
-      "label": "Track matching",
-      "sublabel": "Align space and time",
-      "width": 128
+      "label": "Box regression",
+      "sublabel": "Use S-IoU loss",
+      "pos": [
+        646,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "evaluation",
-      "lane": "research",
-      "col": 5,
+      "id": "detections",
       "type": "frontend",
-      "label": "Evaluation",
-      "sublabel": "Misses and false matches",
-      "width": 104
+      "label": "Detections",
+      "sublabel": "Classes and positions",
+      "pos": [
+        946,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "vessel-state",
+      "type": "database",
+      "label": "Vessel series",
+      "sublabel": "GNSS, IMU and AIS",
+      "pos": [
+        46,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "temporal-prompt",
+      "type": "backend",
+      "label": "Temporal prompts",
+      "sublabel": "Speed and heading changes",
+      "pos": [
+        346,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "safety-tuning",
+      "type": "backend",
+      "label": "Safety fine-tuning",
+      "sublabel": "Oversample and weight tokens",
+      "pos": [
+        646,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "intent",
+      "type": "frontend",
+      "label": "Situation cues",
+      "sublabel": "Intent and encounter type",
+      "pos": [
+        946,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "blind-spots",
+      "type": "database",
+      "label": "Coverage gaps",
+      "sublabel": "Identify missing views",
+      "pos": [
+        46,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "aerial",
+      "type": "backend",
+      "label": "UAV observations",
+      "sublabel": "Payload suited to conditions",
+      "pos": [
+        346,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "registration",
+      "type": "backend",
+      "label": "View alignment",
+      "sublabel": "Match with onboard tracks",
+      "pos": [
+        646,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "ablation",
+      "type": "frontend",
+      "label": "Compare setups",
+      "sublabel": "Coverage, errors and lag",
+      "pos": [
+        946,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
     }
   ],
-  "edges": [
+  "boundaries": [
     {
-      "id": "input-method",
-      "from": "input",
-      "to": "method",
+      "kind": "region",
+      "label": "Distant small-target detection · Published",
+      "wraps": [
+        "frames",
+        "attention",
+        "regression",
+        "detections"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "Safety-critical understanding · Published",
+      "wraps": [
+        "vessel-state",
+        "temporal-prompt",
+        "safety-tuning",
+        "intent"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "Supplementary aerial sensing · Proposed",
+      "wraps": [
+        "blind-spots",
+        "aerial",
+        "registration",
+        "ablation"
+      ],
+      "pad": 16
+    }
+  ],
+  "connections": [
+    {
+      "id": "frames-attention",
+      "from": "frames",
+      "to": "attention",
       "variant": "emphasis"
     },
     {
-      "id": "method-analysis",
-      "from": "method",
-      "to": "analysis",
+      "id": "attention-regression",
+      "from": "attention",
+      "to": "regression",
       "variant": "emphasis"
     },
     {
-      "id": "analysis-evaluation",
-      "from": "analysis",
-      "to": "evaluation",
+      "id": "regression-detections",
+      "from": "regression",
+      "to": "detections",
+      "variant": "emphasis"
+    },
+    {
+      "id": "vessel-state-temporal-prompt",
+      "from": "vessel-state",
+      "to": "temporal-prompt",
+      "variant": "emphasis"
+    },
+    {
+      "id": "temporal-prompt-safety-tuning",
+      "from": "temporal-prompt",
+      "to": "safety-tuning",
+      "variant": "emphasis"
+    },
+    {
+      "id": "safety-tuning-intent",
+      "from": "safety-tuning",
+      "to": "intent",
+      "variant": "emphasis"
+    },
+    {
+      "id": "blind-spots-aerial",
+      "from": "blind-spots",
+      "to": "aerial",
+      "variant": "emphasis"
+    },
+    {
+      "id": "aerial-registration",
+      "from": "aerial",
+      "to": "registration",
+      "variant": "emphasis"
+    },
+    {
+      "id": "registration-ablation",
+      "from": "registration",
+      "to": "ablation",
       "variant": "emphasis"
     }
   ]

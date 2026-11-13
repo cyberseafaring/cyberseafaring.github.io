@@ -1,166 +1,312 @@
 {
   "schema_version": 1,
-  "diagram_type": "workflow",
+  "diagram_type": "architecture",
   "meta": {
-    "title": "Smart aids, waterway monitoring and traffic resilience",
+    "title": "Waterway monitoring and shipping network resilience",
     "locale": "en",
     "animation": "trace",
     "quality_profile": "showcase",
     "viewBox": [
-      720,
-      400
+      1180,
+      490
     ],
     "legend": {
       "mode": "hidden"
     },
     "views": [
       {
-        "id": "shore-monitoring",
-        "label": "Ship–shore monitoring",
+        "id": "local-tracks",
+        "label": "Buoy video and AIS fusion · Published",
         "focus": [
-          "input",
-          "method",
-          "analysis",
-          "evaluation"
-        ]
+          "observations",
+          "time-align",
+          "zone-match",
+          "local"
+        ],
+        "note": "The Wuhu study associates buoy video and AIS observations by time and spatial zone at the edge to support local monitoring."
       },
       {
-        "id": "network-recovery",
-        "label": "Network recovery",
+        "id": "dynamic-network",
+        "label": "Network state and recovery · Published",
         "focus": [
-          "regional",
-          "consistency",
-          "disruption",
+          "clean",
+          "network",
+          "baseline",
           "recovery"
-        ]
+        ],
+        "note": "The AIS–MRV study builds a weighted directed network and compares disruption windows with historical baselines to assess recovery."
+      },
+      {
+        "id": "external-check",
+        "label": "AIS and MRV consistency · Published",
+        "focus": [
+          "proxy",
+          "match-id",
+          "mrv",
+          "consistency"
+        ],
+        "note": "Match AIS activity and emission proxies to vessel-level annual fuel and carbon dioxide records to inform proxy calibration."
       }
     ]
   },
-  "lanes": [
+  "components": [
     {
-      "id": "research",
-      "label": "Waterway monitoring"
-    },
-    {
-      "id": "resilience",
-      "label": "Shipping-network resilience"
-    }
-  ],
-  "mainPath": [
-    "input",
-    "method",
-    "analysis",
-    "evaluation"
-  ],
-  "nodes": [
-    {
-      "id": "input",
-      "lane": "research",
-      "col": 0,
+      "id": "observations",
       "type": "database",
-      "label": "Buoy data",
-      "sublabel": "Video, AIS, weather",
-      "width": 88
+      "label": "Buoy inputs",
+      "sublabel": "Video and AIS reports",
+      "pos": [
+        46,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "method",
-      "lane": "research",
-      "col": 1,
+      "id": "time-align",
       "type": "backend",
-      "label": "Edge fusion",
-      "sublabel": "Align sensor tracks",
-      "width": 112
+      "label": "Time alignment",
+      "sublabel": "Match observation windows",
+      "pos": [
+        346,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "analysis",
-      "lane": "research",
-      "col": 3,
+      "id": "zone-match",
       "type": "backend",
-      "label": "Traffic analysis",
-      "sublabel": "Congestion and vessel flow",
-      "width": 128
+      "label": "Zone matching",
+      "sublabel": "Compare camera and AIS zones",
+      "pos": [
+        646,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "evaluation",
-      "lane": "research",
-      "col": 5,
+      "id": "local",
       "type": "frontend",
-      "label": "Shore service",
-      "sublabel": "Monitoring and alerts",
-      "width": 104
+      "label": "Local tracks",
+      "sublabel": "Review from shore",
+      "pos": [
+        946,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "regional",
-      "lane": "resilience",
-      "col": 0,
+      "id": "clean",
       "type": "database",
-      "label": "Regional data",
-      "sublabel": "AIS tracks and MRV",
-      "width": 88
+      "label": "Process AIS",
+      "sublabel": "Clean and resample AIS",
+      "pos": [
+        46,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "consistency",
-      "lane": "resilience",
-      "col": 1,
+      "id": "network",
       "type": "backend",
-      "label": "Consistency",
-      "sublabel": "Check activity and emissions",
-      "width": 112
+      "label": "Dynamic network",
+      "sublabel": "Ports, anchorages, reaches",
+      "pos": [
+        346,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "disruption",
-      "lane": "resilience",
-      "col": 3,
+      "id": "baseline",
       "type": "backend",
-      "label": "Disruption",
-      "sublabel": "Measure functionality loss",
-      "width": 128
+      "label": "Historical baseline",
+      "sublabel": "Flow, speed and occupancy",
+      "pos": [
+        646,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
       "id": "recovery",
-      "lane": "resilience",
-      "col": 5,
       "type": "frontend",
-      "label": "Recovery",
-      "sublabel": "Compare recovery times",
-      "width": 104
+      "label": "Assess recovery",
+      "sublabel": "Function loss and recovery",
+      "pos": [
+        946,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "proxy",
+      "type": "database",
+      "label": "AIS proxies",
+      "sublabel": "Activity and emissions",
+      "pos": [
+        46,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "match-id",
+      "type": "backend",
+      "label": "Vessel matching",
+      "sublabel": "Match IDs and time scales",
+      "pos": [
+        346,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "mrv",
+      "type": "backend",
+      "label": "MRV reference",
+      "sublabel": "Annual fuel and CO₂",
+      "pos": [
+        646,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "consistency",
+      "type": "frontend",
+      "label": "Consistency test",
+      "sublabel": "Check proxies and baseline",
+      "pos": [
+        946,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
     }
   ],
-  "edges": [
+  "boundaries": [
     {
-      "id": "input-method",
-      "from": "input",
-      "to": "method",
+      "kind": "region",
+      "label": "Buoy video and AIS fusion · Published",
+      "wraps": [
+        "observations",
+        "time-align",
+        "zone-match",
+        "local"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "Network state and recovery · Published",
+      "wraps": [
+        "clean",
+        "network",
+        "baseline",
+        "recovery"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "AIS and MRV consistency · Published",
+      "wraps": [
+        "proxy",
+        "match-id",
+        "mrv",
+        "consistency"
+      ],
+      "pad": 16
+    }
+  ],
+  "connections": [
+    {
+      "id": "observations-time-align",
+      "from": "observations",
+      "to": "time-align",
       "variant": "emphasis"
     },
     {
-      "id": "method-analysis",
-      "from": "method",
-      "to": "analysis",
+      "id": "time-align-zone-match",
+      "from": "time-align",
+      "to": "zone-match",
       "variant": "emphasis"
     },
     {
-      "id": "analysis-evaluation",
-      "from": "analysis",
-      "to": "evaluation",
+      "id": "zone-match-local",
+      "from": "zone-match",
+      "to": "local",
       "variant": "emphasis"
     },
     {
-      "id": "regional-consistency",
-      "from": "regional",
-      "to": "consistency",
+      "id": "clean-network",
+      "from": "clean",
+      "to": "network",
       "variant": "emphasis"
     },
     {
-      "id": "consistency-disruption",
-      "from": "consistency",
-      "to": "disruption",
+      "id": "network-baseline",
+      "from": "network",
+      "to": "baseline",
       "variant": "emphasis"
     },
     {
-      "id": "disruption-recovery",
-      "from": "disruption",
+      "id": "baseline-recovery",
+      "from": "baseline",
       "to": "recovery",
+      "variant": "emphasis"
+    },
+    {
+      "id": "proxy-match-id",
+      "from": "proxy",
+      "to": "match-id",
+      "variant": "emphasis"
+    },
+    {
+      "id": "match-id-mrv",
+      "from": "match-id",
+      "to": "mrv",
+      "variant": "emphasis"
+    },
+    {
+      "id": "mrv-consistency",
+      "from": "mrv",
+      "to": "consistency",
       "variant": "emphasis"
     }
   ]

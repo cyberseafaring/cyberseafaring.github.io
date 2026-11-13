@@ -1,104 +1,312 @@
 {
   "schema_version": 1,
-  "diagram_type": "workflow",
+  "diagram_type": "architecture",
   "meta": {
-    "title": "Autonomous navigation and collision avoidance",
+    "title": "Autonomous navigation and safety evaluation",
     "locale": "en",
     "animation": "trace",
     "quality_profile": "showcase",
     "viewBox": [
-      720,
-      300
+      1180,
+      490
     ],
     "legend": {
       "mode": "hidden"
     },
     "views": [
       {
-        "id": "inputs-methods",
-        "label": "Inputs and methods",
+        "id": "temporal-policy",
+        "label": "Temporal avoidance policy · Published",
         "focus": [
-          "input",
-          "method"
-        ]
+          "simulation",
+          "temporal",
+          "policy",
+          "maneuver"
+        ],
+        "note": "Zhang et al. (2025) trained improved PPO with LSTM state encoding, vessel dynamics, wind, waves, currents and COLREGs."
       },
       {
-        "id": "analysis-evaluation",
-        "label": "Analysis and evaluation",
+        "id": "enc-prediction",
+        "label": "Chart-aware trajectory prediction · Published",
         "focus": [
-          "analysis",
-          "evaluation"
-        ]
+          "ais",
+          "motion",
+          "topology",
+          "forecast"
+        ],
+        "note": "Pi-STAR (2026) uses neural Taylor differences, ENC topology and COLREGs encounter cues to forecast multi-vessel trajectories."
+      },
+      {
+        "id": "scenario-checks",
+        "label": "Scenario-based safety checks · Proposed",
+        "focus": [
+          "scenarios",
+          "risk",
+          "checks",
+          "compare"
+        ],
+        "note": "Compare rules and learned policies in head-on, crossing and overtaking encounters. Check clearance and channel limits."
       }
     ]
   },
-  "lanes": [
+  "components": [
     {
-      "id": "research",
-      "label": "Research workflow"
-    }
-  ],
-  "mainPath": [
-    "input",
-    "method",
-    "analysis",
-    "evaluation"
-  ],
-  "nodes": [
-    {
-      "id": "input",
-      "lane": "research",
-      "col": 0,
+      "id": "simulation",
       "type": "database",
-      "label": "AIS encounters",
-      "sublabel": "Course, speed, position",
-      "width": 96
+      "label": "Ship dynamics",
+      "sublabel": "Weather and traffic",
+      "pos": [
+        46,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "method",
-      "lane": "research",
-      "col": 1,
+      "id": "temporal",
       "type": "backend",
-      "label": "Encounter state",
-      "sublabel": "Track changes in risk",
-      "width": 112
+      "label": "Temporal state",
+      "sublabel": "LSTM encodes history",
+      "pos": [
+        346,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "analysis",
-      "lane": "research",
-      "col": 3,
+      "id": "policy",
       "type": "backend",
-      "label": "Evasive decision",
-      "sublabel": "Compare course and speed",
-      "width": 128
+      "label": "Avoidance policy",
+      "sublabel": "Improved PPO and COLREGs",
+      "pos": [
+        646,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "evaluation",
-      "lane": "research",
-      "col": 5,
+      "id": "maneuver",
       "type": "frontend",
-      "label": "Simulation",
-      "sublabel": "Clearance and manoeuvring",
-      "width": 104
+      "label": "Simulated action",
+      "sublabel": "Continuous manoeuvres",
+      "pos": [
+        946,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "ais",
+      "type": "database",
+      "label": "AIS tracks",
+      "sublabel": "Position, course, speed",
+      "pos": [
+        46,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "motion",
+      "type": "backend",
+      "label": "Motion features",
+      "sublabel": "Neural Taylor differences",
+      "pos": [
+        346,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "topology",
+      "type": "backend",
+      "label": "Interaction graph",
+      "sublabel": "ENC topology and encounters",
+      "pos": [
+        646,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "forecast",
+      "type": "frontend",
+      "label": "Track forecast",
+      "sublabel": "Multi-vessel trajectories",
+      "pos": [
+        946,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "scenarios",
+      "type": "database",
+      "label": "Encounters",
+      "sublabel": "Three encounter types",
+      "pos": [
+        46,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "risk",
+      "type": "backend",
+      "label": "Encounter risk",
+      "sublabel": "DCPA/TCPA and conflicts",
+      "pos": [
+        346,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "checks",
+      "type": "backend",
+      "label": "Constraint checks",
+      "sublabel": "Rules, dynamics, channel",
+      "pos": [
+        646,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "compare",
+      "type": "frontend",
+      "label": "Compare outcomes",
+      "sublabel": "Clearance and deviation",
+      "pos": [
+        946,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
     }
   ],
-  "edges": [
+  "boundaries": [
     {
-      "id": "input-method",
-      "from": "input",
-      "to": "method",
+      "kind": "region",
+      "label": "Temporal avoidance policy · Published",
+      "wraps": [
+        "simulation",
+        "temporal",
+        "policy",
+        "maneuver"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "Chart-aware trajectory prediction · Published",
+      "wraps": [
+        "ais",
+        "motion",
+        "topology",
+        "forecast"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "Scenario-based safety checks · Proposed",
+      "wraps": [
+        "scenarios",
+        "risk",
+        "checks",
+        "compare"
+      ],
+      "pad": 16
+    }
+  ],
+  "connections": [
+    {
+      "id": "simulation-temporal",
+      "from": "simulation",
+      "to": "temporal",
       "variant": "emphasis"
     },
     {
-      "id": "method-analysis",
-      "from": "method",
-      "to": "analysis",
+      "id": "temporal-policy",
+      "from": "temporal",
+      "to": "policy",
       "variant": "emphasis"
     },
     {
-      "id": "analysis-evaluation",
-      "from": "analysis",
-      "to": "evaluation",
+      "id": "policy-maneuver",
+      "from": "policy",
+      "to": "maneuver",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ais-motion",
+      "from": "ais",
+      "to": "motion",
+      "variant": "emphasis"
+    },
+    {
+      "id": "motion-topology",
+      "from": "motion",
+      "to": "topology",
+      "variant": "emphasis"
+    },
+    {
+      "id": "topology-forecast",
+      "from": "topology",
+      "to": "forecast",
+      "variant": "emphasis"
+    },
+    {
+      "id": "scenarios-risk",
+      "from": "scenarios",
+      "to": "risk",
+      "variant": "emphasis"
+    },
+    {
+      "id": "risk-checks",
+      "from": "risk",
+      "to": "checks",
+      "variant": "emphasis"
+    },
+    {
+      "id": "checks-compare",
+      "from": "checks",
+      "to": "compare",
       "variant": "emphasis"
     }
   ]

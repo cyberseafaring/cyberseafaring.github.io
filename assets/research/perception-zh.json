@@ -1,104 +1,312 @@
 {
   "schema_version": 1,
-  "diagram_type": "workflow",
+  "diagram_type": "architecture",
   "meta": {
-    "title": "海事视觉与多模态感知",
+    "title": "从船端目标检测到安全关键态势理解",
     "locale": "zh-CN",
     "animation": "trace",
     "quality_profile": "showcase",
     "viewBox": [
-      720,
-      300
+      1180,
+      490
     ],
     "legend": {
       "mode": "hidden"
     },
     "views": [
       {
-        "id": "inputs-methods",
-        "label": "输入与方法",
+        "id": "small-targets",
+        "label": "远距离小目标检测 · 已发表",
         "focus": [
-          "input",
-          "method"
-        ]
+          "frames",
+          "attention",
+          "regression",
+          "detections"
+        ],
+        "note": "Zhang 等（2025）在船桥视角检测中结合 CBAM、紧凑空间金字塔池化与 S-IoU，提高检测能力并控制模型开销。"
       },
       {
-        "id": "analysis-evaluation",
-        "label": "分析与评估",
+        "id": "safety-understanding",
+        "label": "时序与安全关键态势理解 · 已发表",
         "focus": [
-          "analysis",
-          "evaluation"
-        ]
+          "vessel-state",
+          "temporal-prompt",
+          "safety-tuning",
+          "intent"
+        ],
+        "note": "Ji 等（2026）把 GNSS、IMU 和 AIS 时序编码为提示，并通过高风险样本重采样和词元加权强化 COLREGs 相关推理。"
+      },
+      {
+        "id": "uav-validation",
+        "label": "空中补充观测 · 研究方案",
+        "focus": [
+          "blind-spots",
+          "aerial",
+          "registration",
+          "ablation"
+        ],
+        "note": "将无人机作为盲区补充观测源，按坐标和时间关联船载航迹，并在低能见度和链路降级条件下评估。"
       }
     ]
   },
-  "lanes": [
+  "components": [
     {
-      "id": "research",
-      "label": "研究流程"
-    }
-  ],
-  "mainPath": [
-    "input",
-    "method",
-    "analysis",
-    "evaluation"
-  ],
-  "nodes": [
-    {
-      "id": "input",
-      "lane": "research",
-      "col": 0,
+      "id": "frames",
       "type": "database",
-      "label": "视频与 AIS",
-      "sublabel": "低能见度观测",
-      "width": 88
+      "label": "船桥图像",
+      "sublabel": "远距离船艇与航标",
+      "pos": [
+        46,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "method",
-      "lane": "research",
-      "col": 1,
+      "id": "attention",
       "type": "backend",
-      "label": "目标检测与跟踪",
-      "sublabel": "识别小目标与航标",
-      "width": 112
+      "label": "特征增强",
+      "sublabel": "CBAM 与紧凑 SPP",
+      "pos": [
+        346,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "analysis",
-      "lane": "research",
-      "col": 3,
+      "id": "regression",
       "type": "backend",
-      "label": "跨源关联",
-      "sublabel": "按时空匹配轨迹",
-      "width": 128
+      "label": "边界框回归",
+      "sublabel": "采用 S-IoU 损失",
+      "pos": [
+        646,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "evaluation",
-      "lane": "research",
-      "col": 5,
+      "id": "detections",
       "type": "frontend",
-      "label": "分场景评估",
-      "sublabel": "比较漏检与误匹配",
-      "width": 104
+      "label": "检测结果",
+      "sublabel": "目标类别与位置",
+      "pos": [
+        946,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "vessel-state",
+      "type": "database",
+      "label": "船舶时序",
+      "sublabel": "GNSS、IMU 与 AIS",
+      "pos": [
+        46,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "temporal-prompt",
+      "type": "backend",
+      "label": "时序提示",
+      "sublabel": "注入速度与航向变化",
+      "pos": [
+        346,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "safety-tuning",
+      "type": "backend",
+      "label": "安全关键微调",
+      "sublabel": "重采样与词元加权",
+      "pos": [
+        646,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "intent",
+      "type": "frontend",
+      "label": "态势理解",
+      "sublabel": "意图与会遇判断",
+      "pos": [
+        946,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "blind-spots",
+      "type": "database",
+      "label": "盲区筛查",
+      "sublabel": "确定补充观测区域",
+      "pos": [
+        46,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "aerial",
+      "type": "backend",
+      "label": "无人机观测",
+      "sublabel": "按作业条件选载荷",
+      "pos": [
+        346,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "registration",
+      "type": "backend",
+      "label": "多视角配准",
+      "sublabel": "按时空关联船载航迹",
+      "pos": [
+        646,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "ablation",
+      "type": "frontend",
+      "label": "对照评估",
+      "sublabel": "覆盖、误匹配与时延",
+      "pos": [
+        946,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
     }
   ],
-  "edges": [
+  "boundaries": [
     {
-      "id": "input-method",
-      "from": "input",
-      "to": "method",
+      "kind": "region",
+      "label": "远距离小目标检测 · 已发表",
+      "wraps": [
+        "frames",
+        "attention",
+        "regression",
+        "detections"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "时序与安全关键态势理解 · 已发表",
+      "wraps": [
+        "vessel-state",
+        "temporal-prompt",
+        "safety-tuning",
+        "intent"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "空中补充观测 · 研究方案",
+      "wraps": [
+        "blind-spots",
+        "aerial",
+        "registration",
+        "ablation"
+      ],
+      "pad": 16
+    }
+  ],
+  "connections": [
+    {
+      "id": "frames-attention",
+      "from": "frames",
+      "to": "attention",
       "variant": "emphasis"
     },
     {
-      "id": "method-analysis",
-      "from": "method",
-      "to": "analysis",
+      "id": "attention-regression",
+      "from": "attention",
+      "to": "regression",
       "variant": "emphasis"
     },
     {
-      "id": "analysis-evaluation",
-      "from": "analysis",
-      "to": "evaluation",
+      "id": "regression-detections",
+      "from": "regression",
+      "to": "detections",
+      "variant": "emphasis"
+    },
+    {
+      "id": "vessel-state-temporal-prompt",
+      "from": "vessel-state",
+      "to": "temporal-prompt",
+      "variant": "emphasis"
+    },
+    {
+      "id": "temporal-prompt-safety-tuning",
+      "from": "temporal-prompt",
+      "to": "safety-tuning",
+      "variant": "emphasis"
+    },
+    {
+      "id": "safety-tuning-intent",
+      "from": "safety-tuning",
+      "to": "intent",
+      "variant": "emphasis"
+    },
+    {
+      "id": "blind-spots-aerial",
+      "from": "blind-spots",
+      "to": "aerial",
+      "variant": "emphasis"
+    },
+    {
+      "id": "aerial-registration",
+      "from": "aerial",
+      "to": "registration",
+      "variant": "emphasis"
+    },
+    {
+      "id": "registration-ablation",
+      "from": "registration",
+      "to": "ablation",
       "variant": "emphasis"
     }
   ]

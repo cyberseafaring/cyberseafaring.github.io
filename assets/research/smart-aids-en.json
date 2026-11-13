@@ -1,169 +1,313 @@
 {
   "schema_version": 1,
-  "diagram_type": "workflow",
+  "diagram_type": "architecture",
   "meta": {
     "title": "Smart aids to navigation and local sensing",
     "locale": "en",
     "animation": "trace",
     "quality_profile": "showcase",
     "viewBox": [
-      720,
-      400
+      1140,
+      540
     ],
     "legend": {
       "mode": "hidden"
     },
     "views": [
       {
-        "id": "workflow",
-        "label": "Video and AIS fusion",
+        "id": "edge",
+        "label": "Published · Edge sensing",
         "focus": [
-          "observation",
-          "alignment",
-          "association",
-          "shore"
+          "observe",
+          "align",
+          "associate",
+          "share"
         ],
-        "note": "The Wuhu study associates camera observations with AIS reports at the edge and provides local tracks for review ashore."
+        "note": "Match camera and AIS observations by time and position, then assemble local vessel tracks for review ashore."
       },
       {
-        "id": "validation",
-        "label": "AtoN condition research",
+        "id": "mooring",
+        "label": "Published · Mooring response",
         "focus": [
-          "position",
+          "fixes",
+          "pair",
           "response",
-          "drift",
-          "inspection"
+          "assessment"
         ],
-        "note": "Position records support research on drift and mooring response, with evidence retained for inspection and maintenance."
+        "note": "Estimate controlled mooring response parameters from nonstationary observations, retaining environmental conditions and field residuals."
+      },
+      {
+        "id": "tests",
+        "label": "Planned · Fault and maintenance trials",
+        "focus": [
+          "faults",
+          "compare",
+          "audit",
+          "maintain"
+        ],
+        "note": "Vary occlusion, missing reports and link congestion. Measure association accuracy, alert latency, traffic volume and traceability."
       }
     ]
   },
-  "lanes": [
+  "components": [
     {
-      "id": "workflow",
-      "label": "Video and AIS fusion"
-    },
-    {
-      "id": "validation",
-      "label": "AtoN condition research"
-    }
-  ],
-  "mainPath": [
-    "observation",
-    "alignment",
-    "association",
-    "shore"
-  ],
-  "nodes": [
-    {
-      "id": "observation",
-      "lane": "workflow",
-      "col": 0,
+      "id": "observe",
       "type": "database",
-      "label": "Buoy sensors",
+      "label": "Observations",
       "sublabel": "Video and AIS",
-      "width": 96
+      "pos": [
+        62,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "alignment",
-      "lane": "workflow",
-      "col": 1,
+      "id": "align",
       "type": "backend",
-      "label": "Edge alignment",
-      "sublabel": "Match time and position",
-      "width": 112
+      "label": "Alignment",
+      "sublabel": "Sync time and position",
+      "pos": [
+        346,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "association",
-      "lane": "workflow",
-      "col": 3,
+      "id": "associate",
       "type": "backend",
-      "label": "Track association",
-      "sublabel": "Build local vessel tracks",
-      "width": 128
+      "label": "Association",
+      "sublabel": "Match the same vessel",
+      "pos": [
+        630,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "shore",
-      "lane": "workflow",
-      "col": 5,
+      "id": "share",
       "type": "frontend",
-      "label": "Shore review",
-      "sublabel": "Tracks and anomaly cues",
-      "width": 104
+      "label": "Shore picture",
+      "sublabel": "Tracks and alerts",
+      "pos": [
+        914,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "position",
-      "lane": "validation",
-      "col": 0,
+      "id": "fixes",
       "type": "database",
       "label": "Position fixes",
-      "sublabel": "AtoN position series",
-      "width": 96
+      "sublabel": "Position and weather",
+      "pos": [
+        62,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "pair",
+      "type": "backend",
+      "label": "Pair observations",
+      "sublabel": "Match conditions",
+      "pos": [
+        346,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
       "id": "response",
-      "lane": "validation",
-      "col": 1,
       "type": "backend",
-      "label": "Mooring response",
-      "sublabel": "Analyse position changes",
-      "width": 112
+      "label": "Infer response",
+      "sublabel": "Retain field residuals",
+      "pos": [
+        630,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "drift",
-      "lane": "validation",
-      "col": 3,
-      "type": "backend",
-      "label": "Drift assessment",
-      "sublabel": "Consider conditions",
-      "width": 128
-    },
-    {
-      "id": "inspection",
-      "lane": "validation",
-      "col": 5,
+      "id": "assessment",
       "type": "frontend",
-      "label": "Inspection",
-      "sublabel": "Review position and state",
-      "width": 104
+      "label": "Condition review",
+      "sublabel": "Drift and response",
+      "pos": [
+        914,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "faults",
+      "type": "database",
+      "label": "Fault cases",
+      "sublabel": "Occlusion and loss",
+      "pos": [
+        62,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "compare",
+      "type": "backend",
+      "label": "Compare baselines",
+      "sublabel": "Association and delay",
+      "pos": [
+        346,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "audit",
+      "type": "backend",
+      "label": "Trace evidence",
+      "sublabel": "Source and confidence",
+      "pos": [
+        630,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "maintain",
+      "type": "frontend",
+      "label": "Review alerts",
+      "sublabel": "Inspect before action",
+      "pos": [
+        914,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
     }
   ],
-  "edges": [
+  "boundaries": [
     {
-      "id": "observation-alignment",
-      "from": "observation",
-      "to": "alignment",
+      "kind": "region",
+      "label": "Published · Edge sensing",
+      "wraps": [
+        "observe",
+        "align",
+        "associate",
+        "share"
+      ],
+      "pad": 24
+    },
+    {
+      "kind": "region",
+      "label": "Published · Mooring response",
+      "wraps": [
+        "fixes",
+        "pair",
+        "response",
+        "assessment"
+      ],
+      "pad": 24
+    },
+    {
+      "kind": "region",
+      "label": "Planned · Fault and maintenance trials",
+      "wraps": [
+        "faults",
+        "compare",
+        "audit",
+        "maintain"
+      ],
+      "pad": 24
+    }
+  ],
+  "connections": [
+    {
+      "id": "observe-align",
+      "from": "observe",
+      "to": "align",
       "variant": "emphasis"
     },
     {
-      "id": "alignment-association",
-      "from": "alignment",
-      "to": "association",
+      "id": "align-associate",
+      "from": "align",
+      "to": "associate",
       "variant": "emphasis"
     },
     {
-      "id": "association-shore",
-      "from": "association",
-      "to": "shore",
+      "id": "associate-share",
+      "from": "associate",
+      "to": "share",
       "variant": "emphasis"
     },
     {
-      "id": "position-response",
-      "from": "position",
+      "id": "fixes-pair",
+      "from": "fixes",
+      "to": "pair",
+      "variant": "emphasis"
+    },
+    {
+      "id": "pair-response",
+      "from": "pair",
       "to": "response",
       "variant": "emphasis"
     },
     {
-      "id": "response-drift",
+      "id": "response-assessment",
       "from": "response",
-      "to": "drift",
+      "to": "assessment",
       "variant": "emphasis"
     },
     {
-      "id": "drift-inspection",
-      "from": "drift",
-      "to": "inspection",
-      "variant": "emphasis"
+      "id": "faults-compare",
+      "from": "faults",
+      "to": "compare",
+      "variant": "dashed"
+    },
+    {
+      "id": "compare-audit",
+      "from": "compare",
+      "to": "audit",
+      "variant": "dashed"
+    },
+    {
+      "id": "audit-maintain",
+      "from": "audit",
+      "to": "maintain",
+      "variant": "dashed"
     }
   ]
 }

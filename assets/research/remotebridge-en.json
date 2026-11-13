@@ -1,169 +1,313 @@
 {
   "schema_version": 1,
-  "diagram_type": "workflow",
+  "diagram_type": "architecture",
   "meta": {
     "title": "RemoteBridge ship–shore prototype",
     "locale": "en",
     "animation": "trace",
     "quality_profile": "showcase",
     "viewBox": [
-      720,
-      400
+      1140,
+      540
     ],
     "legend": {
       "mode": "hidden"
     },
     "views": [
       {
-        "id": "workflow",
-        "label": "Local replay prototype",
+        "id": "replay",
+        "label": "Prototype · Local voyage replay",
         "focus": [
-          "replay",
+          "capture",
           "snapshot",
-          "fusion",
-          "display"
+          "track",
+          "shore"
         ],
-        "note": "Voyage replay aligns video, AIS and own-ship state and presents consistent identities, tracks and risk cues on ship and shore views."
+        "note": "Use one voyage replay clock. The local 3D view and chart receive the same structured situation data."
       },
       {
-        "id": "validation",
-        "label": "Planned link trials",
+        "id": "encoding",
+        "label": "Research · Graph updates",
         "focus": [
-          "link",
-          "quality",
-          "recovery",
-          "review"
+          "entities",
+          "graph",
+          "deltas",
+          "rebuild"
         ],
-        "note": "Controlled delay and outages will test stale-data cues, state recovery and operator review."
+        "note": "A patent disclosure explores encoding entities, relations and risks as a graph, then transmitting changes for shore-side reconstruction."
+      },
+      {
+        "id": "trials",
+        "label": "Planned · Constrained-link trials",
+        "focus": [
+          "constraints",
+          "restore",
+          "compare",
+          "operator"
+        ],
+        "note": "Compare risk judgements using full and compressed states, measuring bandwidth, latency and recovery after packet loss."
       }
     ]
   },
-  "lanes": [
+  "components": [
     {
-      "id": "workflow",
-      "label": "Local replay prototype"
-    },
-    {
-      "id": "validation",
-      "label": "Planned link trials"
-    }
-  ],
-  "mainPath": [
-    "replay",
-    "snapshot",
-    "fusion",
-    "display"
-  ],
-  "nodes": [
-    {
-      "id": "replay",
-      "lane": "workflow",
-      "col": 0,
+      "id": "capture",
       "type": "database",
       "label": "Voyage replay",
       "sublabel": "Video, AIS, own ship",
-      "width": 96
+      "pos": [
+        62,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
       "id": "snapshot",
-      "lane": "workflow",
-      "col": 1,
       "type": "backend",
       "label": "State snapshot",
-      "sublabel": "Use one replay clock",
-      "width": 112
+      "sublabel": "Sync observations",
+      "pos": [
+        346,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "fusion",
-      "lane": "workflow",
-      "col": 3,
+      "id": "track",
       "type": "backend",
       "label": "Track fusion",
-      "sublabel": "Match identity and risk",
-      "width": 128
+      "sublabel": "Match identities and risk",
+      "pos": [
+        630,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "display",
-      "lane": "workflow",
-      "col": 5,
+      "id": "shore",
       "type": "frontend",
-      "label": "Shared display",
+      "label": "Shared view",
       "sublabel": "Chart and local 3D",
-      "width": 104
+      "pos": [
+        914,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "link",
-      "lane": "validation",
-      "col": 0,
+      "id": "entities",
       "type": "database",
-      "label": "Link trial",
-      "sublabel": "Inject delay and outages",
-      "width": 96
+      "label": "Entities",
+      "sublabel": "Tracks, areas, events",
+      "pos": [
+        62,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "quality",
-      "lane": "validation",
-      "col": 1,
+      "id": "graph",
       "type": "backend",
-      "label": "Data quality",
-      "sublabel": "Flag stale or missing data",
-      "width": 112
+      "label": "Graph model",
+      "sublabel": "Encounters and risk",
+      "pos": [
+        346,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "recovery",
-      "lane": "validation",
-      "col": 3,
+      "id": "deltas",
       "type": "backend",
-      "label": "State recovery",
-      "sublabel": "Compare after reconnection",
-      "width": 128
+      "label": "Graph deltas",
+      "sublabel": "Changed nodes and edges",
+      "pos": [
+        630,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "review",
-      "lane": "validation",
-      "col": 5,
+      "id": "rebuild",
       "type": "frontend",
-      "label": "Human review",
-      "sublabel": "Assess fitness for use",
-      "width": 104
+      "label": "Rebuild state",
+      "sublabel": "Snapshot and deltas",
+      "pos": [
+        914,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "constraints",
+      "type": "database",
+      "label": "Link stress",
+      "sublabel": "Delay, loss, outage",
+      "pos": [
+        62,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "restore",
+      "type": "backend",
+      "label": "Recovery check",
+      "sublabel": "Freshness and resync",
+      "pos": [
+        346,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "compare",
+      "type": "backend",
+      "label": "Compare decisions",
+      "sublabel": "Risk level and advice",
+      "pos": [
+        630,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "operator",
+      "type": "frontend",
+      "label": "Operator review",
+      "sublabel": "Log disagreements",
+      "pos": [
+        914,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
     }
   ],
-  "edges": [
+  "boundaries": [
     {
-      "id": "replay-snapshot",
-      "from": "replay",
+      "kind": "region",
+      "label": "Prototype · Local voyage replay",
+      "wraps": [
+        "capture",
+        "snapshot",
+        "track",
+        "shore"
+      ],
+      "pad": 24
+    },
+    {
+      "kind": "region",
+      "label": "Research · Graph updates",
+      "wraps": [
+        "entities",
+        "graph",
+        "deltas",
+        "rebuild"
+      ],
+      "pad": 24
+    },
+    {
+      "kind": "region",
+      "label": "Planned · Constrained-link trials",
+      "wraps": [
+        "constraints",
+        "restore",
+        "compare",
+        "operator"
+      ],
+      "pad": 24
+    }
+  ],
+  "connections": [
+    {
+      "id": "capture-snapshot",
+      "from": "capture",
       "to": "snapshot",
       "variant": "emphasis"
     },
     {
-      "id": "snapshot-fusion",
+      "id": "snapshot-track",
       "from": "snapshot",
-      "to": "fusion",
+      "to": "track",
       "variant": "emphasis"
     },
     {
-      "id": "fusion-display",
-      "from": "fusion",
-      "to": "display",
+      "id": "track-shore",
+      "from": "track",
+      "to": "shore",
       "variant": "emphasis"
     },
     {
-      "id": "link-quality",
-      "from": "link",
-      "to": "quality",
+      "id": "entities-graph",
+      "from": "entities",
+      "to": "graph",
       "variant": "emphasis"
     },
     {
-      "id": "quality-recovery",
-      "from": "quality",
-      "to": "recovery",
+      "id": "graph-deltas",
+      "from": "graph",
+      "to": "deltas",
       "variant": "emphasis"
     },
     {
-      "id": "recovery-review",
-      "from": "recovery",
-      "to": "review",
+      "id": "deltas-rebuild",
+      "from": "deltas",
+      "to": "rebuild",
       "variant": "emphasis"
+    },
+    {
+      "id": "constraints-restore",
+      "from": "constraints",
+      "to": "restore",
+      "variant": "dashed"
+    },
+    {
+      "id": "restore-compare",
+      "from": "restore",
+      "to": "compare",
+      "variant": "dashed"
+    },
+    {
+      "id": "compare-operator",
+      "from": "compare",
+      "to": "operator",
+      "variant": "dashed"
     }
   ]
 }

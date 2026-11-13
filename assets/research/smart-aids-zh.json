@@ -1,169 +1,313 @@
 {
   "schema_version": 1,
-  "diagram_type": "workflow",
+  "diagram_type": "architecture",
   "meta": {
     "title": "智慧航标与局部航道感知",
     "locale": "zh-CN",
     "animation": "trace",
     "quality_profile": "showcase",
     "viewBox": [
-      720,
-      400
+      1140,
+      540
     ],
     "legend": {
       "mode": "hidden"
     },
     "views": [
       {
-        "id": "workflow",
-        "label": "视频与 AIS 融合",
+        "id": "edge",
+        "label": "已发表｜航标边缘感知",
         "focus": [
-          "observation",
-          "alignment",
-          "association",
-          "shore"
+          "observe",
+          "align",
+          "associate",
+          "share"
         ],
-        "note": "芜湖航段研究以航标摄像机与 AIS 观测为基础，在边缘侧按时空关联目标，为岸端复核提供局部航迹。"
+        "note": "按观测时间和位置关联摄像机与 AIS 观测。把匹配结果汇总为岸端可审阅的局部航迹。"
       },
       {
-        "id": "validation",
-        "label": "航标状态评估研究",
+        "id": "mooring",
+        "label": "已发表｜航标位置与系泊响应",
         "focus": [
-          "position",
+          "fixes",
+          "pair",
           "response",
-          "drift",
-          "inspection"
+          "assessment"
         ],
-        "note": "利用位置序列分析漂移与系泊响应，记录判定依据，为巡检和维护提供参考。"
+        "note": "利用非平稳位置观测研究受控系泊响应参数恢复，保留环境条件与现场残差。"
+      },
+      {
+        "id": "tests",
+        "label": "拟验证｜缺测与运维",
+        "focus": [
+          "faults",
+          "compare",
+          "audit",
+          "maintain"
+        ],
+        "note": "以遮挡、报文缺失和回传拥塞为变量，比较关联准确率、告警时延、传输负载与可追溯性。"
       }
     ]
   },
-  "lanes": [
+  "components": [
     {
-      "id": "workflow",
-      "label": "视频与 AIS 融合"
-    },
-    {
-      "id": "validation",
-      "label": "航标状态评估研究"
-    }
-  ],
-  "mainPath": [
-    "observation",
-    "alignment",
-    "association",
-    "shore"
-  ],
-  "nodes": [
-    {
-      "id": "observation",
-      "lane": "workflow",
-      "col": 0,
+      "id": "observe",
       "type": "database",
-      "label": "航标观测",
+      "label": "航道观测",
       "sublabel": "视频与 AIS",
-      "width": 96
+      "pos": [
+        62,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "alignment",
-      "lane": "workflow",
-      "col": 1,
+      "id": "align",
       "type": "backend",
-      "label": "边缘对齐",
-      "sublabel": "统一时间与坐标",
-      "width": 112
+      "label": "时空对齐",
+      "sublabel": "同步时钟与坐标",
+      "pos": [
+        346,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "association",
-      "lane": "workflow",
-      "col": 3,
+      "id": "associate",
       "type": "backend",
-      "label": "目标关联",
-      "sublabel": "形成局部航迹",
-      "width": 128
+      "label": "航迹关联",
+      "sublabel": "匹配同船观测",
+      "pos": [
+        630,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "shore",
-      "lane": "workflow",
-      "col": 5,
+      "id": "share",
       "type": "frontend",
-      "label": "岸端复核",
+      "label": "岸端态势",
       "sublabel": "航迹与异常提示",
-      "width": 104
+      "pos": [
+        914,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "position",
-      "lane": "validation",
-      "col": 0,
+      "id": "fixes",
       "type": "database",
-      "label": "位置观测",
-      "sublabel": "航标位置序列",
-      "width": 96
+      "label": "位置序列",
+      "sublabel": "环境与位置观测",
+      "pos": [
+        62,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "pair",
+      "type": "backend",
+      "label": "条件配对",
+      "sublabel": "按环境条件比较",
+      "pos": [
+        346,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
       "id": "response",
-      "lane": "validation",
-      "col": 1,
       "type": "backend",
-      "label": "响应分析",
-      "sublabel": "轨迹与系泊变化",
-      "width": 112
+      "label": "响应辨识",
+      "sublabel": "保留现场残差",
+      "pos": [
+        630,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "drift",
-      "lane": "validation",
-      "col": 3,
-      "type": "backend",
-      "label": "漂移识别",
-      "sublabel": "结合观测条件",
-      "width": 128
-    },
-    {
-      "id": "inspection",
-      "lane": "validation",
-      "col": 5,
+      "id": "assessment",
       "type": "frontend",
-      "label": "巡检参考",
-      "sublabel": "复核位置与状态",
-      "width": 104
+      "label": "状态分析",
+      "sublabel": "漂移与系泊响应",
+      "pos": [
+        914,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "faults",
+      "type": "database",
+      "label": "异常注入",
+      "sublabel": "遮挡、缺测、拥塞",
+      "pos": [
+        62,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "compare",
+      "type": "backend",
+      "label": "基线对比",
+      "sublabel": "关联与告警时延",
+      "pos": [
+        346,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "audit",
+      "type": "backend",
+      "label": "证据追溯",
+      "sublabel": "保留来源和置信度",
+      "pos": [
+        630,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "maintain",
+      "type": "frontend",
+      "label": "运维复核",
+      "sublabel": "确认告警与检修",
+      "pos": [
+        914,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
     }
   ],
-  "edges": [
+  "boundaries": [
     {
-      "id": "observation-alignment",
-      "from": "observation",
-      "to": "alignment",
+      "kind": "region",
+      "label": "已发表｜航标边缘感知",
+      "wraps": [
+        "observe",
+        "align",
+        "associate",
+        "share"
+      ],
+      "pad": 24
+    },
+    {
+      "kind": "region",
+      "label": "已发表｜航标位置与系泊响应",
+      "wraps": [
+        "fixes",
+        "pair",
+        "response",
+        "assessment"
+      ],
+      "pad": 24
+    },
+    {
+      "kind": "region",
+      "label": "拟验证｜缺测与运维",
+      "wraps": [
+        "faults",
+        "compare",
+        "audit",
+        "maintain"
+      ],
+      "pad": 24
+    }
+  ],
+  "connections": [
+    {
+      "id": "observe-align",
+      "from": "observe",
+      "to": "align",
       "variant": "emphasis"
     },
     {
-      "id": "alignment-association",
-      "from": "alignment",
-      "to": "association",
+      "id": "align-associate",
+      "from": "align",
+      "to": "associate",
       "variant": "emphasis"
     },
     {
-      "id": "association-shore",
-      "from": "association",
-      "to": "shore",
+      "id": "associate-share",
+      "from": "associate",
+      "to": "share",
       "variant": "emphasis"
     },
     {
-      "id": "position-response",
-      "from": "position",
+      "id": "fixes-pair",
+      "from": "fixes",
+      "to": "pair",
+      "variant": "emphasis"
+    },
+    {
+      "id": "pair-response",
+      "from": "pair",
       "to": "response",
       "variant": "emphasis"
     },
     {
-      "id": "response-drift",
+      "id": "response-assessment",
       "from": "response",
-      "to": "drift",
+      "to": "assessment",
       "variant": "emphasis"
     },
     {
-      "id": "drift-inspection",
-      "from": "drift",
-      "to": "inspection",
-      "variant": "emphasis"
+      "id": "faults-compare",
+      "from": "faults",
+      "to": "compare",
+      "variant": "dashed"
+    },
+    {
+      "id": "compare-audit",
+      "from": "compare",
+      "to": "audit",
+      "variant": "dashed"
+    },
+    {
+      "id": "audit-maintain",
+      "from": "audit",
+      "to": "maintain",
+      "variant": "dashed"
     }
   ]
 }

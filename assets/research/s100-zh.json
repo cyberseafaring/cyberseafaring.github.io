@@ -1,150 +1,276 @@
 {
   "schema_version": 1,
-  "diagram_type": "workflow",
+  "diagram_type": "architecture",
   "meta": {
     "title": "S-100 船岸信息共享与航线复核",
     "locale": "zh-CN",
     "animation": "trace",
     "quality_profile": "showcase",
     "viewBox": [
-      720,
-      400
+      1140,
+      540
     ],
     "legend": {
       "mode": "hidden"
     },
     "views": [
       {
-        "id": "workflow",
-        "label": "多产品接入与版本记录",
+        "id": "ingestion",
+        "label": "工程原型｜产品接入与溯源",
         "focus": [
           "products",
-          "parsing",
-          "version",
-          "query"
+          "parse",
+          "metadata",
+          "serve"
         ],
-        "note": "研究原型处理电子海图、水深、水位、流场与航警，并记录输入版本与覆盖范围。"
+        "note": "按产品规范解析 S-101、S-102、S-104、S-111 和 S-124，并保留数据来源、版本与覆盖。"
       },
       {
-        "id": "validation",
-        "label": "航线复核研究",
+        "id": "routing",
+        "label": "研究｜多产品航线检查",
         "focus": [
           "route",
           "datum",
-          "screening",
+          "sample",
           "review"
         ],
-        "note": "沿航线组织数据查询，研究水深与水位基准的相容性、航警覆盖和缺测记录，为船岸复核提供依据。"
+        "note": "以航段采样、时效匹配和垂直基准为研究重点，将水深、水位、航警和限制区叠加到航线。"
+      },
+      {
+        "id": "tests",
+        "label": "拟验证｜可追溯性与更新",
+        "focus": [
+          "reference",
+          "gaps",
+          "updates",
+          "audit"
+        ],
+        "note": "用已知答案的场景检查基准与边界条件，并测试数据版本变化后船岸复核结果是否一致。"
       }
     ]
   },
-  "lanes": [
-    {
-      "id": "workflow",
-      "label": "多产品接入与版本记录"
-    },
-    {
-      "id": "validation",
-      "label": "航线复核研究"
-    }
-  ],
-  "mainPath": [
-    "products",
-    "parsing",
-    "version",
-    "query"
-  ],
-  "nodes": [
+  "components": [
     {
       "id": "products",
-      "lane": "workflow",
-      "col": 0,
       "type": "database",
-      "label": "海事数据",
+      "label": "接入产品",
       "sublabel": "海图、水深、水位等",
-      "width": 96
+      "pos": [
+        62,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "parsing",
-      "lane": "workflow",
-      "col": 1,
+      "id": "parse",
       "type": "backend",
-      "label": "产品解析",
-      "sublabel": "统一对象与元数据",
-      "width": 112
+      "label": "解析数据",
+      "sublabel": "要素、网格与事件",
+      "pos": [
+        346,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "version",
-      "lane": "workflow",
-      "col": 3,
+      "id": "metadata",
       "type": "backend",
-      "label": "版本记录",
-      "sublabel": "来源、时间、覆盖范围",
-      "width": 128
+      "label": "登记版本",
+      "sublabel": "来源、质量与覆盖",
+      "pos": [
+        630,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "query",
-      "lane": "workflow",
-      "col": 5,
+      "id": "serve",
       "type": "frontend",
-      "label": "船岸查询",
-      "sublabel": "查阅同版数据",
-      "width": 104
+      "label": "时空查询",
+      "sublabel": "按时刻与区域筛选",
+      "pos": [
+        914,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
       "id": "route",
-      "lane": "validation",
-      "col": 0,
       "type": "database",
-      "label": "航线输入",
-      "sublabel": "航段与计划时间",
-      "width": 96
+      "label": "航线与船况",
+      "sublabel": "航段、时刻、吃水",
+      "pos": [
+        62,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
       "id": "datum",
-      "lane": "validation",
-      "col": 1,
       "type": "backend",
-      "label": "基准检查",
-      "sublabel": "评估水深与水位基准",
-      "width": 112
+      "label": "校对基准",
+      "sublabel": "水深与水位基准",
+      "pos": [
+        346,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "screening",
-      "lane": "validation",
-      "col": 3,
+      "id": "sample",
       "type": "backend",
-      "label": "风险筛查",
-      "sublabel": "识别航警与缺测",
-      "width": 128
+      "label": "航段采样",
+      "sublabel": "叠加浅水和航警",
+      "pos": [
+        630,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
       "id": "review",
-      "lane": "validation",
-      "col": 5,
       "type": "frontend",
       "label": "船岸复核",
-      "sublabel": "查看来源与限制",
-      "width": 104
+      "sublabel": "查看依据与缺测",
+      "pos": [
+        914,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "reference",
+      "type": "database",
+      "label": "参考场景",
+      "sublabel": "已知答案与边界",
+      "pos": [
+        62,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "gaps",
+      "type": "backend",
+      "label": "异常输入",
+      "sublabel": "缺测、过期、错配",
+      "pos": [
+        346,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "updates",
+      "type": "backend",
+      "label": "版本变化",
+      "sublabel": "比较更新前后",
+      "pos": [
+        630,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "audit",
+      "type": "frontend",
+      "label": "结果审计",
+      "sublabel": "核对输入及判据",
+      "pos": [
+        914,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
     }
   ],
-  "edges": [
+  "boundaries": [
     {
-      "id": "products-parsing",
+      "kind": "region",
+      "label": "工程原型｜产品接入与溯源",
+      "wraps": [
+        "products",
+        "parse",
+        "metadata",
+        "serve"
+      ],
+      "pad": 24
+    },
+    {
+      "kind": "region",
+      "label": "研究｜多产品航线检查",
+      "wraps": [
+        "route",
+        "datum",
+        "sample",
+        "review"
+      ],
+      "pad": 24
+    },
+    {
+      "kind": "region",
+      "label": "拟验证｜可追溯性与更新",
+      "wraps": [
+        "reference",
+        "gaps",
+        "updates",
+        "audit"
+      ],
+      "pad": 24
+    }
+  ],
+  "connections": [
+    {
+      "id": "products-parse",
       "from": "products",
-      "to": "parsing",
+      "to": "parse",
       "variant": "emphasis"
     },
     {
-      "id": "parsing-version",
-      "from": "parsing",
-      "to": "version",
+      "id": "parse-metadata",
+      "from": "parse",
+      "to": "metadata",
       "variant": "emphasis"
     },
     {
-      "id": "version-query",
-      "from": "version",
-      "to": "query",
+      "id": "metadata-serve",
+      "from": "metadata",
+      "to": "serve",
       "variant": "emphasis"
     },
     {
@@ -154,16 +280,34 @@
       "variant": "emphasis"
     },
     {
-      "id": "datum-screening",
+      "id": "datum-sample",
       "from": "datum",
-      "to": "screening",
+      "to": "sample",
       "variant": "emphasis"
     },
     {
-      "id": "screening-review",
-      "from": "screening",
+      "id": "sample-review",
+      "from": "sample",
       "to": "review",
       "variant": "emphasis"
+    },
+    {
+      "id": "reference-gaps",
+      "from": "reference",
+      "to": "gaps",
+      "variant": "dashed"
+    },
+    {
+      "id": "gaps-updates",
+      "from": "gaps",
+      "to": "updates",
+      "variant": "dashed"
+    },
+    {
+      "id": "updates-audit",
+      "from": "updates",
+      "to": "audit",
+      "variant": "dashed"
     }
   ]
 }

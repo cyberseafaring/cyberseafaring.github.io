@@ -1,169 +1,313 @@
 {
   "schema_version": 1,
-  "diagram_type": "workflow",
+  "diagram_type": "architecture",
   "meta": {
     "title": "RemoteBridge 船岸协同原型",
     "locale": "zh-CN",
     "animation": "trace",
     "quality_profile": "showcase",
     "viewBox": [
-      720,
-      400
+      1140,
+      540
     ],
     "legend": {
       "mode": "hidden"
     },
     "views": [
       {
-        "id": "workflow",
-        "label": "本地回放原型",
+        "id": "replay",
+        "label": "已实现｜本地回放原型",
         "focus": [
-          "replay",
+          "capture",
           "snapshot",
-          "fusion",
-          "display"
+          "track",
+          "shore"
         ],
-        "note": "真实航次回放将视频、AIS 和本船状态对齐，在船端与岸端呈现一致的目标身份、航迹与风险提示。"
+        "note": "同一回放时钟驱动船端与岸端显示。局部三维与电子海图读取同一结构化态势数据。"
       },
       {
-        "id": "validation",
-        "label": "通信受限试验方案",
+        "id": "encoding",
+        "label": "研究｜关系图增量传输",
         "focus": [
-          "link",
-          "quality",
-          "recovery",
-          "review"
+          "entities",
+          "graph",
+          "deltas",
+          "rebuild"
         ],
-        "note": "后续研究在受控条件下模拟时延和断连，检验陈旧信息提示、数据恢复和人员复核。"
+        "note": "专利交底研究把航行对象、关系及风险编码为图，探索发送变化量并在岸端重建状态。"
+      },
+      {
+        "id": "trials",
+        "label": "拟验证｜受限链路与判断一致性",
+        "focus": [
+          "constraints",
+          "restore",
+          "compare",
+          "operator"
+        ],
+        "note": "对比全量与压缩态势下的船岸风险判断，记录带宽、时延和丢包后的恢复。"
       }
     ]
   },
-  "lanes": [
+  "components": [
     {
-      "id": "workflow",
-      "label": "本地回放原型"
-    },
-    {
-      "id": "validation",
-      "label": "通信受限试验方案"
-    }
-  ],
-  "mainPath": [
-    "replay",
-    "snapshot",
-    "fusion",
-    "display"
-  ],
-  "nodes": [
-    {
-      "id": "replay",
-      "lane": "workflow",
-      "col": 0,
+      "id": "capture",
       "type": "database",
-      "label": "航次回放",
-      "sublabel": "视频、AIS、本船状态",
-      "width": 96
+      "label": "实航回放",
+      "sublabel": "视频、AIS、船位",
+      "pos": [
+        62,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
       "id": "snapshot",
-      "lane": "workflow",
-      "col": 1,
       "type": "backend",
       "label": "态势快照",
-      "sublabel": "统一回放时间",
-      "width": 112
+      "sublabel": "同步多源观测",
+      "pos": [
+        346,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "fusion",
-      "lane": "workflow",
-      "col": 3,
+      "id": "track",
       "type": "backend",
       "label": "目标融合",
-      "sublabel": "关联身份、航迹与风险",
-      "width": 128
+      "sublabel": "匹配身份与风险",
+      "pos": [
+        630,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "display",
-      "lane": "workflow",
-      "col": 5,
+      "id": "shore",
       "type": "frontend",
-      "label": "船岸显示",
-      "sublabel": "海图与局部三维",
-      "width": 104
+      "label": "船岸展示",
+      "sublabel": "电子海图与三维",
+      "pos": [
+        914,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "link",
-      "lane": "validation",
-      "col": 0,
+      "id": "entities",
       "type": "database",
-      "label": "链路试验",
-      "sublabel": "设定时延与断连",
-      "width": 96
+      "label": "航行对象",
+      "sublabel": "航迹、区域、事件",
+      "pos": [
+        62,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "quality",
-      "lane": "validation",
-      "col": 1,
+      "id": "graph",
       "type": "backend",
-      "label": "信息质量",
-      "sublabel": "识别陈旧或缺测数据",
-      "width": 112
+      "label": "构建关系图",
+      "sublabel": "会遇关系与风险",
+      "pos": [
+        346,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "recovery",
-      "lane": "validation",
-      "col": 3,
+      "id": "deltas",
       "type": "backend",
-      "label": "状态恢复",
-      "sublabel": "比较重连后的状态",
-      "width": 128
+      "label": "计算变化量",
+      "sublabel": "对象与关系更新",
+      "pos": [
+        630,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "review",
-      "lane": "validation",
-      "col": 5,
+      "id": "rebuild",
       "type": "frontend",
-      "label": "人工复核",
-      "sublabel": "判断信息能否使用",
-      "width": 104
+      "label": "岸端状态",
+      "sublabel": "由快照与增量恢复",
+      "pos": [
+        914,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "constraints",
+      "type": "database",
+      "label": "受限链路",
+      "sublabel": "延迟、丢包、断连",
+      "pos": [
+        62,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "restore",
+      "type": "backend",
+      "label": "状态复核",
+      "sublabel": "时效与重连恢复",
+      "pos": [
+        346,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "compare",
+      "type": "backend",
+      "label": "判断对照",
+      "sublabel": "风险等级与建议",
+      "pos": [
+        630,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "operator",
+      "type": "frontend",
+      "label": "人工确认",
+      "sublabel": "记录分歧及处置",
+      "pos": [
+        914,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
     }
   ],
-  "edges": [
+  "boundaries": [
     {
-      "id": "replay-snapshot",
-      "from": "replay",
+      "kind": "region",
+      "label": "已实现｜本地回放原型",
+      "wraps": [
+        "capture",
+        "snapshot",
+        "track",
+        "shore"
+      ],
+      "pad": 24
+    },
+    {
+      "kind": "region",
+      "label": "研究｜关系图增量传输",
+      "wraps": [
+        "entities",
+        "graph",
+        "deltas",
+        "rebuild"
+      ],
+      "pad": 24
+    },
+    {
+      "kind": "region",
+      "label": "拟验证｜受限链路与判断一致性",
+      "wraps": [
+        "constraints",
+        "restore",
+        "compare",
+        "operator"
+      ],
+      "pad": 24
+    }
+  ],
+  "connections": [
+    {
+      "id": "capture-snapshot",
+      "from": "capture",
       "to": "snapshot",
       "variant": "emphasis"
     },
     {
-      "id": "snapshot-fusion",
+      "id": "snapshot-track",
       "from": "snapshot",
-      "to": "fusion",
+      "to": "track",
       "variant": "emphasis"
     },
     {
-      "id": "fusion-display",
-      "from": "fusion",
-      "to": "display",
+      "id": "track-shore",
+      "from": "track",
+      "to": "shore",
       "variant": "emphasis"
     },
     {
-      "id": "link-quality",
-      "from": "link",
-      "to": "quality",
+      "id": "entities-graph",
+      "from": "entities",
+      "to": "graph",
       "variant": "emphasis"
     },
     {
-      "id": "quality-recovery",
-      "from": "quality",
-      "to": "recovery",
+      "id": "graph-deltas",
+      "from": "graph",
+      "to": "deltas",
       "variant": "emphasis"
     },
     {
-      "id": "recovery-review",
-      "from": "recovery",
-      "to": "review",
+      "id": "deltas-rebuild",
+      "from": "deltas",
+      "to": "rebuild",
       "variant": "emphasis"
+    },
+    {
+      "id": "constraints-restore",
+      "from": "constraints",
+      "to": "restore",
+      "variant": "dashed"
+    },
+    {
+      "id": "restore-compare",
+      "from": "restore",
+      "to": "compare",
+      "variant": "dashed"
+    },
+    {
+      "id": "compare-operator",
+      "from": "compare",
+      "to": "operator",
+      "variant": "dashed"
     }
   ]
 }

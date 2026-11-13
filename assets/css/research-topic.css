@@ -24,3 +24,23 @@
 .research-topic__student-links {
   overflow-wrap: anywhere;
 }
+
+.research-topic__methods {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+  gap: .8rem 1.75rem;
+  margin: 1rem 0 1.5rem;
+}
+.research-topic__methods > div { border-top: 2px solid #277c78; padding-top: .6rem; }
+.research-topic__methods dt { color: #135e62; font-weight: 700; }
+.research-topic__methods dd { margin: .3rem 0 0; }
+.research-index__list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 21rem), 1fr));
+  gap: 1rem 2rem;
+  padding: 0;
+  list-style: none;
+}
+.research-index__list li { border-top: 1px solid #adc4c8; padding: .7rem 0; }
+.research-index__list h3 { margin: 0 0 .4rem; }
+.research-index__list p { margin: 0; }

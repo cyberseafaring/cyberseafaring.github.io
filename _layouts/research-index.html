@@ -1,0 +1,33 @@
+---
+layout: default
+---
+{% assign lang = 'zh' %}
+{% assign home = '/' %}
+{% if page.lang == 'en' %}
+  {% assign lang = 'en' %}
+  {% assign home = '/en/' %}
+{% endif %}
+<link rel="stylesheet" href="{{ '/assets/css/research-topic.css' | relative_url }}">
+<main id="main" class="research-topic">
+  <nav class="research-topic__nav" aria-label="{% if lang == 'en' %}Research navigation{% else %}研究导航{% endif %}">
+    <a href="{{ home | relative_url }}#research">{% if lang == 'en' %}← Home{% else %}← 主页{% endif %}</a>
+    {% if lang == 'en' %}
+      <a href="{{ page.alternate | relative_url }}" hreflang="zh-CN" lang="zh-CN">简体中文</a>
+    {% else %}
+      <a href="{{ page.alternate | relative_url }}" hreflang="en" lang="en">English</a>
+    {% endif %}
+  </nav>
+  <h1>{{ page.title | escape }}</h1>
+  <p>{{ page.excerpt | escape }}</p>
+  <ul class="research-index__list">
+    {% assign topics = 'low-visibility,perception,smart-aids,remotebridge,s100,autonomy,waterways,education' | split: ',' %}
+    {% for slug in topics %}
+      {% assign item = site.pages | where: 'topic', slug | where: 'lang', page.lang | first %}
+      {% assign detail = site.data.research_catalog[slug][lang] %}
+      <li>
+        <h3><a href="{{ item.url | relative_url }}">{{ item.title | escape }} <span aria-hidden="true">↗</span></a></h3>
+        <p>{{ detail.method | escape }}</p>
+      </li>
+    {% endfor %}
+  </ul>
+</main>

@@ -1,150 +1,276 @@
 {
   "schema_version": 1,
-  "diagram_type": "workflow",
+  "diagram_type": "architecture",
   "meta": {
     "title": "S-100 for shared data and route review",
     "locale": "en",
     "animation": "trace",
     "quality_profile": "showcase",
     "viewBox": [
-      720,
-      400
+      1140,
+      540
     ],
     "legend": {
       "mode": "hidden"
     },
     "views": [
       {
-        "id": "workflow",
-        "label": "Product ingestion and versioning",
+        "id": "ingestion",
+        "label": "Prototype · Product ingestion",
         "focus": [
           "products",
-          "parsing",
-          "version",
-          "query"
+          "parse",
+          "metadata",
+          "serve"
         ],
-        "note": "The research prototype handles chart, depth, water level, current and warning data and retains the inputs’ versions and coverage."
+        "note": "Parse S-101, S-102, S-104, S-111 and S-124 products and retain provenance, versions and coverage."
       },
       {
-        "id": "validation",
-        "label": "Route review research",
+        "id": "routing",
+        "label": "Research · Route screening",
         "focus": [
           "route",
           "datum",
-          "screening",
+          "sample",
           "review"
         ],
-        "note": "Queries along a route support research on datum compatibility, warning coverage and data gaps before joint review."
+        "note": "Study route sampling, temporal matching and vertical datums when overlaying depths, water levels, warnings and restrictions."
+      },
+      {
+        "id": "tests",
+        "label": "Planned · Traceability and updates",
+        "focus": [
+          "reference",
+          "gaps",
+          "updates",
+          "audit"
+        ],
+        "note": "Use reference scenarios to verify datum handling and boundary cases. Compare ship and shore results after changes to the data versions."
       }
     ]
   },
-  "lanes": [
-    {
-      "id": "workflow",
-      "label": "Product ingestion and versioning"
-    },
-    {
-      "id": "validation",
-      "label": "Route review research"
-    }
-  ],
-  "mainPath": [
-    "products",
-    "parsing",
-    "version",
-    "query"
-  ],
-  "nodes": [
+  "components": [
     {
       "id": "products",
-      "lane": "workflow",
-      "col": 0,
       "type": "database",
-      "label": "Marine data",
+      "label": "Product input",
       "sublabel": "Charts, depths, levels",
-      "width": 96
+      "pos": [
+        62,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "parsing",
-      "lane": "workflow",
-      "col": 1,
+      "id": "parse",
       "type": "backend",
-      "label": "Product parsing",
-      "sublabel": "Objects and metadata",
-      "width": 112
+      "label": "Parse products",
+      "sublabel": "Features, grids, events",
+      "pos": [
+        346,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "version",
-      "lane": "workflow",
-      "col": 3,
+      "id": "metadata",
       "type": "backend",
-      "label": "Version records",
-      "sublabel": "Source, time and coverage",
-      "width": 128
+      "label": "Record versions",
+      "sublabel": "Source, quality, coverage",
+      "pos": [
+        630,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "query",
-      "lane": "workflow",
-      "col": 5,
+      "id": "serve",
       "type": "frontend",
-      "label": "Shared queries",
-      "sublabel": "Inspect matching versions",
-      "width": 104
+      "label": "Query data",
+      "sublabel": "Filter by time and area",
+      "pos": [
+        914,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
       "id": "route",
-      "lane": "validation",
-      "col": 0,
       "type": "database",
-      "label": "Route input",
-      "sublabel": "Segments and timing",
-      "width": 96
+      "label": "Route and draft",
+      "sublabel": "Segments, time, draft",
+      "pos": [
+        62,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
       "id": "datum",
-      "lane": "validation",
-      "col": 1,
       "type": "backend",
-      "label": "Datum checks",
-      "sublabel": "Depth and level references",
-      "width": 112
+      "label": "Match datums",
+      "sublabel": "Depth and water levels",
+      "pos": [
+        346,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "screening",
-      "lane": "validation",
-      "col": 3,
+      "id": "sample",
       "type": "backend",
-      "label": "Risk screening",
-      "sublabel": "Warnings and data gaps",
-      "width": 128
+      "label": "Sample route",
+      "sublabel": "Shallows and warnings",
+      "pos": [
+        630,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
       "id": "review",
-      "lane": "validation",
-      "col": 5,
       "type": "frontend",
       "label": "Joint review",
-      "sublabel": "Sources and limitations",
-      "width": 104
+      "sublabel": "Sources and gaps",
+      "pos": [
+        914,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "reference",
+      "type": "database",
+      "label": "Reference cases",
+      "sublabel": "Known answers",
+      "pos": [
+        62,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "gaps",
+      "type": "backend",
+      "label": "Invalid inputs",
+      "sublabel": "Gaps and stale data",
+      "pos": [
+        346,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "updates",
+      "type": "backend",
+      "label": "Version changes",
+      "sublabel": "Compare before and after",
+      "pos": [
+        630,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "audit",
+      "type": "frontend",
+      "label": "Audit results",
+      "sublabel": "Check inputs and rules",
+      "pos": [
+        914,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
     }
   ],
-  "edges": [
+  "boundaries": [
     {
-      "id": "products-parsing",
+      "kind": "region",
+      "label": "Prototype · Product ingestion",
+      "wraps": [
+        "products",
+        "parse",
+        "metadata",
+        "serve"
+      ],
+      "pad": 24
+    },
+    {
+      "kind": "region",
+      "label": "Research · Route screening",
+      "wraps": [
+        "route",
+        "datum",
+        "sample",
+        "review"
+      ],
+      "pad": 24
+    },
+    {
+      "kind": "region",
+      "label": "Planned · Traceability and updates",
+      "wraps": [
+        "reference",
+        "gaps",
+        "updates",
+        "audit"
+      ],
+      "pad": 24
+    }
+  ],
+  "connections": [
+    {
+      "id": "products-parse",
       "from": "products",
-      "to": "parsing",
+      "to": "parse",
       "variant": "emphasis"
     },
     {
-      "id": "parsing-version",
-      "from": "parsing",
-      "to": "version",
+      "id": "parse-metadata",
+      "from": "parse",
+      "to": "metadata",
       "variant": "emphasis"
     },
     {
-      "id": "version-query",
-      "from": "version",
-      "to": "query",
+      "id": "metadata-serve",
+      "from": "metadata",
+      "to": "serve",
       "variant": "emphasis"
     },
     {
@@ -154,16 +280,34 @@
       "variant": "emphasis"
     },
     {
-      "id": "datum-screening",
+      "id": "datum-sample",
       "from": "datum",
-      "to": "screening",
+      "to": "sample",
       "variant": "emphasis"
     },
     {
-      "id": "screening-review",
-      "from": "screening",
+      "id": "sample-review",
+      "from": "sample",
       "to": "review",
       "variant": "emphasis"
+    },
+    {
+      "id": "reference-gaps",
+      "from": "reference",
+      "to": "gaps",
+      "variant": "dashed"
+    },
+    {
+      "id": "gaps-updates",
+      "from": "gaps",
+      "to": "updates",
+      "variant": "dashed"
+    },
+    {
+      "id": "updates-audit",
+      "from": "updates",
+      "to": "audit",
+      "variant": "dashed"
     }
   ]
 }

@@ -1,105 +1,313 @@
 {
   "schema_version": 1,
-  "diagram_type": "workflow",
+  "diagram_type": "architecture",
   "meta": {
     "title": "海事教育与船员发展",
     "locale": "zh-CN",
     "animation": "trace",
     "quality_profile": "showcase",
     "viewBox": [
-      720,
-      300
+      1140,
+      540
     ],
     "legend": {
       "mode": "hidden"
     },
     "views": [
       {
-        "id": "inputs-methods",
-        "label": "输入与方法",
+        "id": "design",
+        "label": "研究｜岗位任务与训练设计",
         "focus": [
-          "input",
-          "method"
-        ]
+          "duties",
+          "competency",
+          "scenario",
+          "exercise"
+        ],
+        "note": "从值班、自动化监控和接管任务出发，把低能见度、多船会遇和船岸沟通组织成可重复的训练场景。"
       },
       {
-        "id": "analysis-evaluation",
-        "label": "分析与评估",
+        "id": "capture",
+        "label": "方案｜过程记录与复盘",
         "focus": [
-          "analysis",
-          "evaluation"
-        ]
+          "event",
+          "timing",
+          "rubric",
+          "debrief"
+        ],
+        "note": "用统一时间轴记录观测、告警、操纵和学员判断。将关键事件与量规对应以便复盘。"
+      },
+      {
+        "id": "evaluation",
+        "label": "拟验证｜评价方案",
+        "focus": [
+          "protocol",
+          "baseline",
+          "outcome",
+          "revision"
+        ],
+        "note": "在满足伦理和数据要求的前提下，比较操作回放和按事件反馈，观察风险识别、操纵选择与错误解释。"
       }
     ]
   },
-  "lanes": [
+  "components": [
     {
-      "id": "research",
-      "label": "研究流程"
-    }
-  ],
-  "mainPath": [
-    "input",
-    "method",
-    "analysis",
-    "evaluation"
-  ],
-  "nodes": [
-    {
-      "id": "input",
-      "lane": "research",
-      "col": 0,
+      "id": "duties",
       "type": "database",
-      "label": "岗位与能力分析",
-      "sublabel": "识别自动化时代的训练需求",
-      "width": 96
+      "label": "岗位任务",
+      "sublabel": "监视、协同、接管",
+      "pos": [
+        62,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "method",
-      "lane": "research",
-      "col": 1,
+      "id": "competency",
       "type": "backend",
-      "label": "仿真任务设计",
-      "sublabel": "会遇、低能见度或接管",
-      "width": 112
+      "label": "能力要求",
+      "sublabel": "识别风险与沟通",
+      "pos": [
+        346,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "analysis",
-      "lane": "research",
-      "col": 3,
+      "id": "scenario",
       "type": "backend",
-      "label": "记录训练过程",
-      "sublabel": "操作、判断依据与反馈",
-      "width": 128
+      "label": "仿真场景",
+      "sublabel": "雾航与多船会遇",
+      "pos": [
+        630,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "evaluation",
-      "lane": "research",
-      "col": 5,
+      "id": "exercise",
       "type": "frontend",
-      "label": "评价与修订",
-      "sublabel": "形成评价量规与训练方案",
-      "width": 104
+      "label": "训练脚本",
+      "sublabel": "事件、时机与任务",
+      "pos": [
+        914,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "event",
+      "type": "database",
+      "label": "事件记录",
+      "sublabel": "态势、告警与操作",
+      "pos": [
+        62,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "timing",
+      "type": "backend",
+      "label": "时序复原",
+      "sublabel": "追踪发现与操纵",
+      "pos": [
+        346,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "rubric",
+      "type": "backend",
+      "label": "量规评分",
+      "sublabel": "风险识别与解释",
+      "pos": [
+        630,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "debrief",
+      "type": "frontend",
+      "label": "训练复盘",
+      "sublabel": "回看判断依据",
+      "pos": [
+        914,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "protocol",
+      "type": "database",
+      "label": "对照方案",
+      "sublabel": "回放与事件反馈",
+      "pos": [
+        62,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "baseline",
+      "type": "backend",
+      "label": "同类任务",
+      "sublabel": "统一场景与量规",
+      "pos": [
+        346,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "outcome",
+      "type": "backend",
+      "label": "比较表现",
+      "sublabel": "时机、操作、解释",
+      "pos": [
+        630,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "revision",
+      "type": "frontend",
+      "label": "修订训练",
+      "sublabel": "改进任务与反馈",
+      "pos": [
+        914,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
     }
   ],
-  "edges": [
+  "boundaries": [
     {
-      "id": "input-method",
-      "from": "input",
-      "to": "method",
+      "kind": "region",
+      "label": "研究｜岗位任务与训练设计",
+      "wraps": [
+        "duties",
+        "competency",
+        "scenario",
+        "exercise"
+      ],
+      "pad": 24
+    },
+    {
+      "kind": "region",
+      "label": "方案｜过程记录与复盘",
+      "wraps": [
+        "event",
+        "timing",
+        "rubric",
+        "debrief"
+      ],
+      "pad": 24
+    },
+    {
+      "kind": "region",
+      "label": "拟验证｜评价方案",
+      "wraps": [
+        "protocol",
+        "baseline",
+        "outcome",
+        "revision"
+      ],
+      "pad": 24
+    }
+  ],
+  "connections": [
+    {
+      "id": "duties-competency",
+      "from": "duties",
+      "to": "competency",
       "variant": "emphasis"
     },
     {
-      "id": "method-analysis",
-      "from": "method",
-      "to": "analysis",
+      "id": "competency-scenario",
+      "from": "competency",
+      "to": "scenario",
       "variant": "emphasis"
     },
     {
-      "id": "analysis-evaluation",
-      "from": "analysis",
-      "to": "evaluation",
+      "id": "scenario-exercise",
+      "from": "scenario",
+      "to": "exercise",
       "variant": "emphasis"
+    },
+    {
+      "id": "event-timing",
+      "from": "event",
+      "to": "timing",
+      "variant": "emphasis"
+    },
+    {
+      "id": "timing-rubric",
+      "from": "timing",
+      "to": "rubric",
+      "variant": "emphasis"
+    },
+    {
+      "id": "rubric-debrief",
+      "from": "rubric",
+      "to": "debrief",
+      "variant": "emphasis"
+    },
+    {
+      "id": "protocol-baseline",
+      "from": "protocol",
+      "to": "baseline",
+      "variant": "dashed"
+    },
+    {
+      "id": "baseline-outcome",
+      "from": "baseline",
+      "to": "outcome",
+      "variant": "dashed"
+    },
+    {
+      "id": "outcome-revision",
+      "from": "outcome",
+      "to": "revision",
+      "variant": "dashed"
     }
   ]
 }

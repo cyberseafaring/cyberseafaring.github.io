@@ -1,166 +1,312 @@
 {
   "schema_version": 1,
-  "diagram_type": "workflow",
+  "diagram_type": "architecture",
   "meta": {
-    "title": "智能航标、航道监管与交通韧性",
+    "title": "航道监测与航运网络韧性",
     "locale": "zh-CN",
     "animation": "trace",
     "quality_profile": "showcase",
     "viewBox": [
-      720,
-      400
+      1180,
+      490
     ],
     "legend": {
       "mode": "hidden"
     },
     "views": [
       {
-        "id": "shore-monitoring",
-        "label": "船岸监管",
+        "id": "local-tracks",
+        "label": "航标视频与 AIS 边缘融合 · 已发表",
         "focus": [
-          "input",
-          "method",
-          "analysis",
-          "evaluation"
-        ]
+          "observations",
+          "time-align",
+          "zone-match",
+          "local"
+        ],
+        "note": "芜湖航段研究在航标边缘端结合视频与 AIS，按时间与空间分区关联观测，为局部交通监视提供航迹。"
       },
       {
-        "id": "network-recovery",
-        "label": "网络恢复",
+        "id": "dynamic-network",
+        "label": "航运网络状态与恢复 · 已发表",
         "focus": [
-          "regional",
-          "consistency",
-          "disruption",
+          "clean",
+          "network",
+          "baseline",
           "recovery"
-        ]
+        ],
+        "note": "AIS–MRV 韧性研究将港口、锚地和航道抽象为动态有向加权网络，以历史时窗为基线度量功能损失和恢复。"
+      },
+      {
+        "id": "external-check",
+        "label": "AIS 与 MRV 一致性检验 · 已发表",
+        "focus": [
+          "proxy",
+          "match-id",
+          "mrv",
+          "consistency"
+        ],
+        "note": "将 AIS 活动和排放代理指标与报告的船舶年度燃油和二氧化碳资料匹配，为代理指标的参数校准提供参照。"
       }
     ]
   },
-  "lanes": [
+  "components": [
     {
-      "id": "research",
-      "label": "航道监管"
-    },
-    {
-      "id": "resilience",
-      "label": "航运网络韧性"
-    }
-  ],
-  "mainPath": [
-    "input",
-    "method",
-    "analysis",
-    "evaluation"
-  ],
-  "nodes": [
-    {
-      "id": "input",
-      "lane": "research",
-      "col": 0,
+      "id": "observations",
       "type": "database",
-      "label": "浮标观测",
-      "sublabel": "视频、AIS 与环境数据",
-      "width": 88
+      "label": "航标观测",
+      "sublabel": "视频与 AIS 报文",
+      "pos": [
+        46,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "method",
-      "lane": "research",
-      "col": 1,
+      "id": "time-align",
       "type": "backend",
-      "label": "边缘融合",
-      "sublabel": "对齐观测与轨迹",
-      "width": 112
+      "label": "时间对齐",
+      "sublabel": "匹配观测时窗",
+      "pos": [
+        346,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "analysis",
-      "lane": "research",
-      "col": 3,
+      "id": "zone-match",
       "type": "backend",
-      "label": "交通态势分析",
-      "sublabel": "识别拥堵与船舶流动",
-      "width": 128
+      "label": "空间分区匹配",
+      "sublabel": "比对视频与 AIS 分区",
+      "pos": [
+        646,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "evaluation",
-      "lane": "research",
-      "col": 5,
+      "id": "local",
       "type": "frontend",
-      "label": "岸基监管",
-      "sublabel": "交通监控与服务",
-      "width": 104
+      "label": "局部交通航迹",
+      "sublabel": "供岸端监视复核",
+      "pos": [
+        946,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "regional",
-      "lane": "resilience",
-      "col": 0,
+      "id": "clean",
       "type": "database",
-      "label": "区域数据",
-      "sublabel": "AIS 轨迹与 MRV",
-      "width": 88
+      "label": "AIS 轨迹处理",
+      "sublabel": "清洗、重采样与匹配",
+      "pos": [
+        46,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "consistency",
-      "lane": "resilience",
-      "col": 1,
+      "id": "network",
       "type": "backend",
-      "label": "一致性检验",
-      "sublabel": "对照活动与排放资料",
-      "width": 112
+      "label": "动态加权网络",
+      "sublabel": "港口、锚地与航段",
+      "pos": [
+        346,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "disruption",
-      "lane": "resilience",
-      "col": 3,
+      "id": "baseline",
       "type": "backend",
-      "label": "扰动识别",
-      "sublabel": "分析网络功能下降",
-      "width": 128
+      "label": "历史基线",
+      "sublabel": "对比流量、速度与占用",
+      "pos": [
+        646,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
       "id": "recovery",
-      "lane": "resilience",
-      "col": 5,
       "type": "frontend",
-      "label": "恢复评估",
-      "sublabel": "比较恢复时间",
-      "width": 104
+      "label": "韧性评估",
+      "sublabel": "功能损失与恢复时间",
+      "pos": [
+        946,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "proxy",
+      "type": "database",
+      "label": "AIS 代理量",
+      "sublabel": "活动与排放代理指标",
+      "pos": [
+        46,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "match-id",
+      "type": "backend",
+      "label": "按船舶关联",
+      "sublabel": "匹配标识与统计时段",
+      "pos": [
+        346,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "mrv",
+      "type": "backend",
+      "label": "MRV 参照",
+      "sublabel": "年度燃油与 CO₂ 记录",
+      "pos": [
+        646,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "consistency",
+      "type": "frontend",
+      "label": "一致性检验",
+      "sublabel": "核对代理指标与基线",
+      "pos": [
+        946,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
     }
   ],
-  "edges": [
+  "boundaries": [
     {
-      "id": "input-method",
-      "from": "input",
-      "to": "method",
+      "kind": "region",
+      "label": "航标视频与 AIS 边缘融合 · 已发表",
+      "wraps": [
+        "observations",
+        "time-align",
+        "zone-match",
+        "local"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "航运网络状态与恢复 · 已发表",
+      "wraps": [
+        "clean",
+        "network",
+        "baseline",
+        "recovery"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "AIS 与 MRV 一致性检验 · 已发表",
+      "wraps": [
+        "proxy",
+        "match-id",
+        "mrv",
+        "consistency"
+      ],
+      "pad": 16
+    }
+  ],
+  "connections": [
+    {
+      "id": "observations-time-align",
+      "from": "observations",
+      "to": "time-align",
       "variant": "emphasis"
     },
     {
-      "id": "method-analysis",
-      "from": "method",
-      "to": "analysis",
+      "id": "time-align-zone-match",
+      "from": "time-align",
+      "to": "zone-match",
       "variant": "emphasis"
     },
     {
-      "id": "analysis-evaluation",
-      "from": "analysis",
-      "to": "evaluation",
+      "id": "zone-match-local",
+      "from": "zone-match",
+      "to": "local",
       "variant": "emphasis"
     },
     {
-      "id": "regional-consistency",
-      "from": "regional",
-      "to": "consistency",
+      "id": "clean-network",
+      "from": "clean",
+      "to": "network",
       "variant": "emphasis"
     },
     {
-      "id": "consistency-disruption",
-      "from": "consistency",
-      "to": "disruption",
+      "id": "network-baseline",
+      "from": "network",
+      "to": "baseline",
       "variant": "emphasis"
     },
     {
-      "id": "disruption-recovery",
-      "from": "disruption",
+      "id": "baseline-recovery",
+      "from": "baseline",
       "to": "recovery",
+      "variant": "emphasis"
+    },
+    {
+      "id": "proxy-match-id",
+      "from": "proxy",
+      "to": "match-id",
+      "variant": "emphasis"
+    },
+    {
+      "id": "match-id-mrv",
+      "from": "match-id",
+      "to": "mrv",
+      "variant": "emphasis"
+    },
+    {
+      "id": "mrv-consistency",
+      "from": "mrv",
+      "to": "consistency",
       "variant": "emphasis"
     }
   ]

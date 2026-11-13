@@ -54,3 +54,27 @@
   .research-home__stage { grid-template-columns: 1fr; }
   .research-home__illustration { max-height: 11rem; }
 }
+
+.research-home__content { min-width: 0; }
+#main.research-home > .sidebar {
+  float: none;
+  width: auto;
+  margin: 0;
+  padding: 1.25rem 0 0;
+}
+@media (min-width: 1024px) {
+  #main.research-home {
+    display: grid;
+    grid-template-columns: minmax(9rem, 10rem) minmax(0, 1fr);
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+  }
+  #main.research-home > .sidebar {
+    align-self: start;
+    position: sticky;
+    top: 1rem;
+  }
+}
+@media (min-width: 1024px) {
+  #main.research-home > .sidebar { grid-column: 1; grid-row: 1; }
+  .research-home__content { grid-column: 2; grid-row: 1; }
+}

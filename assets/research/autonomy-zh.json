@@ -1,104 +1,312 @@
 {
   "schema_version": 1,
-  "diagram_type": "workflow",
+  "diagram_type": "architecture",
   "meta": {
-    "title": "船舶自主航行与避碰决策",
+    "title": "自主航行决策与安全验证",
     "locale": "zh-CN",
     "animation": "trace",
     "quality_profile": "showcase",
     "viewBox": [
-      720,
-      300
+      1180,
+      490
     ],
     "legend": {
       "mode": "hidden"
     },
     "views": [
       {
-        "id": "inputs-methods",
-        "label": "输入与方法",
+        "id": "temporal-policy",
+        "label": "时序避碰策略 · 已发表",
         "focus": [
-          "input",
-          "method"
-        ]
+          "simulation",
+          "temporal",
+          "policy",
+          "maneuver"
+        ],
+        "note": "Zhang 等（2025）将船舶动力学、风浪流和 COLREGs 引入训练，以 LSTM 表征状态并用改进 PPO 学习避碰策略。"
       },
       {
-        "id": "analysis-evaluation",
-        "label": "分析与评估",
+        "id": "enc-prediction",
+        "label": "海图约束的航迹预测 · 已发表",
         "focus": [
-          "analysis",
-          "evaluation"
-        ]
+          "ais",
+          "motion",
+          "topology",
+          "forecast"
+        ],
+        "note": "Pi-STAR（2026）用神经泰勒微分卷积表征运动，再以海图拓扑和 COLREGs 会遇线索约束多船航迹预测。"
+      },
+      {
+        "id": "scenario-checks",
+        "label": "场景化安全验证 · 研究方案",
+        "focus": [
+          "scenarios",
+          "risk",
+          "checks",
+          "compare"
+        ],
+        "note": "在不同会遇与扰动场景中，对比规则基线与候选策略，核验最近会遇距离、操纵约束和航道偏离。"
       }
     ]
   },
-  "lanes": [
+  "components": [
     {
-      "id": "research",
-      "label": "研究流程"
-    }
-  ],
-  "mainPath": [
-    "input",
-    "method",
-    "analysis",
-    "evaluation"
-  ],
-  "nodes": [
-    {
-      "id": "input",
-      "lane": "research",
-      "col": 0,
+      "id": "simulation",
       "type": "database",
-      "label": "AIS 会遇记录",
-      "sublabel": "航向、航速与相对位置",
-      "width": 88
+      "label": "船舶动力学",
+      "sublabel": "风浪流与他船运动",
+      "pos": [
+        46,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "method",
-      "lane": "research",
-      "col": 1,
+      "id": "temporal",
       "type": "backend",
-      "label": "会遇状态表征",
-      "sublabel": "识别风险变化",
-      "width": 112
+      "label": "时序状态",
+      "sublabel": "LSTM 编码观测窗口",
+      "pos": [
+        346,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "analysis",
-      "lane": "research",
-      "col": 3,
+      "id": "policy",
       "type": "backend",
-      "label": "避碰决策",
-      "sublabel": "比较转向与减速",
-      "width": 128
+      "label": "避碰策略",
+      "sublabel": "改进 PPO 与 COLREGs",
+      "pos": [
+        646,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "evaluation",
-      "lane": "research",
-      "col": 5,
+      "id": "maneuver",
       "type": "frontend",
-      "label": "仿真评估",
-      "sublabel": "核对安全距离与操纵约束",
-      "width": 104
+      "label": "仿真操纵",
+      "sublabel": "连续动作与轨迹",
+      "pos": [
+        946,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "ais",
+      "type": "database",
+      "label": "AIS 航迹",
+      "sublabel": "历史船位、航向与航速",
+      "pos": [
+        46,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "motion",
+      "type": "backend",
+      "label": "运动表征",
+      "sublabel": "神经泰勒微分卷积",
+      "pos": [
+        346,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "topology",
+      "type": "backend",
+      "label": "交互与拓扑",
+      "sublabel": "ENC 与会遇关系图",
+      "pos": [
+        646,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "forecast",
+      "type": "frontend",
+      "label": "航迹预测",
+      "sublabel": "场景级多船轨迹",
+      "pos": [
+        946,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "scenarios",
+      "type": "database",
+      "label": "会遇场景",
+      "sublabel": "对遇、交叉与追越",
+      "pos": [
+        46,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "risk",
+      "type": "backend",
+      "label": "会遇风险",
+      "sublabel": "DCPA/TCPA 与多船冲突",
+      "pos": [
+        346,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "checks",
+      "type": "backend",
+      "label": "约束核验",
+      "sublabel": "规则、操纵与航道",
+      "pos": [
+        646,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "compare",
+      "type": "frontend",
+      "label": "结果比较",
+      "sublabel": "安全裕度与偏航",
+      "pos": [
+        946,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
     }
   ],
-  "edges": [
+  "boundaries": [
     {
-      "id": "input-method",
-      "from": "input",
-      "to": "method",
+      "kind": "region",
+      "label": "时序避碰策略 · 已发表",
+      "wraps": [
+        "simulation",
+        "temporal",
+        "policy",
+        "maneuver"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "海图约束的航迹预测 · 已发表",
+      "wraps": [
+        "ais",
+        "motion",
+        "topology",
+        "forecast"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "场景化安全验证 · 研究方案",
+      "wraps": [
+        "scenarios",
+        "risk",
+        "checks",
+        "compare"
+      ],
+      "pad": 16
+    }
+  ],
+  "connections": [
+    {
+      "id": "simulation-temporal",
+      "from": "simulation",
+      "to": "temporal",
       "variant": "emphasis"
     },
     {
-      "id": "method-analysis",
-      "from": "method",
-      "to": "analysis",
+      "id": "temporal-policy",
+      "from": "temporal",
+      "to": "policy",
       "variant": "emphasis"
     },
     {
-      "id": "analysis-evaluation",
-      "from": "analysis",
-      "to": "evaluation",
+      "id": "policy-maneuver",
+      "from": "policy",
+      "to": "maneuver",
+      "variant": "emphasis"
+    },
+    {
+      "id": "ais-motion",
+      "from": "ais",
+      "to": "motion",
+      "variant": "emphasis"
+    },
+    {
+      "id": "motion-topology",
+      "from": "motion",
+      "to": "topology",
+      "variant": "emphasis"
+    },
+    {
+      "id": "topology-forecast",
+      "from": "topology",
+      "to": "forecast",
+      "variant": "emphasis"
+    },
+    {
+      "id": "scenarios-risk",
+      "from": "scenarios",
+      "to": "risk",
+      "variant": "emphasis"
+    },
+    {
+      "id": "risk-checks",
+      "from": "risk",
+      "to": "checks",
+      "variant": "emphasis"
+    },
+    {
+      "id": "checks-compare",
+      "from": "checks",
+      "to": "compare",
       "variant": "emphasis"
     }
   ]

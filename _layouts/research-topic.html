@@ -8,16 +8,31 @@ layout: default
   {% assign lang = 'en' %}
   {% assign home = '/en/' %}
 {% endif %}
+{% assign research_index = home | append: 'research/' | relative_url %}
 {% assign student_page = home | append: 'student-topics/' | relative_url %}
 <link rel="stylesheet" href="{{ '/assets/css/research-topic.css' | relative_url }}">
 <main id="main" class="research-topic">
   <nav class="research-topic__nav" aria-label="{% if lang == 'en' %}Research navigation{% else %}研究导航{% endif %}">
-    <a href="{{ home | relative_url }}#research">{% if lang == 'en' %}← Research overview{% else %}← 研究总览{% endif %}</a>
+    <a href="{{ research_index }}">{% if lang == 'en' %}← Research overview{% else %}← 研究总览{% endif %}</a>
     <a href="{{ page.alternate | relative_url }}" hreflang="{% if lang == 'en' %}zh-CN" lang="zh-CN">简体中文{% else %}en" lang="en">English{% endif %}</a>
   </nav>
 
   <h1>{{ page.title | escape }}</h1>
   <p>{{ page.excerpt | escape }}</p>
+
+  {% assign detail = site.data.research_catalog[page.topic][lang] %}
+  {% if detail %}
+    <dl class="research-topic__methods">
+      <div>
+        <dt>{% if lang == 'en' %}Research contribution{% else %}研究创新{% endif %}</dt>
+        <dd>{{ detail.method | escape }}</dd>
+      </div>
+      <div>
+        <dt>{% if lang == 'en' %}Evidence and validation{% else %}已有依据与验证{% endif %}</dt>
+        <dd>{{ detail.validation | escape }}</dd>
+      </div>
+    </dl>
+  {% endif %}
 
   <h2>{% if lang == 'en' %}Interactive workflow{% else %}交互流程{% endif %}</h2>
   <p>{% if lang == 'en' %}Select a node to inspect its connections. Choose a chapter to focus on part of the workflow, then select Live to play the trace.{% else %}点击节点查看关联，选择图中的章节聚焦局部，再点击「动态」播放流程轨迹。{% endif %}</p>

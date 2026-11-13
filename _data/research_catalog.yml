@@ -1,0 +1,56 @@
+low-visibility:
+  zh:
+    method: "把能见度变化与交通风险、到港队列和引航资源放进同一场景，研究何时发布提示、何时组织有条件通航。"
+    validation: "以气象和航迹回放检验目标关联和预警，再用仿真比较限速、单向通航与暂停通航方案的安全约束和等待时间。"
+  en:
+    method: "Combine visibility, traffic risk, arrival queues and pilotage resources to study when to issue advisories and when conditional vessel movements may be feasible."
+    validation: "Use weather and track replay to test association and alert timing. Compare speed limits, one-way operation and suspension in simulation under safety and waiting-time criteria."
+perception:
+  zh:
+    method: "把远距离小目标的视觉检测扩展到跨模态时序关联，研究固定翼无人机 SAR 如何补充船载观测盲区。"
+    validation: "已发表工作覆盖小目标检测和时序多模态态势理解。空船融合需按距离、遮挡与缺测场景检验定位误差、漏检和误关联。"
+  en:
+    method: "Extend visual detection of distant small targets to temporal association across sensors. Study fixed-wing UAV SAR as a source of observations beyond onboard coverage."
+    validation: "Published studies cover small-target detection and temporal multimodal situation understanding. Aerial–onboard fusion needs tests of localisation, misses and false associations across range, occlusion and missing-data conditions."
+smart-aids:
+  zh:
+    method: "把视频与 AIS 在航标边缘对齐并生成局部航迹，使岸端能接收带来源的交通信息；将系泊响应辨识用于航标运维研究。"
+    validation: "芜湖航段已有浮标视频与 AIS 融合研究。用断链、带宽限制和观测缺失回放检验航迹完整性与上报时效；系泊响应有独立论文。"
+  en:
+    method: "Align video and AIS at the aid, derive local tracks and preserve observation provenance for shore users. Study mooring response as a separate maintenance problem."
+    validation: "Published work used buoy video and AIS from the Wuhu reach. Test track completeness and reporting latency under link loss, bandwidth limits and missing observations. A separate study addresses mooring response."
+remotebridge:
+  zh:
+    method: "以统一时间轴组织船端多源观测，在船岸工作台呈现同一态势；研究增量传递关键对象与关系，减少重复发送。"
+    validation: "原型已有回放、视频与 AIS 融合和岸端显示。增量关系编码已有技术交底材料，弱网下的延迟、断连恢复和人工确认仍需验证。"
+  en:
+    method: "Align onboard observations on a shared timeline for ship and shore displays. Study incremental updates to key objects and their relationships to reduce repeated transmission."
+    validation: "The prototype supports replay, video–AIS fusion and shore display. Technical disclosures cover incremental relation encoding. Latency, reconnection and human confirmation under degraded links remain validation tasks."
+s100:
+  zh:
+    method: "用可追溯的海图、水深、水位、流场和航警组织航线复核，研究船岸如何对同一航段和同一时刻采用一致的数据条件。"
+    validation: "工程原型提供研究环境。重点验证版本与时间选择、垂向基准、航段采样和风险提示的可复现性。"
+  en:
+    method: "Use traceable chart, depth, water-level, current and warning layers to review routes against common ship–shore data conditions for each segment and time."
+    validation: "An engineering prototype provides the research environment. Validation targets include version and time selection, vertical datums, route sampling and reproducibility of alerts."
+autonomy:
+  zh:
+    method: "用会遇序列表示风险演化，将时序强化学习与基于 ENC 拓扑、COLREGs 的交互建模接到自主避碰问题上。"
+    validation: "时序状态学习与规则约束航迹预测已有独立论文。进一步以对遇、交叉和追越情景比较最近会遇距离、规则符合性和操纵可执行性。"
+  en:
+    method: "Represent changing risk through encounter sequences. Connect temporal reinforcement learning and interaction modelling informed by ENC topology and COLREGs to collision avoidance."
+    validation: "Temporal state learning and rule-informed trajectory prediction have separate published studies. Further scenario tests compare clearance, rule compliance and manoeuvre feasibility across head-on, crossing and overtaking encounters."
+waterways:
+  zh:
+    method: "用 AIS 航迹构造时变交通网络，结合排放监测、报告和核查资料做一致性检验，分析受扰后哪些航段先失去功能、何时恢复。"
+    validation: "区域案例已有韧性分析论文。局部智能航标与岸基监控采用独立观测链，评价尺度与区域网络研究分别处理。"
+  en:
+    method: "Build time-varying traffic networks from AIS and check consistency against emissions monitoring, reporting and verification records to study disruption and recovery."
+    validation: "Published regional cases support the resilience analysis. Local buoy-to-shore monitoring uses a separate observation chain with its own evaluation scale."
+education:
+  zh:
+    method: "把雾航、会遇和接管中的操作与判断转化为可复盘的训练任务，研究怎样用行为证据评估航海能力。"
+    validation: "海事教育研究提供岗位能力框架。模拟器评价需对比学员操作、判断依据和迁移表现，检验量规的一致性。"
+  en:
+    method: "Turn actions and judgements during fog navigation, encounters and takeover into replayable tasks. Study how behavioural evidence can support competence assessment."
+    validation: "Maritime education research informs the competency framework. Simulator studies need to compare actions, reasoning and transfer, and assess agreement between rubric raters."

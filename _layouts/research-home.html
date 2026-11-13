@@ -9,7 +9,9 @@ layout: default
 {% endif %}
 {% assign copy = site.data.navigation_research[language] %}
 <link rel="stylesheet" href="{{ '/assets/css/research-home.css' | relative_url }}">
-<main id="main" class="research-home">
+<div id="main" class="research-home">
+  {% include sidebar.html %}
+  <main class="research-home__content">
   <header class="research-home__hero">
     <p class="research-home__affiliation">{{ copy.affiliation | escape }}</p>
     <h1>{{ page.title | escape }}</h1>
@@ -41,4 +43,5 @@ layout: default
       {% endfor %}
     </p>
   </section>
-</main>
+  </main>
+</div>

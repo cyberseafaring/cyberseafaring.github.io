@@ -1,105 +1,313 @@
 {
   "schema_version": 1,
-  "diagram_type": "workflow",
+  "diagram_type": "architecture",
   "meta": {
     "title": "Maritime education and seafarer development",
     "locale": "en",
     "animation": "trace",
     "quality_profile": "showcase",
     "viewBox": [
-      720,
-      300
+      1140,
+      540
     ],
     "legend": {
       "mode": "hidden"
     },
     "views": [
       {
-        "id": "inputs-methods",
-        "label": "Inputs and methods",
+        "id": "design",
+        "label": "Research · Exercise design",
         "focus": [
-          "input",
-          "method"
-        ]
+          "duties",
+          "competency",
+          "scenario",
+          "exercise"
+        ],
+        "note": "Turn watchkeeping, automation monitoring and takeover tasks into repeatable scenarios with fog, vessel encounters and ship–shore contact."
       },
       {
-        "id": "analysis-evaluation",
-        "label": "Analysis and evaluation",
+        "id": "capture",
+        "label": "Method · Recording and debrief",
         "focus": [
-          "analysis",
-          "evaluation"
-        ]
+          "event",
+          "timing",
+          "rubric",
+          "debrief"
+        ],
+        "note": "Record observations, alerts, manoeuvres and trainee judgements on one timeline. Map key events to rubric items for debriefing."
+      },
+      {
+        "id": "evaluation",
+        "label": "Planned · Assessment study",
+        "focus": [
+          "protocol",
+          "baseline",
+          "outcome",
+          "revision"
+        ],
+        "note": "With ethics and data approvals, compare plain replay with event-based feedback on risk recognition, manoeuvres and reasoning about errors."
       }
     ]
   },
-  "lanes": [
+  "components": [
     {
-      "id": "research",
-      "label": "Research workflow"
-    }
-  ],
-  "mainPath": [
-    "input",
-    "method",
-    "analysis",
-    "evaluation"
-  ],
-  "nodes": [
-    {
-      "id": "input",
-      "lane": "research",
-      "col": 0,
+      "id": "duties",
       "type": "database",
-      "label": "Training needs",
-      "sublabel": "Automated bridge duties",
-      "width": 96
+      "label": "Bridge duties",
+      "sublabel": "Monitor and take over",
+      "pos": [
+        62,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "method",
-      "lane": "research",
-      "col": 1,
+      "id": "competency",
+      "type": "backend",
+      "label": "Competencies",
+      "sublabel": "Risk and communication",
+      "pos": [
+        346,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "scenario",
       "type": "backend",
       "label": "Scenario design",
-      "sublabel": "Encounters, fog, takeover",
-      "width": 112
+      "sublabel": "Fog and encounters",
+      "pos": [
+        630,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
     },
     {
-      "id": "analysis",
-      "lane": "research",
-      "col": 3,
-      "type": "backend",
-      "label": "Exercise records",
-      "sublabel": "Actions and reasoning",
-      "width": 128
-    },
-    {
-      "id": "evaluation",
-      "lane": "research",
-      "col": 5,
+      "id": "exercise",
       "type": "frontend",
-      "label": "Assessment",
-      "sublabel": "Rubrics and revisions",
-      "width": 104
+      "label": "Exercise script",
+      "sublabel": "Events, timing and tasks",
+      "pos": [
+        914,
+        62
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "event",
+      "type": "database",
+      "label": "Event record",
+      "sublabel": "Situation and action",
+      "pos": [
+        62,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "timing",
+      "type": "backend",
+      "label": "Replay timeline",
+      "sublabel": "Detection and action",
+      "pos": [
+        346,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "rubric",
+      "type": "backend",
+      "label": "Apply rubric",
+      "sublabel": "Risk and reasoning",
+      "pos": [
+        630,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "debrief",
+      "type": "frontend",
+      "label": "Debrief",
+      "sublabel": "Review decisions",
+      "pos": [
+        914,
+        220
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "protocol",
+      "type": "database",
+      "label": "Study protocol",
+      "sublabel": "Replay versus feedback",
+      "pos": [
+        62,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "baseline",
+      "type": "backend",
+      "label": "Match exercises",
+      "sublabel": "Use the same rubric",
+      "pos": [
+        346,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "outcome",
+      "type": "backend",
+      "label": "Compare outcomes",
+      "sublabel": "Timing and reasoning",
+      "pos": [
+        630,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
+    },
+    {
+      "id": "revision",
+      "type": "frontend",
+      "label": "Revise training",
+      "sublabel": "Update tasks and feedback",
+      "pos": [
+        914,
+        378
+      ],
+      "size": [
+        166,
+        68
+      ]
     }
   ],
-  "edges": [
+  "boundaries": [
     {
-      "id": "input-method",
-      "from": "input",
-      "to": "method",
+      "kind": "region",
+      "label": "Research · Exercise design",
+      "wraps": [
+        "duties",
+        "competency",
+        "scenario",
+        "exercise"
+      ],
+      "pad": 24
+    },
+    {
+      "kind": "region",
+      "label": "Method · Recording and debrief",
+      "wraps": [
+        "event",
+        "timing",
+        "rubric",
+        "debrief"
+      ],
+      "pad": 24
+    },
+    {
+      "kind": "region",
+      "label": "Planned · Assessment study",
+      "wraps": [
+        "protocol",
+        "baseline",
+        "outcome",
+        "revision"
+      ],
+      "pad": 24
+    }
+  ],
+  "connections": [
+    {
+      "id": "duties-competency",
+      "from": "duties",
+      "to": "competency",
       "variant": "emphasis"
     },
     {
-      "id": "method-analysis",
-      "from": "method",
-      "to": "analysis",
+      "id": "competency-scenario",
+      "from": "competency",
+      "to": "scenario",
       "variant": "emphasis"
     },
     {
-      "id": "analysis-evaluation",
-      "from": "analysis",
-      "to": "evaluation",
+      "id": "scenario-exercise",
+      "from": "scenario",
+      "to": "exercise",
       "variant": "emphasis"
+    },
+    {
+      "id": "event-timing",
+      "from": "event",
+      "to": "timing",
+      "variant": "emphasis"
+    },
+    {
+      "id": "timing-rubric",
+      "from": "timing",
+      "to": "rubric",
+      "variant": "emphasis"
+    },
+    {
+      "id": "rubric-debrief",
+      "from": "rubric",
+      "to": "debrief",
+      "variant": "emphasis"
+    },
+    {
+      "id": "protocol-baseline",
+      "from": "protocol",
+      "to": "baseline",
+      "variant": "dashed"
+    },
+    {
+      "id": "baseline-outcome",
+      "from": "baseline",
+      "to": "outcome",
+      "variant": "dashed"
+    },
+    {
+      "id": "outcome-revision",
+      "from": "outcome",
+      "to": "revision",
+      "variant": "dashed"
     }
   ]
 }

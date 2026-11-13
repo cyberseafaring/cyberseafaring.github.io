@@ -1,169 +1,321 @@
 {
   "schema_version": 1,
-  "diagram_type": "workflow",
+  "diagram_type": "architecture",
   "meta": {
-    "title": "低能见度通航保障流程",
+    "title": "低能见度航道监管与通航保障",
     "locale": "zh-CN",
     "animation": "trace",
     "quality_profile": "showcase",
     "viewBox": [
-      720,
-      400
+      1180,
+      490
     ],
     "legend": {
       "mode": "hidden"
     },
     "views": [
       {
-        "id": "workflow",
-        "label": "感知与研判",
+        "id": "observations",
+        "label": "分层感知与质量核验 · 研究方案",
         "focus": [
-          "observations",
-          "quality",
-          "risk",
-          "advice"
+          "inputs",
+          "sync",
+          "associate",
+          "quality"
         ],
-        "note": "在低能见度条件下，将能见度观测与船舶动态结合，识别可疑航迹和重点会遇，为 VTS 研判提供证据。"
+        "note": "将船端、航标和岸基观测按时间与航段组织，保留缺测、陈旧和轨迹冲突标记，供值班员复核。"
       },
       {
-        "id": "validation",
-        "label": "通航组织方案评估",
+        "id": "vts-review",
+        "label": "VTS 风险研判与信息服务 · 研究方案",
         "focus": [
-          "traffic",
-          "plans",
-          "comparison",
-          "review"
+          "traffic-state",
+          "risk",
+          "review",
+          "advice"
         ],
-        "note": "根据当地规则设置限速、单向通航或暂停通航等候选方案，比较其安全约束和等待成本。"
+        "note": "用汇总态势识别重点会遇与拥堵航段，核对能见度、现场交通和适用规则，由值班员复核后提供信息。"
+      },
+      {
+        "id": "scenario-evaluation",
+        "label": "通航组织方案评估 · 研究方案",
+        "focus": [
+          "scenarios",
+          "plans",
+          "metrics",
+          "followup"
+        ],
+        "note": "以同一能见度过程和船舶到达队列比较候选方案，评估风险、等待时间及通航恢复。"
       }
     ]
   },
-  "lanes": [
+  "components": [
     {
-      "id": "workflow",
-      "label": "感知与研判"
+      "id": "inputs",
+      "type": "database",
+      "label": "分层观测",
+      "sublabel": "能见度、雷达与 AIS",
+      "pos": [
+        46,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "validation",
-      "label": "通航组织方案评估"
-    }
-  ],
-  "mainPath": [
-    "observations",
-    "quality",
-    "risk",
-    "advice"
-  ],
-  "nodes": [
+      "id": "sync",
+      "type": "backend",
+      "label": "统一时空",
+      "sublabel": "对齐时间、坐标与航段",
+      "pos": [
+        346,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
     {
-      "id": "observations",
-      "lane": "workflow",
-      "col": 0,
-      "type": "database",
-      "label": "航道观测",
-      "sublabel": "能见度、雷达与 AIS",
-      "width": 96
+      "id": "associate",
+      "type": "backend",
+      "label": "目标关联",
+      "sublabel": "比对航迹并标记冲突",
+      "pos": [
+        646,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
       "id": "quality",
-      "lane": "workflow",
-      "col": 1,
-      "type": "backend",
-      "label": "关联与质检",
-      "sublabel": "对齐目标与时间",
-      "width": 112
+      "type": "frontend",
+      "label": "质量标记",
+      "sublabel": "缺测、陈旧与不确定性",
+      "pos": [
+        946,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "traffic-state",
+      "type": "database",
+      "label": "航段态势",
+      "sublabel": "交通流、队列与能见度",
+      "pos": [
+        946,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
       "id": "risk",
-      "lane": "workflow",
-      "col": 3,
       "type": "backend",
       "label": "风险研判",
-      "sublabel": "识别重点航段与会遇",
-      "width": 128
-    },
-    {
-      "id": "advice",
-      "lane": "workflow",
-      "col": 5,
-      "type": "frontend",
-      "label": "通航建议",
-      "sublabel": "供 VTS 人员复核",
-      "width": 104
-    },
-    {
-      "id": "traffic",
-      "lane": "validation",
-      "col": 0,
-      "type": "database",
-      "label": "运行输入",
-      "sublabel": "预报、队列与规则",
-      "width": 96
-    },
-    {
-      "id": "plans",
-      "lane": "validation",
-      "col": 1,
-      "type": "backend",
-      "label": "候选方案",
-      "sublabel": "限速、单向或暂停",
-      "width": 112
-    },
-    {
-      "id": "comparison",
-      "lane": "validation",
-      "col": 3,
-      "type": "backend",
-      "label": "影响比较",
-      "sublabel": "安全约束与等待时间",
-      "width": 128
+      "sublabel": "筛查会遇与拥堵",
+      "pos": [
+        646,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
       "id": "review",
-      "lane": "validation",
-      "col": 5,
+      "type": "backend",
+      "label": "人工复核",
+      "sublabel": "核对观测及当地规则",
+      "pos": [
+        346,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "advice",
       "type": "frontend",
-      "label": "管理复核",
-      "sublabel": "结合现场动态更新",
-      "width": 104
+      "label": "信息服务",
+      "sublabel": "提示风险与通航条件",
+      "pos": [
+        46,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "scenarios",
+      "type": "database",
+      "label": "场景输入",
+      "sublabel": "预报、到港与锚地队列",
+      "pos": [
+        46,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "plans",
+      "type": "backend",
+      "label": "候选方案",
+      "sublabel": "限速、单向或暂停",
+      "pos": [
+        346,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "metrics",
+      "type": "backend",
+      "label": "影响比较",
+      "sublabel": "安全、等待与恢复时间",
+      "pos": [
+        646,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "followup",
+      "type": "frontend",
+      "label": "运行复核",
+      "sublabel": "随条件调整组织方案",
+      "pos": [
+        946,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
     }
   ],
-  "edges": [
+  "boundaries": [
     {
-      "id": "observations-quality",
-      "from": "observations",
+      "kind": "region",
+      "label": "分层感知与质量核验 · 研究方案",
+      "wraps": [
+        "inputs",
+        "sync",
+        "associate",
+        "quality"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "VTS 风险研判与信息服务 · 研究方案",
+      "wraps": [
+        "traffic-state",
+        "risk",
+        "review",
+        "advice"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "通航组织方案评估 · 研究方案",
+      "wraps": [
+        "scenarios",
+        "plans",
+        "metrics",
+        "followup"
+      ],
+      "pad": 16
+    }
+  ],
+  "connections": [
+    {
+      "id": "inputs-sync",
+      "from": "inputs",
+      "to": "sync",
+      "variant": "emphasis"
+    },
+    {
+      "id": "sync-associate",
+      "from": "sync",
+      "to": "associate",
+      "variant": "emphasis"
+    },
+    {
+      "id": "associate-quality",
+      "from": "associate",
       "to": "quality",
       "variant": "emphasis"
     },
     {
-      "id": "quality-risk",
-      "from": "quality",
+      "id": "traffic-state-risk",
+      "from": "traffic-state",
       "to": "risk",
       "variant": "emphasis"
     },
     {
-      "id": "risk-advice",
+      "id": "risk-review",
       "from": "risk",
+      "to": "review",
+      "variant": "emphasis"
+    },
+    {
+      "id": "review-advice",
+      "from": "review",
       "to": "advice",
       "variant": "emphasis"
     },
     {
-      "id": "traffic-plans",
-      "from": "traffic",
+      "id": "scenarios-plans",
+      "from": "scenarios",
       "to": "plans",
       "variant": "emphasis"
     },
     {
-      "id": "plans-comparison",
+      "id": "plans-metrics",
       "from": "plans",
-      "to": "comparison",
+      "to": "metrics",
       "variant": "emphasis"
     },
     {
-      "id": "comparison-review",
-      "from": "comparison",
-      "to": "review",
+      "id": "metrics-followup",
+      "from": "metrics",
+      "to": "followup",
       "variant": "emphasis"
+    },
+    {
+      "id": "quality-to-vts",
+      "from": "quality",
+      "to": "traffic-state",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
     }
   ]
 }

@@ -1,169 +1,321 @@
 {
   "schema_version": 1,
-  "diagram_type": "workflow",
+  "diagram_type": "architecture",
   "meta": {
-    "title": "Navigation support in low visibility",
+    "title": "Low-visibility waterway monitoring and traffic support",
     "locale": "en",
     "animation": "trace",
     "quality_profile": "showcase",
     "viewBox": [
-      720,
-      400
+      1180,
+      490
     ],
     "legend": {
       "mode": "hidden"
     },
     "views": [
       {
-        "id": "workflow",
-        "label": "Sensing and assessment",
+        "id": "observations",
+        "label": "Layered sensing and quality checks · Proposed",
         "focus": [
-          "observations",
-          "quality",
-          "risk",
-          "advice"
+          "inputs",
+          "sync",
+          "associate",
+          "quality"
         ],
-        "note": "Combine visibility observations and vessel tracks to flag uncertain tracks and encounters for Vessel Traffic Services (VTS) review."
+        "note": "Align ship, buoy and shore observations by time and reach. Preserve missing data, stale records and track conflicts for review."
       },
       {
-        "id": "validation",
-        "label": "Traffic plan evaluation",
+        "id": "vts-review",
+        "label": "VTS risk review and information · Proposed",
         "focus": [
-          "traffic",
-          "plans",
-          "comparison",
-          "review"
+          "traffic-state",
+          "risk",
+          "review",
+          "advice"
         ],
-        "note": "Use local rules to compare speed limits, one-way traffic or temporary suspension against safety constraints and waiting time."
+        "note": "Flag encounters and congested reaches. A watch officer reviews the observations and local rules before providing traffic information."
+      },
+      {
+        "id": "scenario-evaluation",
+        "label": "Traffic plan evaluation · Proposed",
+        "focus": [
+          "scenarios",
+          "plans",
+          "metrics",
+          "followup"
+        ],
+        "note": "Use the same visibility and vessel arrivals to compare candidate plans on risk, waiting time and recovery."
       }
     ]
   },
-  "lanes": [
+  "components": [
     {
-      "id": "workflow",
-      "label": "Sensing and assessment"
+      "id": "inputs",
+      "type": "database",
+      "label": "Layered sensing",
+      "sublabel": "Visibility, radar, AIS",
+      "pos": [
+        46,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
-      "id": "validation",
-      "label": "Traffic plan evaluation"
-    }
-  ],
-  "mainPath": [
-    "observations",
-    "quality",
-    "risk",
-    "advice"
-  ],
-  "nodes": [
+      "id": "sync",
+      "type": "backend",
+      "label": "Align records",
+      "sublabel": "Time, position and reach",
+      "pos": [
+        346,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
     {
-      "id": "observations",
-      "lane": "workflow",
-      "col": 0,
-      "type": "database",
-      "label": "Observations",
-      "sublabel": "Visibility, radar, AIS",
-      "width": 96
+      "id": "associate",
+      "type": "backend",
+      "label": "Track association",
+      "sublabel": "Match tracks and flag conflicts",
+      "pos": [
+        646,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
       "id": "quality",
-      "lane": "workflow",
-      "col": 1,
-      "type": "backend",
-      "label": "Data quality",
-      "sublabel": "Align times and targets",
-      "width": 112
+      "type": "frontend",
+      "label": "Quality flags",
+      "sublabel": "Gaps, age and uncertainty",
+      "pos": [
+        946,
+        52
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "traffic-state",
+      "type": "database",
+      "label": "Traffic state",
+      "sublabel": "Flow, queues, visibility",
+      "pos": [
+        946,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
       "id": "risk",
-      "lane": "workflow",
-      "col": 3,
       "type": "backend",
       "label": "Risk assessment",
-      "sublabel": "Flag reaches and encounters",
-      "width": 128
-    },
-    {
-      "id": "advice",
-      "lane": "workflow",
-      "col": 5,
-      "type": "frontend",
-      "label": "Traffic advice",
-      "sublabel": "Support VTS review",
-      "width": 104
-    },
-    {
-      "id": "traffic",
-      "lane": "validation",
-      "col": 0,
-      "type": "database",
-      "label": "Traffic inputs",
-      "sublabel": "Forecasts, queues, rules",
-      "width": 96
-    },
-    {
-      "id": "plans",
-      "lane": "validation",
-      "col": 1,
-      "type": "backend",
-      "label": "Candidate plans",
-      "sublabel": "Limit, alternate or suspend",
-      "width": 112
-    },
-    {
-      "id": "comparison",
-      "lane": "validation",
-      "col": 3,
-      "type": "backend",
-      "label": "Impact comparison",
-      "sublabel": "Safety and waiting time",
-      "width": 128
+      "sublabel": "Encounters and congestion",
+      "pos": [
+        646,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
     },
     {
       "id": "review",
-      "lane": "validation",
-      "col": 5,
+      "type": "backend",
+      "label": "Operator review",
+      "sublabel": "Check observations and rules",
+      "pos": [
+        346,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "advice",
       "type": "frontend",
-      "label": "Authority review",
+      "label": "Traffic advice",
+      "sublabel": "Risks and restrictions",
+      "pos": [
+        46,
+        200
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "scenarios",
+      "type": "database",
+      "label": "Scenario inputs",
+      "sublabel": "Forecasts and queues",
+      "pos": [
+        46,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "plans",
+      "type": "backend",
+      "label": "Candidate plans",
+      "sublabel": "Limit, alternate or suspend",
+      "pos": [
+        346,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "metrics",
+      "type": "backend",
+      "label": "Compare impacts",
+      "sublabel": "Safety, waiting, recovery",
+      "pos": [
+        646,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
+    },
+    {
+      "id": "followup",
+      "type": "frontend",
+      "label": "Plan review",
       "sublabel": "Update with conditions",
-      "width": 104
+      "pos": [
+        946,
+        348
+      ],
+      "size": [
+        190,
+        68
+      ]
     }
   ],
-  "edges": [
+  "boundaries": [
     {
-      "id": "observations-quality",
-      "from": "observations",
+      "kind": "region",
+      "label": "Layered sensing and quality checks · Proposed",
+      "wraps": [
+        "inputs",
+        "sync",
+        "associate",
+        "quality"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "VTS risk review and information · Proposed",
+      "wraps": [
+        "traffic-state",
+        "risk",
+        "review",
+        "advice"
+      ],
+      "pad": 16
+    },
+    {
+      "kind": "region",
+      "label": "Traffic plan evaluation · Proposed",
+      "wraps": [
+        "scenarios",
+        "plans",
+        "metrics",
+        "followup"
+      ],
+      "pad": 16
+    }
+  ],
+  "connections": [
+    {
+      "id": "inputs-sync",
+      "from": "inputs",
+      "to": "sync",
+      "variant": "emphasis"
+    },
+    {
+      "id": "sync-associate",
+      "from": "sync",
+      "to": "associate",
+      "variant": "emphasis"
+    },
+    {
+      "id": "associate-quality",
+      "from": "associate",
       "to": "quality",
       "variant": "emphasis"
     },
     {
-      "id": "quality-risk",
-      "from": "quality",
+      "id": "traffic-state-risk",
+      "from": "traffic-state",
       "to": "risk",
       "variant": "emphasis"
     },
     {
-      "id": "risk-advice",
+      "id": "risk-review",
       "from": "risk",
+      "to": "review",
+      "variant": "emphasis"
+    },
+    {
+      "id": "review-advice",
+      "from": "review",
       "to": "advice",
       "variant": "emphasis"
     },
     {
-      "id": "traffic-plans",
-      "from": "traffic",
+      "id": "scenarios-plans",
+      "from": "scenarios",
       "to": "plans",
       "variant": "emphasis"
     },
     {
-      "id": "plans-comparison",
+      "id": "plans-metrics",
       "from": "plans",
-      "to": "comparison",
+      "to": "metrics",
       "variant": "emphasis"
     },
     {
-      "id": "comparison-review",
-      "from": "comparison",
-      "to": "review",
+      "id": "metrics-followup",
+      "from": "metrics",
+      "to": "followup",
       "variant": "emphasis"
+    },
+    {
+      "id": "quality-to-vts",
+      "from": "quality",
+      "to": "traffic-state",
+      "variant": "emphasis",
+      "fromSide": "bottom",
+      "toSide": "top"
     }
   ]
 }
