@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "海事视觉与多模态感知",
+    "locale": "zh-CN",
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "viewBox": [
+      720,
+      300
+    ],
+    "legend": {
+      "mode": "hidden"
+    },
+    "views": [
+      {
+        "id": "inputs-methods",
+        "label": "输入与方法",
+        "focus": [
+          "input",
+          "method"
+        ]
+      },
+      {
+        "id": "analysis-evaluation",
+        "label": "分析与评估",
+        "focus": [
+          "analysis",
+          "evaluation"
+        ]
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "research",
+      "label": "研究流程"
+    }
+  ],
+  "mainPath": [
+    "input",
+    "method",
+    "analysis",
+    "evaluation"
+  ],
+  "nodes": [
+    {
+      "id": "input",
+      "lane": "research",
+      "col": 0,
+      "type": "database",
+      "label": "视频与 AIS",
+      "sublabel": "低能见度观测",
+      "width": 88
+    },
+    {
+      "id": "method",
+      "lane": "research",
+      "col": 1,
+      "type": "backend",
+      "label": "目标检测与跟踪",
+      "sublabel": "识别小目标与航标",
+      "width": 112
+    },
+    {
+      "id": "analysis",
+      "lane": "research",
+      "col": 3,
+      "type": "backend",
+      "label": "跨源关联",
+      "sublabel": "按时空匹配轨迹",
+      "width": 128
+    },
+    {
+      "id": "evaluation",
+      "lane": "research",
+      "col": 5,
+      "type": "frontend",
+      "label": "分场景评估",
+      "sublabel": "比较漏检与误匹配",
+      "width": 104
+    }
+  ],
+  "edges": [
+    {
+      "id": "input-method",
+      "from": "input",
+      "to": "method",
+      "variant": "emphasis"
+    },
+    {
+      "id": "method-analysis",
+      "from": "method",
+      "to": "analysis",
+      "variant": "emphasis"
+    },
+    {
+      "id": "analysis-evaluation",
+      "from": "analysis",
+      "to": "evaluation",
+      "variant": "emphasis"
+    }
+  ]
+}

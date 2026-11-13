@@ -1,0 +1,44 @@
+---
+layout: default
+---
+{% assign topic = site.data.research_topics[page.topic] %}
+{% assign lang = 'zh' %}
+{% assign home = '/' %}
+{% if page.lang == 'en' %}
+  {% assign lang = 'en' %}
+  {% assign home = '/en/' %}
+{% endif %}
+{% assign student_page = home | append: 'student-topics/' | relative_url %}
+<link rel="stylesheet" href="{{ '/assets/css/research-topic.css' | relative_url }}">
+<main id="main" class="research-topic">
+  <nav class="research-topic__nav" aria-label="{% if lang == 'en' %}Research navigation{% else %}研究导航{% endif %}">
+    <a href="{{ home | relative_url }}#research">{% if lang == 'en' %}← Research overview{% else %}← 研究总览{% endif %}</a>
+    <a href="{{ page.alternate | relative_url }}" hreflang="{% if lang == 'en' %}zh-CN" lang="zh-CN">简体中文{% else %}en" lang="en">English{% endif %}</a>
+  </nav>
+
+  <h1>{{ page.title | escape }}</h1>
+  <p>{{ page.excerpt | escape }}</p>
+
+  <h2>{% if lang == 'en' %}Interactive workflow{% else %}交互流程{% endif %}</h2>
+  <p>{% if lang == 'en' %}Select a node to inspect its connections. Choose a chapter to focus on part of the workflow, then select Live to play the trace.{% else %}点击节点查看关联，选择图中的章节聚焦局部，再点击「动态」播放流程轨迹。{% endif %}</p>
+  <p><a href="{{ page.diagram | relative_url }}">{% if lang == 'en' %}Open full-size diagram{% else %}打开全尺寸流程图{% endif %}</a></p>
+  <iframe class="research-topic__diagram" src="{{ page.diagram | relative_url }}" title="{{ page.title | escape }}" loading="lazy"></iframe>
+
+  <h2>{% if lang == 'en' %}Related publications{% else %}相关论文{% endif %}</h2>
+  <ul class="research-topic__papers">
+    {% for doi in topic.papers %}
+      {% assign paper = site.data.recent_publications | where: 'doi', doi | first %}
+      <li lang="en"><a href="https://doi.org/{{ paper.doi }}">{{ paper.title | escape }}</a> · <em>{{ paper.venue | escape }}</em>, {{ paper.year }}</li>
+    {% endfor %}
+    {% if topic.proceedings %}
+      <li lang="en"><a href="{{ topic.proceedings.url }}">{{ topic.proceedings.title | escape }}</a> · {{ topic.proceedings.citation | escape }}</li>
+    {% endif %}
+  </ul>
+
+  <h2>{% if lang == 'en' %}Student research topics{% else %}学生选题{% endif %}</h2>
+  <ul class="research-topic__student-links">
+    {% for entry in topic.student_topics %}
+      <li><a href="{{ student_page }}#{{ entry.id }}">{{ entry[lang] | escape }}</a></li>
+    {% endfor %}
+  </ul>
+</main>

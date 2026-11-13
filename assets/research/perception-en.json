@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Maritime vision and multimodal perception",
+    "locale": "en",
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "viewBox": [
+      720,
+      300
+    ],
+    "legend": {
+      "mode": "hidden"
+    },
+    "views": [
+      {
+        "id": "inputs-methods",
+        "label": "Inputs and methods",
+        "focus": [
+          "input",
+          "method"
+        ]
+      },
+      {
+        "id": "analysis-evaluation",
+        "label": "Analysis and evaluation",
+        "focus": [
+          "analysis",
+          "evaluation"
+        ]
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "research",
+      "label": "Research workflow"
+    }
+  ],
+  "mainPath": [
+    "input",
+    "method",
+    "analysis",
+    "evaluation"
+  ],
+  "nodes": [
+    {
+      "id": "input",
+      "lane": "research",
+      "col": 0,
+      "type": "database",
+      "label": "Video and AIS",
+      "sublabel": "Low visibility",
+      "width": 88
+    },
+    {
+      "id": "method",
+      "lane": "research",
+      "col": 1,
+      "type": "backend",
+      "label": "Detect and track",
+      "sublabel": "Small targets and aids",
+      "width": 112
+    },
+    {
+      "id": "analysis",
+      "lane": "research",
+      "col": 3,
+      "type": "backend",
+      "label": "Track matching",
+      "sublabel": "Align space and time",
+      "width": 128
+    },
+    {
+      "id": "evaluation",
+      "lane": "research",
+      "col": 5,
+      "type": "frontend",
+      "label": "Evaluation",
+      "sublabel": "Misses and false matches",
+      "width": 104
+    }
+  ],
+  "edges": [
+    {
+      "id": "input-method",
+      "from": "input",
+      "to": "method",
+      "variant": "emphasis"
+    },
+    {
+      "id": "method-analysis",
+      "from": "method",
+      "to": "analysis",
+      "variant": "emphasis"
+    },
+    {
+      "id": "analysis-evaluation",
+      "from": "analysis",
+      "to": "evaluation",
+      "variant": "emphasis"
+    }
+  ]
+}

@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "智能航标、航道监管与交通韧性",
+    "locale": "zh-CN",
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "viewBox": [
+      720,
+      400
+    ],
+    "legend": {
+      "mode": "hidden"
+    },
+    "views": [
+      {
+        "id": "shore-monitoring",
+        "label": "船岸监管",
+        "focus": [
+          "input",
+          "method",
+          "analysis",
+          "evaluation"
+        ]
+      },
+      {
+        "id": "network-recovery",
+        "label": "网络恢复",
+        "focus": [
+          "regional",
+          "consistency",
+          "disruption",
+          "recovery"
+        ]
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "research",
+      "label": "航道监管"
+    },
+    {
+      "id": "resilience",
+      "label": "航运网络韧性"
+    }
+  ],
+  "mainPath": [
+    "input",
+    "method",
+    "analysis",
+    "evaluation"
+  ],
+  "nodes": [
+    {
+      "id": "input",
+      "lane": "research",
+      "col": 0,
+      "type": "database",
+      "label": "浮标观测",
+      "sublabel": "视频、AIS 与环境数据",
+      "width": 88
+    },
+    {
+      "id": "method",
+      "lane": "research",
+      "col": 1,
+      "type": "backend",
+      "label": "边缘融合",
+      "sublabel": "对齐观测与轨迹",
+      "width": 112
+    },
+    {
+      "id": "analysis",
+      "lane": "research",
+      "col": 3,
+      "type": "backend",
+      "label": "交通态势分析",
+      "sublabel": "识别拥堵与船舶流动",
+      "width": 128
+    },
+    {
+      "id": "evaluation",
+      "lane": "research",
+      "col": 5,
+      "type": "frontend",
+      "label": "岸基监管",
+      "sublabel": "交通监控与服务",
+      "width": 104
+    },
+    {
+      "id": "regional",
+      "lane": "resilience",
+      "col": 0,
+      "type": "database",
+      "label": "区域数据",
+      "sublabel": "AIS 轨迹与 MRV",
+      "width": 88
+    },
+    {
+      "id": "consistency",
+      "lane": "resilience",
+      "col": 1,
+      "type": "backend",
+      "label": "一致性检验",
+      "sublabel": "对照活动与排放资料",
+      "width": 112
+    },
+    {
+      "id": "disruption",
+      "lane": "resilience",
+      "col": 3,
+      "type": "backend",
+      "label": "扰动识别",
+      "sublabel": "分析网络功能下降",
+      "width": 128
+    },
+    {
+      "id": "recovery",
+      "lane": "resilience",
+      "col": 5,
+      "type": "frontend",
+      "label": "恢复评估",
+      "sublabel": "比较恢复时间",
+      "width": 104
+    }
+  ],
+  "edges": [
+    {
+      "id": "input-method",
+      "from": "input",
+      "to": "method",
+      "variant": "emphasis"
+    },
+    {
+      "id": "method-analysis",
+      "from": "method",
+      "to": "analysis",
+      "variant": "emphasis"
+    },
+    {
+      "id": "analysis-evaluation",
+      "from": "analysis",
+      "to": "evaluation",
+      "variant": "emphasis"
+    },
+    {
+      "id": "regional-consistency",
+      "from": "regional",
+      "to": "consistency",
+      "variant": "emphasis"
+    },
+    {
+      "id": "consistency-disruption",
+      "from": "consistency",
+      "to": "disruption",
+      "variant": "emphasis"
+    },
+    {
+      "id": "disruption-recovery",
+      "from": "disruption",
+      "to": "recovery",
+      "variant": "emphasis"
+    }
+  ]
+}

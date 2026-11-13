@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "船舶自主航行与避碰决策",
+    "locale": "zh-CN",
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "viewBox": [
+      720,
+      300
+    ],
+    "legend": {
+      "mode": "hidden"
+    },
+    "views": [
+      {
+        "id": "inputs-methods",
+        "label": "输入与方法",
+        "focus": [
+          "input",
+          "method"
+        ]
+      },
+      {
+        "id": "analysis-evaluation",
+        "label": "分析与评估",
+        "focus": [
+          "analysis",
+          "evaluation"
+        ]
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "research",
+      "label": "研究流程"
+    }
+  ],
+  "mainPath": [
+    "input",
+    "method",
+    "analysis",
+    "evaluation"
+  ],
+  "nodes": [
+    {
+      "id": "input",
+      "lane": "research",
+      "col": 0,
+      "type": "database",
+      "label": "AIS 会遇记录",
+      "sublabel": "航向、航速与相对位置",
+      "width": 88
+    },
+    {
+      "id": "method",
+      "lane": "research",
+      "col": 1,
+      "type": "backend",
+      "label": "会遇状态表征",
+      "sublabel": "识别风险变化",
+      "width": 112
+    },
+    {
+      "id": "analysis",
+      "lane": "research",
+      "col": 3,
+      "type": "backend",
+      "label": "避碰决策",
+      "sublabel": "比较转向与减速",
+      "width": 128
+    },
+    {
+      "id": "evaluation",
+      "lane": "research",
+      "col": 5,
+      "type": "frontend",
+      "label": "仿真评估",
+      "sublabel": "核对安全距离与操纵约束",
+      "width": 104
+    }
+  ],
+  "edges": [
+    {
+      "id": "input-method",
+      "from": "input",
+      "to": "method",
+      "variant": "emphasis"
+    },
+    {
+      "id": "method-analysis",
+      "from": "method",
+      "to": "analysis",
+      "variant": "emphasis"
+    },
+    {
+      "id": "analysis-evaluation",
+      "from": "analysis",
+      "to": "evaluation",
+      "variant": "emphasis"
+    }
+  ]
+}

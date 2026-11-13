@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "海事教育与船员发展",
+    "locale": "zh-CN",
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "viewBox": [
+      720,
+      300
+    ],
+    "legend": {
+      "mode": "hidden"
+    },
+    "views": [
+      {
+        "id": "inputs-methods",
+        "label": "输入与方法",
+        "focus": [
+          "input",
+          "method"
+        ]
+      },
+      {
+        "id": "analysis-evaluation",
+        "label": "分析与评估",
+        "focus": [
+          "analysis",
+          "evaluation"
+        ]
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "research",
+      "label": "研究流程"
+    }
+  ],
+  "mainPath": [
+    "input",
+    "method",
+    "analysis",
+    "evaluation"
+  ],
+  "nodes": [
+    {
+      "id": "input",
+      "lane": "research",
+      "col": 0,
+      "type": "database",
+      "label": "岗位与能力分析",
+      "sublabel": "识别自动化时代的训练需求",
+      "width": 96
+    },
+    {
+      "id": "method",
+      "lane": "research",
+      "col": 1,
+      "type": "backend",
+      "label": "仿真任务设计",
+      "sublabel": "会遇、低能见度或接管",
+      "width": 112
+    },
+    {
+      "id": "analysis",
+      "lane": "research",
+      "col": 3,
+      "type": "backend",
+      "label": "记录训练过程",
+      "sublabel": "操作、判断依据与反馈",
+      "width": 128
+    },
+    {
+      "id": "evaluation",
+      "lane": "research",
+      "col": 5,
+      "type": "frontend",
+      "label": "评价与修订",
+      "sublabel": "形成评价量规与训练方案",
+      "width": 104
+    }
+  ],
+  "edges": [
+    {
+      "id": "input-method",
+      "from": "input",
+      "to": "method",
+      "variant": "emphasis"
+    },
+    {
+      "id": "method-analysis",
+      "from": "method",
+      "to": "analysis",
+      "variant": "emphasis"
+    },
+    {
+      "id": "analysis-evaluation",
+      "from": "analysis",
+      "to": "evaluation",
+      "variant": "emphasis"
+    }
+  ]
+}

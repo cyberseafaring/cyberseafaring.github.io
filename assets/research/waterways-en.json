@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "diagram_type": "workflow",
+  "meta": {
+    "title": "Smart aids, waterway monitoring and traffic resilience",
+    "locale": "en",
+    "animation": "trace",
+    "quality_profile": "showcase",
+    "viewBox": [
+      720,
+      400
+    ],
+    "legend": {
+      "mode": "hidden"
+    },
+    "views": [
+      {
+        "id": "shore-monitoring",
+        "label": "Ship–shore monitoring",
+        "focus": [
+          "input",
+          "method",
+          "analysis",
+          "evaluation"
+        ]
+      },
+      {
+        "id": "network-recovery",
+        "label": "Network recovery",
+        "focus": [
+          "regional",
+          "consistency",
+          "disruption",
+          "recovery"
+        ]
+      }
+    ]
+  },
+  "lanes": [
+    {
+      "id": "research",
+      "label": "Waterway monitoring"
+    },
+    {
+      "id": "resilience",
+      "label": "Shipping-network resilience"
+    }
+  ],
+  "mainPath": [
+    "input",
+    "method",
+    "analysis",
+    "evaluation"
+  ],
+  "nodes": [
+    {
+      "id": "input",
+      "lane": "research",
+      "col": 0,
+      "type": "database",
+      "label": "Buoy data",
+      "sublabel": "Video, AIS, weather",
+      "width": 88
+    },
+    {
+      "id": "method",
+      "lane": "research",
+      "col": 1,
+      "type": "backend",
+      "label": "Edge fusion",
+      "sublabel": "Align sensor tracks",
+      "width": 112
+    },
+    {
+      "id": "analysis",
+      "lane": "research",
+      "col": 3,
+      "type": "backend",
+      "label": "Traffic analysis",
+      "sublabel": "Congestion and vessel flow",
+      "width": 128
+    },
+    {
+      "id": "evaluation",
+      "lane": "research",
+      "col": 5,
+      "type": "frontend",
+      "label": "Shore service",
+      "sublabel": "Monitoring and alerts",
+      "width": 104
+    },
+    {
+      "id": "regional",
+      "lane": "resilience",
+      "col": 0,
+      "type": "database",
+      "label": "Regional data",
+      "sublabel": "AIS tracks and MRV",
+      "width": 88
+    },
+    {
+      "id": "consistency",
+      "lane": "resilience",
+      "col": 1,
+      "type": "backend",
+      "label": "Consistency",
+      "sublabel": "Check activity and emissions",
+      "width": 112
+    },
+    {
+      "id": "disruption",
+      "lane": "resilience",
+      "col": 3,
+      "type": "backend",
+      "label": "Disruption",
+      "sublabel": "Measure functionality loss",
+      "width": 128
+    },
+    {
+      "id": "recovery",
+      "lane": "resilience",
+      "col": 5,
+      "type": "frontend",
+      "label": "Recovery",
+      "sublabel": "Compare recovery times",
+      "width": 104
+    }
+  ],
+  "edges": [
+    {
+      "id": "input-method",
+      "from": "input",
+      "to": "method",
+      "variant": "emphasis"
+    },
+    {
+      "id": "method-analysis",
+      "from": "method",
+      "to": "analysis",
+      "variant": "emphasis"
+    },
+    {
+      "id": "analysis-evaluation",
+      "from": "analysis",
+      "to": "evaluation",
+      "variant": "emphasis"
+    },
+    {
+      "id": "regional-consistency",
+      "from": "regional",
+      "to": "consistency",
+      "variant": "emphasis"
+    },
+    {
+      "id": "consistency-disruption",
+      "from": "consistency",
+      "to": "disruption",
+      "variant": "emphasis"
+    },
+    {
+      "id": "disruption-recovery",
+      "from": "disruption",
+      "to": "recovery",
+      "variant": "emphasis"
+    }
+  ]
+}

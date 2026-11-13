@@ -17,6 +17,8 @@ I study safe ship navigation in complex waters. My work asks how onboard and sho
 
 <h2 id="research">Research development</h2>
 
+{% include research-overview.html %}
+
 My doctoral work began with mariner decision-making and collision-avoidance support. I studied how to represent encounter risk and explored generative models to supplement examples of hazardous encounters. I then turned to visual perception in real navigation environments, with work on distant small targets, detector benchmarks and multisource fusion. Recent projects extend the observation area from individual ships to smart aids to navigation and shore-based monitoring, and the scale of analysis from individual encounters to waterway traffic and regional shipping-network recovery. Alongside this work, I study how ship autonomy changes bridge duties and training.
 
 ### Autonomous navigation and collision avoidance
