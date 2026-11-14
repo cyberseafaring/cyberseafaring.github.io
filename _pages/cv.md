@@ -1,5 +1,5 @@
 ---
 permalink: /resume/
-redirect_to: /cv/
+redirect_to: /presentation/
 sitemap: false
 ---
