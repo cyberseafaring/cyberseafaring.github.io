@@ -1,0 +1,43 @@
+{% assign months = site.data.academic_timeline.months %}
+<section id="timeline" class="academic-timeline" data-academic-timeline aria-labelledby="timeline-title">
+  <h2 id="timeline-title">{% if language == 'en' %}Academic timeline{% else %}学术经历{% endif %}</h2>
+  <div class="academic-timeline__plot">
+    {% for track in site.data.academic_timeline.tracks %}
+      <div class="academic-timeline__track academic-timeline__track--{{ track.id }}">
+        <h3>{{ track.title[language] | escape }}</h3>
+        <ul class="academic-timeline__cards">
+          {% for item in track.entries %}
+            {% assign midpoint = item.start | plus: item.end | times: 50.0 | divided_by: months %}
+            <li>
+              <button type="button" disabled class="academic-timeline__card timeline-tone--{{ item.tone }}" data-milestone="{{ item.id }}" data-midpoint="{{ midpoint }}"{% if item.id == 'dmu-lecturer' %} data-initial{% endif %}>
+                <span class="academic-timeline__mark" aria-hidden="true">{{ item.mark | escape }}</span>
+                <strong>{{ item.institution[language] | escape }}</strong>
+                <span>{{ item.role[language] | escape }}</span>
+                <span class="academic-timeline__dates">{{ item.dates[language] | default: item.dates | escape }}</span>
+              </button>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    {% endfor %}
+    <div class="academic-timeline__ruler" aria-hidden="true">
+      {% for track in site.data.academic_timeline.tracks %}
+        {% for item in track.entries %}
+          {% assign start = item.start | times: 100.0 | divided_by: months %}
+          {% assign end = item.end | times: 100.0 | divided_by: months %}
+          {% assign column = forloop.index0 | times: 33.3333 | plus: 16.6667 %}
+          <div class="academic-timeline__interval academic-timeline__interval--{{ track.id }} timeline-tone--{{ item.tone }}" data-interval="{{ item.id }}" style="--start: {{ start }}%; --end: {{ end }}%; --column: {{ column }}%; --lane: {{ item.lane | default: 0 }}">
+            <span class="academic-timeline__connector"></span>
+            <span class="academic-timeline__range"></span>
+          </div>
+        {% endfor %}
+      {% endfor %}
+      <div class="academic-timeline__axis">
+        {% for tick in site.data.academic_timeline.ticks %}
+          <span style="--at: {{ tick[1] | times: 100.0 | divided_by: months }}%">{{ tick[0] }}</span>
+        {% endfor %}
+      </div>
+      <div class="academic-timeline__beacon"><span class="academic-timeline__buoy"></span></div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,65 @@
+# The ruler spans 2010 through the end of 2026. Month offsets are measured from January 2010.
+months: 204
+ticks:
+  - [2010, 0]
+  - [2014, 48]
+  - [2017, 84]
+  - [2020, 120]
+  - [2023, 156]
+  - [2026, 192]
+tracks:
+  - id: work
+    title: {zh: "任职与访学", en: "Experience"}
+    entries:
+      - id: kobe-research
+        institution: {zh: "神户大学", en: "Kobe University"}
+        role: {zh: "研究助理", en: "Research Assistant"}
+        dates: "2017.10 – 2020.09"
+        mark: KU
+        tone: blue
+        start: 93
+        end: 129
+      - id: dmu-lecturer
+        institution: {zh: "大连海事大学", en: "Dalian Maritime University"}
+        role: {zh: "讲师 · 硕士生导师", en: "Lecturer · Master's Supervisor"}
+        dates: {zh: "2020.10 – 至今", en: "2020.10 – Present"}
+        mark: DMU
+        tone: teal
+        start: 129
+        end: 204
+      - id: ljmu
+        institution: {zh: "利物浦约翰摩尔斯大学", en: "Liverpool John Moores University"}
+        role: {zh: "访问学者", en: "Visiting Scholar"}
+        dates: "2023.09 – 2024.08"
+        mark: LJMU
+        tone: violet
+        start: 164
+        end: 176
+        lane: 1
+  - id: education
+    title: {zh: "教育经历", en: "Education"}
+    entries:
+      - id: dmu-bachelor
+        institution: {zh: "大连海事大学", en: "Dalian Maritime University"}
+        role: {zh: "航海技术 · 本科", en: "B.S. · Navigation Technology"}
+        dates: "2010 – 2014"
+        mark: DMU
+        tone: teal
+        start: 0
+        end: 48
+      - id: kobe-master
+        institution: {zh: "神户大学", en: "Kobe University"}
+        role: {zh: "海事科学 · 硕士", en: "M.S. · Maritime Science"}
+        dates: "2014 – 2017"
+        mark: KU
+        tone: blue
+        start: 48
+        end: 84
+      - id: kobe-doctorate
+        institution: {zh: "神户大学", en: "Kobe University"}
+        role: {zh: "海事科学 · 博士", en: "Ph.D. · Maritime Science"}
+        dates: "2017 – 2020"
+        mark: KU
+        tone: blue
+        start: 84
+        end: 129

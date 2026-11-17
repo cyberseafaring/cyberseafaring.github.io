@@ -1,8 +1,63 @@
-<ul class="recent-publications">
+{% assign paper_language = language | default: 'en' %}
+{% assign topic_root = root | default: '/en/research/' %}
+<script src="{{ '/assets/js/academic-profile.js' | relative_url }}" defer></script>
+<section class="publication-showcase" id="selected-publications" aria-labelledby="selected-publications-title">
+  <header class="publication-showcase__header">
+    <h2 id="selected-publications-title">{% if paper_language == 'en' %}Selected publications{% else %}代表论文{% endif %}</h2>
+    {% unless include.archive %}
+      <a href="{{ '/publications/' | relative_url }}">{% if paper_language == 'en' %}All publications{% else %}全部论文{% endif %} <span aria-hidden="true">↗</span></a>
+    {% endunless %}
+  </header>
   {% for paper in site.data.recent_publications %}
-    <li>
-      <a href="https://doi.org/{{ paper.doi }}" lang="en">{{ paper.title | escape }}</a><br>
-      <span lang="en">{{ paper.authors | escape }}. <em>{{ paper.venue | escape }}</em>, {{ paper.year }}{% if paper.details %}, {{ paper.details | escape }}{% endif %}.</span>
-    </li>
+    {% if paper.feature %}
+      {% assign feature = paper.feature %}
+      <article class="publication-showcase__paper">
+        <div class="publication-showcase__preview publication-showcase__preview--{{ feature.visual }}">
+          <span class="publication-showcase__ribbon" aria-hidden="true">{{ feature.venue_short | escape }}</span>
+          <div class="publication-showcase__scene" aria-hidden="true">
+            {% case feature.visual %}
+              {% when 'buoy' %}
+                <span class="publication-showcase__wave"></span>
+                <span class="publication-showcase__wave"></span>
+                <span class="publication-showcase__float"></span>
+                <span class="publication-showcase__mooring"></span>
+              {% when 'trajectory' %}
+                <span class="publication-showcase__channel"></span>
+                <span class="publication-showcase__route"></span>
+                <span class="publication-showcase__route"></span>
+                <span class="publication-showcase__vessel"></span>
+                <span class="publication-showcase__vessel"></span>
+              {% when 'detection' %}
+                <span class="publication-showcase__horizon"></span>
+                <span class="publication-showcase__scan"></span>
+                <span class="publication-showcase__target"></span>
+                <span class="publication-showcase__target"></span>
+            {% endcase %}
+          </div>
+          <button class="publication-showcase__toggle" type="button" data-preview-toggle aria-pressed="false" hidden>
+            <span aria-hidden="true"></span>{% if paper_language == 'en' %}Animation{% else %}动效{% endif %}
+          </button>
+          <span class="publication-showcase__caption">{% if paper_language == 'en' %}Research illustration{% else %}研究示意{% endif %}</span>
+        </div>
+        <div class="publication-showcase__copy">
+          <ul class="publication-showcase__topics">
+            {% for topic in feature.topics[paper_language] %}
+              <li>{{ topic | escape }}</li>
+            {% endfor %}
+          </ul>
+          <h3 lang="en"><a href="https://doi.org/{{ paper.doi | escape }}">{{ paper.title | escape }}</a></h3>
+          <p class="publication-showcase__summary">{{ feature.summary[paper_language] | escape }}</p>
+          <p class="publication-showcase__authors" lang="en">{{ paper.authors | escape | replace: 'Zhang, R.', '<strong>Zhang, R.</strong>' }}</p>
+          <p class="publication-showcase__venue" lang="en">{{ paper.venue | escape }} <span>· {{ paper.year }}</span></p>
+          <ul class="publication-showcase__links">
+            <li><a href="https://doi.org/{{ paper.doi | escape }}">DOI</a></li>
+            {% if feature.pdf %}<li><a href="{{ feature.pdf | escape }}">PDF</a></li>{% endif %}
+            {% if feature.project %}
+              <li><a href="{{ topic_root | append: feature.project | append: '/' | relative_url }}">{% if paper_language == 'en' %}Research topic{% else %}相关研究{% endif %} <span aria-hidden="true">↗</span></a></li>
+            {% endif %}
+          </ul>
+        </div>
+      </article>
+    {% endif %}
   {% endfor %}
-</ul>
+</section>

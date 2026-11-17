@@ -9,14 +9,34 @@ layout: default
 {% endif %}
 {% assign copy = site.data.navigation_research[language] %}
 <link rel="stylesheet" href="{{ '/assets/css/research-home.css' | relative_url }}">
-<div id="main" class="research-home">
-  {% include sidebar.html %}
-  <main class="research-home__content">
+<link rel="stylesheet" href="{{ '/assets/css/academic-profile.css' | relative_url }}">
+<main id="main" class="research-home">
   <header class="research-home__hero">
-    <p class="research-home__affiliation">{{ copy.affiliation | escape }}</p>
-    <h1>{{ page.title | escape }}</h1>
-    <p class="research-home__problem">{{ copy.problem | escape }}</p>
+    <div class="research-home__profile">
+      <img class="research-home__portrait" src="{{ '/images/profile.jpg' | relative_url }}" alt="" width="750" height="931">
+      <div>
+        <h1>{% if language == 'en' %}Ruolan Zhang{% else %}张若澜 <span lang="en">Ruolan Zhang</span>{% endif %}</h1>
+        <p class="research-home__affiliation">{% if language == 'en' %}Lecturer and Master's Supervisor · Navigation College, Dalian Maritime University{% else %}大连海事大学航海学院 · 讲师、硕士生导师{% endif %}</p>
+        <ul class="research-home__profiles">
+          <li><a href="{{ site.author.googlescholar | escape }}">Google Scholar</a></li>
+          <li><a href="https://github.com/{{ site.author.github | escape }}">GitHub</a></li>
+          <li><a href="https://orcid.org/0000-0001-6636-3734">ORCID</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="research-home__intro">
+      <h2>{{ page.title | escape }}</h2>
+      <p class="research-home__problem">{{ copy.problem | escape }}</p>
+      <nav class="research-home__jump" aria-label="{% if language == 'en' %}On this page{% else %}本页导航{% endif %}">
+        <a href="#timeline">{% if language == 'en' %}Academic timeline{% else %}学术经历{% endif %}</a>
+        <a href="#selected-publications">{% if language == 'en' %}Selected publications{% else %}代表论文{% endif %}</a>
+        <a href="#research">{% if language == 'en' %}Research areas{% else %}研究方向{% endif %}</a>
+      </nav>
+    </div>
   </header>
+
+  {% include academic-timeline.html %}
+  {% include recent-publications.html %}
 
   {% include port-impact-map.html %}
 
@@ -43,5 +63,4 @@ layout: default
       {% endfor %}
     </p>
   </section>
-  </main>
-</div>
+</main>
