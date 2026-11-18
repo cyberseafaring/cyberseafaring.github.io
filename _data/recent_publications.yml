@@ -1,4 +1,4 @@
-# Selected recent maritime journal articles, newest first by bibliographic year.
+# Verified journal articles and conference papers, grouped by bibliographic year.
 - title: "Environmentally conditioned paired difference learning with field residual preservation for recovering controlled mooring response parameters from nonstationary buoy observations"
   authors: "Zhang, R., Yang, C., Hu, J., & Pan, M."
   venue: "Frontiers in Marine Science"
@@ -98,6 +98,23 @@
   details: "25, 600–616"
   doi: "10.1007/s11804-025-00703-7"
 
+
+- title: "From Broadcast to Dialogue: VHF-Enhanced Smart Buoys for Intelligent Ship-Shore Speech Interaction"
+  authors: "Li, H., Liu, S., Pan, M., & Zhang, R."
+  venue: "Proceedings of the 2025 International Conference on Artificial Intelligence and Autonomous Transportation (AIAT 2025)"
+  year: 2026
+  details: "Lecture Notes in Electrical Engineering, 1590"
+  doi: "10.1007/978-981-95-9366-8_3"
+
+- title: "基于超分辨率数字高程模型与实时水位交互的海图动态等深线生成方法"
+  lang: zh-CN
+  authors: "Li, Z., Pan, M., Li, S., Wang, M., Hu, J., Hao, J., & Zhang, R."
+  venue: "Journal of Dalian Maritime University"
+  year: 2026
+  details: "52(1), 12–20"
+  doi: "10.16411/j.cnki.issn1006-7736.2026.01.002"
+  url: "https://cjournal.hep.com.cn/1006-7736/CN/1264527704373347013"
+
 - title: "Visual perception for long-distance and small target detection in autonomous maritime navigation"
   authors: "Zhang, R., Ji, X., Loughney, S., Wang, J., & Yang, Z."
   venue: "Ocean Engineering"
@@ -134,3 +151,95 @@
   year: 2025
   details: "13(2), 220"
   doi: "10.3390/jmse13020220"
+
+- title: "基于改进人工势场法与模型预测控制的多无人艇编队避障控制"
+  lang: zh-CN
+  authors: "Sun, H., Xue, Q., Pan, M., Zhang, R., & Hao, J."
+  venue: "Journal of Dalian Maritime University"
+  year: 2025
+  details: "51(2), 39–48"
+  doi: "10.16411/j.cnki.issn1006-7736.2025.02.005"
+  url: "https://xb.dlmu.edu.cn/CN/10.16411/j.cnki.issn1006-7736.2025.02.005"
+
+- title: "Identification and Removal of Light Pollution in Maritime Night-Time Images Based on Spatial Frequency Blocks"
+  authors: "Sun, H., Wang, J., Pan, M., Liu, Z., Li, S., Zhang, R., & Wei, Y."
+  venue: "Journal of Marine Science and Engineering"
+  year: 2025
+  details: "13(1), 121"
+  doi: "10.3390/jmse13010121"
+
+- title: "Waterway traffic situation awareness based on multi-modal data fusion of smart buoys"
+  authors: "Ji, X., Zhang, R., & Hirayama, K."
+  venue: "Proceedings of the Asia Navigation Conference (ANC 2024)"
+  year: 2024
+  details: "254–264"
+  url: "https://www.edu.kobe-u.ac.jp/fmsc-hrymlab/paper.html"
+
+- title: "From Simulation to Reality: Practical Challenges of Maritime Autonomous Surface Ships and the Exploration of AI-enhanced Decision-making Architecture"
+  authors: "Zhang, R., Loughney, S., Wróbel, K., & Munim, Z. H."
+  venue: "International Association of Maritime Universities Conference Book (IAMUC 2024)"
+  year: 2024
+  details: "112"
+  url: "https://archive.iamu-edu.org/wp-content/uploads/2024/10/IAMUC-2024-conferencebook.pdf#page=112"
+
+- title: "基于视频的夜间航标灯多目标检测模型"
+  lang: zh-CN
+  authors: "Guo, J., Pan, M., Wang, J., Liu, Z., & Zhang, R."
+  venue: "Navigation of China"
+  year: 2024
+  details: "47(3), 173–180"
+  doi: "10.3969/j.issn.1000-4653.2024.03.021"
+  url: "https://zghh.cinnet.cn/article/doi/10.3969/j.issn.1000-4653.2024.03.021"
+
+- title: "Semi-dynamic spatial–temporal graph neural network for traffic state prediction in waterways"
+  authors: "Li, L., Pan, M., Liu, Z., Sun, H., & Zhang, R."
+  venue: "Ocean Engineering"
+  year: 2024
+  details: "293, 116685"
+  doi: "10.1016/j.oceaneng.2024.116685"
+
+- title: "Semantics analysis model based on deep learning for vessel traffic service application"
+  authors: "Han, X., Pan, M., Liu, Z., Meng, H., Sun, H., & Zhang, R."
+  venue: "IET Intelligent Transport Systems"
+  year: 2023
+  details: "17(10), 2089–2102"
+  doi: "10.1049/itr2.12398"
+
+- title: "一种基于GAN的多船轨迹预测方法"
+  lang: zh-CN
+  authors: "Cui, Z., Pan, M., Lin, Z., Liu, Z., & Zhang, R."
+  venue: "Journal of Dalian Maritime University"
+  year: 2023
+  details: "49(3), 51–60"
+  doi: "10.16411/j.cnki.issn1006-7736.2023.03.006"
+  url: "https://xb.dlmu.edu.cn/CN/10.16411/j.cnki.issn1006-7736.2023.03.006"
+
+- title: "Maritime low-light image enhancement study based on improved ResUnet"
+  authors: "Wang, J., Pan, M., Zhang, R., Liu, Z., & Li, S."
+  venue: "Proceedings of the 6th International Conference on Signal Processing and Machine Learning (SPML 2023)"
+  year: 2023
+  details: "221–230"
+  doi: "10.1145/3614008.3614043"
+
+- title: "融合暗通道先验与循环生成对抗网络的航海图像去雾模型"
+  lang: zh-CN
+  authors: "Zhang, C., Pan, M., Gao, Y., Wang, J., Zhang, R., & Li, S."
+  venue: "Journal of Dalian Maritime University"
+  year: 2022
+  details: "48(4), 84–93"
+  doi: "10.16411/j.cnki.issn1006-7736.2022.04.010"
+  url: "https://xb.dlmu.edu.cn/CN/abstract/abstract803.shtml"
+
+- title: "Diversified assessment benchmark of vision dataset-based perception in ship navigation scenario"
+  authors: "Zhang, R., Ji, X., & Pan, M."
+  venue: "Proceedings of the 5th International Conference on Signal Processing and Machine Learning (SPML 2022)"
+  year: 2022
+  details: "282–287"
+  doi: "10.1145/3556384.3556427"
+
+- title: "Real-time route planning of inland water network based on Deep Q_Network"
+  authors: "Dai, Y., Pan, M., Zhang, R., & Cui, Z."
+  venue: "Proceedings of the 5th International Conference on Signal Processing and Machine Learning (SPML 2022)"
+  year: 2022
+  details: "66–74"
+  doi: "10.1145/3556384.3556395"
