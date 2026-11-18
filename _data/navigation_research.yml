@@ -2,6 +2,10 @@ zh:
   affiliation: "张若澜 · 大连海事大学航海学院"
   problem: "雾会缩短驾驶台的有效观测距离。港口可能限制或暂停通航，船舶等待、泊位计划和引航安排随之受到影响。我们研究如何让船舶和岸端更早掌握航道态势，为限航、引航和恢复通航提供依据。"
   approach: "从船端观察，到岸基组织通航"
+  overview:
+    title: "船岸空天协同通航保障"
+    alt: "雾中，集装箱船沿红绿航标标示的航道驶向港口。固定翼无人机和多旋翼无人机观察前方目标，气象卫星提供区域环境信息。"
+    text: "我的研究以低能见度下船舶安全进出港为主线。船载雷达、视频和 AIS 提供近域观测，智慧航标补测航道风浪流与能见度，无人机向前搜索未报告位置的小型目标，气象卫星补充区域气象海况信息。研究重点是把不同来源的观测对齐到同一时空基准，形成驾驶台、引航员和岸基船舶交通服务（VTS）可共享的航道态势，为目标核验、会遇风险判断和通航组织提供依据。"
   stages:
     - id: onboard
       label: "船端"
@@ -32,6 +36,10 @@ en:
   affiliation: "Ruolan Zhang · Navigation College, Dalian Maritime University"
   problem: "Fog shortens the distance a bridge team can see. Ports may restrict or suspend vessel movements, leaving ships waiting and disrupting berth and pilotage schedules. We study how ships and shore teams can see traffic conditions earlier and make better-informed decisions about restrictions, pilotage and reopening."
   approach: "From onboard observations to shore-based traffic management"
+  overview:
+    title: "Coordinated sensing for safe port navigation"
+    alt: "A container ship approaches a port in fog through a channel marked by red and green aids to navigation. Fixed-wing and multirotor drones observe targets ahead, while a weather satellite provides regional environmental information."
+    text: "My research focuses on helping ships enter and leave ports safely in low visibility. Shipborne radar, video and AIS provide local observations. Smart aids to navigation measure wind, waves, currents and visibility along the channel. Drones scout ahead for small targets that do not report their positions, while weather satellites provide regional weather and sea-state information. I study how to align these observations in time and space so bridge teams, pilots and shore-based Vessel Traffic Services (VTS) can share a common view of the channel, verify targets, assess encounter risks and coordinate vessel movements."
   stages:
     - id: onboard
       label: "On board"

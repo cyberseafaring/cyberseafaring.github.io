@@ -96,3 +96,19 @@
   .research-home__stage { grid-template-columns: 1fr; }
   .research-home__illustration { max-height: 11rem; }
 }
+
+.research-home__overview {
+  margin-top: clamp(2rem, 5vw, 3rem);
+  padding-top: clamp(1.25rem, 3vw, 1.75rem);
+  border-top: 1px solid #cfdddf;
+  scroll-margin-top: 5rem;
+}
+.research-home__overview > h2 { margin: 0 0 1rem; font-size: clamp(1.4rem, 4vw, 2.25rem); line-height: 1.25; }
+.research-home__overview figure { display: block; margin: 0; }
+.research-home__overview img { display: block; width: 100%; height: auto; border-radius: .65rem; }
+.research-home__overview figcaption {
+  margin: .85rem 0 0;
+  color: #3e5963;
+  font-size: .95rem;
+  line-height: 1.7;
+}

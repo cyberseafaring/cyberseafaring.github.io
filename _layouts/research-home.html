@@ -63,4 +63,13 @@ layout: default
       {% endfor %}
     </p>
   </section>
+
+  <section id="research-overview" class="research-home__overview" aria-labelledby="research-overview-title">
+    <h2 id="research-overview-title">{{ copy.overview.title | escape }}</h2>
+    <figure>
+      <img src="{{ '/assets/images/coordinated-port-navigation.webp' | relative_url }}"
+           alt="{{ copy.overview.alt | escape }}" width="1672" height="941" loading="lazy" decoding="async">
+      <figcaption>{{ copy.overview.text | escape }}</figcaption>
+    </figure>
+  </section>
 </main>
