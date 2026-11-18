@@ -8,9 +8,9 @@
       <a href="{{ '/publications/' | relative_url }}">{% if paper_language == 'en' %}All publications{% else %}全部论文{% endif %} <span aria-hidden="true">↗</span></a>
     {% endunless %}
   </header>
-  {% for paper in site.data.recent_publications %}
-    {% if paper.feature %}
-      {% assign feature = paper.feature %}
+  {% for feature in site.data.selected_publications %}
+    {% assign paper = site.data.recent_publications | where: 'doi', feature.doi | first %}
+    {% if paper %}
       <article class="publication-showcase__paper">
         <div class="publication-showcase__preview publication-showcase__preview--{{ feature.visual }}">
           <span class="publication-showcase__ribbon" aria-hidden="true">{{ feature.venue_short | escape }}</span>
@@ -21,12 +21,15 @@
                 <span class="publication-showcase__wave"></span>
                 <span class="publication-showcase__float"></span>
                 <span class="publication-showcase__mooring"></span>
-              {% when 'trajectory' %}
-                <span class="publication-showcase__channel"></span>
-                <span class="publication-showcase__route"></span>
-                <span class="publication-showcase__route"></span>
-                <span class="publication-showcase__vessel"></span>
-                <span class="publication-showcase__vessel"></span>
+              {% when 'fusion' %}
+                <span class="publication-showcase__fusion-mask"></span>
+                <span class="publication-showcase__fusion-fix"></span>
+                <span class="publication-showcase__fusion-match"></span>
+              {% when 'temporal' %}
+                <span class="publication-showcase__signal-lane">GNSS</span>
+                <span class="publication-showcase__signal-lane">IMU</span>
+                <span class="publication-showcase__signal-lane">AIS</span>
+                <span class="publication-showcase__time-cursor"></span>
               {% when 'detection' %}
                 <span class="publication-showcase__horizon"></span>
                 <span class="publication-showcase__scan"></span>
@@ -51,6 +54,7 @@
           <p class="publication-showcase__venue" lang="en">{{ paper.venue | escape }} <span>· {{ paper.year }}</span></p>
           <ul class="publication-showcase__links">
             <li><a href="https://doi.org/{{ paper.doi | escape }}">DOI</a></li>
+            <li><a href="{{ feature.scholar | escape }}">Google Scholar</a></li>
             {% if feature.pdf %}<li><a href="{{ feature.pdf | escape }}">PDF</a></li>{% endif %}
             {% if feature.project %}
               <li><a href="{{ topic_root | append: feature.project | append: '/' | relative_url }}">{% if paper_language == 'en' %}Research topic{% else %}相关研究{% endif %} <span aria-hidden="true">↗</span></a></li>

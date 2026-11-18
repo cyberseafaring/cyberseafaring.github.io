@@ -1,0 +1,41 @@
+# The order here determines the order of the cards on both homepages and the publications page.
+- doi: "10.1016/j.oceaneng.2025.121447"
+  visual: detection
+  venue_short: "Ocean Eng."
+  topics: {zh: ["海事视觉", "远距离小目标"], en: ["Maritime vision", "Distant small targets"]}
+  summary:
+    zh: "面向驾驶台视角下的远距离小目标，改进检测模型的注意力、特征池化和边界框回归，兼顾识别精度与边缘计算开销。"
+    en: "Improves attention, feature pooling and bounding-box regression for detecting small, distant targets from the bridge, with a focus on accuracy and edge-computing cost."
+  pdf: "https://researchonline.ljmu.ac.uk/id/eprint/26588/8/Visual%20perception%20for%20long-distance%20and%20small%20target%20detection%20in%20autonomous%20maritime%20navigation.pdf"
+  scholar: "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=hwzcOsEAAAAJ&citation_for_view=hwzcOsEAAAAJ:_kc_bZDykSQC"
+  project: perception
+
+- doi: "10.1080/20464177.2025.2578910"
+  visual: fusion
+  venue_short: "JMET"
+  topics: {zh: ["船舶实例分割", "AIS 与视频融合"], en: ["Vessel segmentation", "AIS–video fusion"]}
+  summary:
+    zh: "通过低秩优化和船舶注意力改进 Edge-SAM，实现航道船舶的像素级分割，再用区域匹配将 AIS 报文与监控视频中的船舶目标关联。"
+    en: "Adapts Edge-SAM with low-rank optimisation and ship-sensitive attention for pixel-level vessel segmentation, then uses regional matching to associate AIS reports with vessels detected in surveillance video."
+  scholar: "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=hwzcOsEAAAAJ&citation_for_view=hwzcOsEAAAAJ:qxL8FJ1GzNcC"
+  project: perception
+
+- doi: "10.1080/17445302.2026.2709713"
+  visual: buoy
+  venue_short: "SOS"
+  topics: {zh: ["智慧航标", "沉石位置反演"], en: ["Smart buoys", "Sinker position inversion"]}
+  summary:
+    zh: "结合浮标轨迹和风浪流观测，在物理载荷约束下估计沉石位置、回旋半径及其不确定性，并用青岛港 304 号浮标的长期观测检验估计结果。"
+    en: "Uses buoy trajectories and wind, wave and current observations to infer sinker position, watch-circle radius and uncertainty under physical load constraints. Evaluated on long-term records from Qingdao Port buoy No. 304."
+  scholar: "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=hwzcOsEAAAAJ&cstart=20&pagesize=80&citation_for_view=hwzcOsEAAAAJ:IWHjjKOFINEC"
+  project: smart-aids
+
+- doi: "10.1016/j.oceaneng.2026.125265"
+  visual: temporal
+  venue_short: "Ocean Eng."
+  topics: {zh: ["时序态势理解", "避碰规则"], en: ["Temporal situational understanding", "COLREGs"]}
+  summary:
+    zh: "将 GNSS、IMU 和 AIS 的时序数据编码为语言提示，并在模型微调中提高安全关键场景的权重，以识别船舶操纵意图并改善会遇场景中的避碰规则符合性。"
+    en: "Encodes GNSS, IMU and AIS time series as language prompts and gives safety-critical examples greater weight during fine-tuning to improve manoeuvring intent recognition and COLREGs compliance in vessel encounters."
+  scholar: "https://scholar.google.com/citations?view_op=view_citation&hl=zh-CN&user=hwzcOsEAAAAJ&citation_for_view=hwzcOsEAAAAJ:aqlVkmm33-oC"
+  project: perception

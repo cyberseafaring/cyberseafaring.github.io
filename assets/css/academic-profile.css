@@ -169,7 +169,7 @@
   background: #f0f7f7;
   --ribbon: #12685f;
 }
-.publication-showcase__preview--trajectory { --ribbon: #584187; }
+.publication-showcase__preview--fusion { --ribbon: #584187; }
 .publication-showcase__preview--detection { --ribbon: #245e8e; }
 .publication-showcase__ribbon {
   position: absolute;
@@ -254,29 +254,53 @@
   position: absolute; bottom: -3px; right: 68%; width: 1.1rem; height: .35rem;
   border-radius: .1rem; background: #36555e; content: "";
 }
-.publication-showcase__preview--trajectory .publication-showcase__scene {
-  background: repeating-linear-gradient(0deg, #daebdf 0 1px, transparent 1px 1rem), repeating-linear-gradient(90deg, #daebdf 0 1px, #f0f6eb 1px 1rem);
+.publication-showcase__preview--fusion .publication-showcase__scene {
+  background: linear-gradient(160deg, #e9f1f5 0 36%, #92bec9 36% 82%, #dcece0 82%);
 }
-.publication-showcase__channel {
-  inset: 0;
-  background: #abd0d9;
-  clip-path: polygon(0 76%, 26% 57%, 50% 37%, 79% 38%, 100% 18%, 100% 57%, 72% 72%, 53% 64%, 29% 84%, 16% 100%, 0 100%);
+.publication-showcase__fusion-mask {
+  top: 44%; left: 37%; width: 33%; height: 28%;
+  background: #397e8c;
+  clip-path: polygon(0 18%, 67% 18%, 100% 50%, 67% 82%, 0 82%);
 }
-.publication-showcase__route {
-  left: 29%; top: 57%; width: 50%; height: 10%;
-  transform: rotate(-12deg);
-  border-top: 2px dashed #396d93;
+.publication-showcase__fusion-fix {
+  top: 55%; left: 46%; width: .65rem; height: .65rem;
+  border: 2px solid white;
   border-radius: 50%;
+  background: #584187;
+  animation: academic-fusion-fix 2.2s ease-in-out infinite;
 }
-.publication-showcase__route:nth-child(3) { left: 17%; top: 64%; transform: rotate(-17deg); border-color: #645094; }
-.publication-showcase__vessel {
-  left: 40%; top: 60%; width: 11%; height: 9%;
-  clip-path: polygon(0 8%, 70% 8%, 100% 50%, 70% 92%, 0 92%);
-  background: #186180;
-  transform: rotate(-15deg);
-  animation: academic-vessel 2.7s ease-in-out infinite alternate;
+.publication-showcase__fusion-match {
+  top: 41%; left: 34%; width: 39%; height: 34%;
+  border: 2px dashed #503785;
+  border-radius: .32rem;
 }
-.publication-showcase__vessel:nth-child(5) { left: 64%; top: 49%; rotate: 180deg; background: #645094; }
+.publication-showcase__preview--temporal .publication-showcase__scene {
+  background: repeating-linear-gradient(90deg, #d9e7ef 0 1px, #edf4f8 1px 10%);
+}
+.publication-showcase__signal-lane {
+  top: 33%; left: 25%; right: 12%;
+  color: #284e67;
+  font-family: ui-monospace, monospace;
+  font-size: .65rem;
+  line-height: 1;
+}
+.publication-showcase__signal-lane::after {
+  position: absolute;
+  inset: 35% 0 auto 33%;
+  height: 4px;
+  background: repeating-linear-gradient(90deg, #427ba0 0 9%, transparent 9% 20%);
+  border-radius: 2px;
+  content: "";
+}
+.publication-showcase__signal-lane:nth-child(2) { top: 49%; }
+.publication-showcase__signal-lane:nth-child(2)::after { background-position: 8px 0; }
+.publication-showcase__signal-lane:nth-child(3) { top: 65%; }
+.publication-showcase__signal-lane:nth-child(3)::after { background-position: -10px 0; }
+.publication-showcase__time-cursor {
+  top: 28%; bottom: 24%; left: 46%; width: 2px;
+  background: #9b531b;
+  animation: academic-time-cursor 2.8s ease-in-out infinite alternate;
+}
 .publication-showcase__preview--detection .publication-showcase__scene {
   background: linear-gradient(#dbeaf3 0%, #eef3f4 47%, #759faf 49%, #547f91 100%);
 }
@@ -303,7 +327,8 @@
 .publication-showcase__target:nth-child(4) { left: 67%; top: 45%; width: 12%; height: 13%; border-color: #e0f3d5; }
 @keyframes academic-bob { 50% { transform: translateY(-.16rem) rotate(-5deg); } }
 @keyframes academic-wave { to { transform: translateX(8%); } }
-@keyframes academic-vessel { to { transform: translate(65%, -26%) rotate(-15deg); } }
+@keyframes academic-fusion-fix { 50% { box-shadow: 0 0 0 .4rem #58418744; } }
+@keyframes academic-time-cursor { to { left: 87%; } }
 @keyframes academic-scan { from { transform: translateY(-1rem); } to { transform: translateY(1rem); } }
 .publication-showcase__copy { min-width: 0; }
 .publication-showcase__topics, .publication-showcase__links {

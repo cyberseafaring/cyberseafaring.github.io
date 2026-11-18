@@ -5,15 +5,6 @@
   year: 2026
   details: "13, 1949441"
   doi: "10.3389/fmars.2026.1949441"
-  feature:
-    visual: buoy
-    venue_short: "Front. Mar. Sci."
-    topics: {zh: ["智慧航标", "系泊响应"], en: ["Smart buoys", "Mooring response"]}
-    summary:
-      zh: "利用风、浪、流和姿态估计航标的环境响应，在保留实测残差的基础上构造配对差分，评估受控情景下系泊响应参数的恢复精度。"
-      en: "Models a buoy's environmental response from wind, waves, currents and attitude, then builds paired differences that retain measured residuals to assess parameter recovery in controlled mooring scenarios."
-    pdf: "https://www.frontiersin.org/journals/marine-science/articles/10.3389/fmars.2026.1949441/pdf"
-    project: smart-aids
 
 - title: "Real-Time Transformer for Robust Ship Detection under Adverse Weather"
   authors: "Ji, X., Koue, J., Zhang, R., & Hirayama, K."
@@ -47,14 +38,6 @@
   venue: "Journal of Ocean Engineering and Science"
   year: 2026
   doi: "10.1016/j.joes.2026.07.011"
-  feature:
-    visual: trajectory
-    venue_short: "JOES"
-    topics: {zh: ["航迹预测", "ENC · COLREGs"], en: ["Trajectory prediction", "ENC · COLREGs"]}
-    summary:
-      zh: "结合船舶运动先验、电子海图中的航道拓扑和避碰规则相关的会遇特征，预测同一场景内多船的未来航迹，并在琼州海峡和福姜沙航道 AIS 数据上验证。"
-      en: "Predicts vessel trajectories at scene level by combining motion priors, electronic chart topology and COLREGs-related encounter cues. Evaluated on AIS data from the Qiongzhou Strait and Fujiangsha Waterway."
-    project: autonomy
 
 - title: "Shipwake-YOLO: Ship Wake Detection and Instance Segmentation for Visual Navigational-State Cue Extraction"
   authors: "Li, S., Ji, X., Yang, C., & Zhang, R."
@@ -121,15 +104,6 @@
   year: 2025
   details: "332, 121447"
   doi: "10.1016/j.oceaneng.2025.121447"
-  feature:
-    visual: detection
-    venue_short: "Ocean Eng."
-    topics: {zh: ["海事视觉", "远距离小目标"], en: ["Maritime vision", "Distant small targets"]}
-    summary:
-      zh: "面向驾驶台视角下的远距离小目标，改进检测模型的注意力、特征池化和边界框回归，兼顾识别精度与边缘计算开销。"
-      en: "Improves attention, feature pooling and bounding-box regression for detecting small, distant targets from the bridge, with a focus on accuracy and edge-computing cost."
-    pdf: "https://researchonline.ljmu.ac.uk/id/eprint/26588/8/Visual%20perception%20for%20long-distance%20and%20small%20target%20detection%20in%20autonomous%20maritime%20navigation.pdf"
-    project: perception
 
 - title: "Adaptive Temporal Reinforcement Learning for Mapping Complex Maritime Environmental State Spaces in Autonomous Ship Navigation"
   authors: "Zhang, R., Qin, X., Pan, M., Li, S., & Shen, H."
